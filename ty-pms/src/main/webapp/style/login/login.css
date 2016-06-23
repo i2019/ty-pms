@@ -1,7 +1,7 @@
 @charset "utf-8";
 body{padding: 0px;margin: 0px;}
 #header{width: auto;min-height: 70px;line-height: 70px;}
-#header{border-bottom: medium solid #39A631;}
+#header{border-bottom: medium solid #044599;}
 span.title_con{font-family:"微软雅黑";font-style: normal;font-size: 2em;font-weight:800 ;color: #044599;padding-left: 1em;}
 #content{width: auto;height:28em;text-align: center;background-size: 100% 100%;}
 #footer{width: auto;min-height: 60px;line-height:60px;}
