@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd" version="2.1">
+
+	<display-name>Custom Functions</display-name>
+	<tlib-version>1.0</tlib-version>
+	<short-name>ccm_func</short-name>
+	<uri>http://ccm.com/tags/functions</uri>
+
+	<function>
+		<name>starCssStar</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String starCssStar(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>starName</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String starName(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>fullAddress</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String fullAddress(com.ccm.api.model.base.Address)</function-signature>
+	</function>
+	<function>
+		<name>cityFromId</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>com.ccm.api.model.landmarks.City cityFromId(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>hotelListUrl</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String hotelListUrl(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>hotelRoomUrl</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String hotelRoomUrl(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>hotelDetailUrl</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String hotelDetailUrl(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>safeHotelRoomUrl</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String safeHotelRoomUrl(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>safeHotelDetailUrl</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String safeHotelDetailUrl(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>circlesOfCity</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.util.List circlesOfCity(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>districtsOfCity</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.util.List districtsOfCity(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>bookRule</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String bookRule(com.ccm.api.model.inventory.RoomPriceDef)</function-signature>
+	</function>
+	<function>
+		<name>cancelRule</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String cancelRule(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>breakfastType</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String breakfastType(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>roomDefPicUrl</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String roomDefPicUrl(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>partialText</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String partialText(java.lang.String, java.lang.Integer)</function-signature>
+	</function>
+	<function>
+		<name>split</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String split(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>canShowPromotion</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.Boolean canShowPromotion(com.ccm.api.model.promotion.Promotion)</function-signature>
+	</function>
+	<function>
+		<name>priceToString</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.String priceToString(java.lang.Double)</function-signature>
+	</function>
+	<function>
+		<name>isPromotionCityIdInDec</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.Boolean isPromotionCityIdInDec(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>isPromotionCityPinyinInDec</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.Boolean isPromotionCityPinyinInDec(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>isSpecialPriceInDec</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.Boolean isSpecialPriceInDec(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>isSpecialPriceInDecList</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>java.lang.Boolean isSpecialPriceInDecList(java.util.List)</function-signature>
+	</function>
+	<function>
+		<name>getRoomTypeDefaultPicture</name>
+		<function-class>com.ccm.web.servlet.tags.CustomFunctionsTag</function-class>
+		<function-signature>com.ccm.api.model.search.vo.PictureVO getRoomTypeDefaultPicture(java.lang.String, java.lang.String)</function-signature>
+	</function>
+</taglib>
