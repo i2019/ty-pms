@@ -16,15 +16,8 @@
 <link rel="stylesheet" type="text/css" href="style/authority/jquery.fancybox-1.3.4.css" media="screen"></link>
 <script type="text/javascript" src="scripts/artDialog/artDialog.js?skin=default"></script>
 
-<script type="text/javascript" src="scripts/jquery/jquery-1.12.3.js"></script>
-
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-<script src="bootstrap/js/bootstrap.js"></script>
-
-<link rel="stylesheet" href="bootstrap/bootstrap-select/css/bootstrap-select.css">
-<script src="bootstrap/bootstrap-select/js/bootstrap-select.js"></script>
-
 <style type="text/css">
+
 .result_table{ width:100%;}
 .result_table th{ border:#c1cfd9 1px solid; border-top-color:#f6f8fa; background:#d3dde4; font-weight:normal; padding:6px 6px;}
 .result_table td{ border:#c1cfd9 1px solid; text-align:center;padding:6px 6px; background:#fff;}
@@ -49,24 +42,55 @@
 .result_table td .p_hover{ position:absolute;left:71px; top:15px; background:#fff; border-top:#4e5663 2px solid; width:120px; font-size:12px; padding:6px; display:none;}
 .result_table td .p_hover p{ line-height:20px; margin:0; padding:0; text-align:left;}
 
-
 </style>
 
+<script type="text/javascript">
+$(document).ready(function(){
+	/** 新增   **/
+    $("#addBtn").fancybox({
+    	'href'  : 'user_edit.action',
+    	'width' : 733,
+        'height' : 530,
+        'type' : 'iframe',
+        'hideOnOverlayClick' : false,
+        'showCloseButton' : false,
+        'onClosed' : function() { 
+        	window.location.href = 'user_list.action';
+        }
+    });
+});
+</script>
 </head>
 <body>
 
+<hr>
 	
-<s:form action="" method="post">
-	<ul>
-		<li>
-		
-		</li>
-	</ul>
-</s:form>
+<form id="submitForm" name="submitForm" action="" method="post">
+	<div id="container">
+		<div class="ui_content">
+			<div class="ui_text_indent">
+				<div id="box_border">
+					<div id="box_center">
+						
+					</div>
+					<br>
+					<div id="box_bottom">
+						
+						<input type="button" value="新增" class="ui_input_btn01" id="addBtn" /> 
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
 
-<display:table name="userList" pagesize="2" size="userList.size()" class="result_table" partialList="true">
+<hr>
+
+<display:table name="userList" pagesize="20" size="20" class="result_table" partialList="true">
 			<display:column property="userName" title="用户名"/>
-			<display:column property="userId"  title="用户id" />
+			<display:column property="userId"  title="用户ID" />
+			<display:column property="password"  title="用户密码" />
 </display:table>
 
 

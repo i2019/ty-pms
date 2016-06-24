@@ -19,12 +19,10 @@
 <script type="text/javascript" src="scripts/artDialog/artDialog.js?skin=default"></script>
 <script type="text/javascript" src="scripts/zTree/jquery.ztree.core-3.2.js"></script>
 <script type="text/javascript" src="scripts/authority/commonAll.js"></script>
-
 	
+<title>PMS</title>
 	
-	<title>PMS</title>
-	
-	<script type="text/javascript">
+<script type="text/javascript">
 	/*顶部导航条*/
 		/**退出系统**/
 		function logout(){
@@ -199,20 +197,19 @@
 			var data=null;
 			if('dleft_tab1' == treeObj){
 				
-				 data = [
-			            {"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":121,"resourceName":"基础设置","resourceOrder":0,"resourceType":""},
-			            {"accessPath":"user_list.action","checked":false,"delFlag":0,"parentID":121,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":12131,"resourceName":"单位","resourceOrder":0,"resourceType":""},
-			     ];
+			data = [
+			        
+			 ];
 				 
-				 $("#dleft_tab1").show();
-				 $("#dleft_tab2").hide();
-				 $("#dleft_tab3").hide();
+			 $("#dleft_tab1").show();
+			 $("#dleft_tab2").hide();
+			 $("#dleft_tab3").hide();
 			}else  if('dleft_tab2' == treeObj){
 				
-				 data = [
-				           {"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":221,"resourceName":"用户管理","resourceOrder":0,"resourceType":""},
-				           {"accessPath":"pages/main/user.jsp","checked":false,"delFlag":0,"parentID":221,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":22131,"resourceName":"系统用户","resourceOrder":0,"resourceType":""},
-				  ];
+ data = [
+{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":221,"resourceName":"用户管理","resourceOrder":0,"resourceType":""},
+{"accessPath":"user_list.action","checked":false,"delFlag":0,"parentID":221,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":22131,"resourceName":"系统用户","resourceOrder":0,"resourceType":""},
+  ];
 				 
 				 $("#dleft_tab2").show();
 				 $("#dleft_tab1").hide();
@@ -361,14 +358,10 @@
 		 </div>
 	</div>
 	
-	 <!-- side menu start -->
-    <div id="top_nav">
-	 	<span id="here_area">当前位置：系统&nbsp;>&nbsp;系统介绍</span>
-	</div>
+	 <!-- side content-->
     <div id="main">
       	<iframe name="right" id="rightMain" 
       	frameborder="no" scrolling="auto" width="100%" height="100%" allowtransparency="true">
-      		
       	</iframe>
     </div>
     

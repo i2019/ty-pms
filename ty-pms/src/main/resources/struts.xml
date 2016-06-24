@@ -21,6 +21,7 @@
 		<action name="user_*" class="ty.pms.action.User.UserAction"
 			method="{1}">
 			<result name="list">/pages/main/user.jsp</result>
+			<result name="edit">/pages/main/userEdit.jsp</result>
 		</action>
 		
     </package>

@@ -1,0 +1,7 @@
+<script type="text/javascript" src="scripts/jquery/jquery-1.12.3.js"></script>
+
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<script src="bootstrap/js/bootstrap.js"></script>
+
+<link rel="stylesheet" href="bootstrap/bootstrap-select/css/bootstrap-select.css">
+<script src="bootstrap/bootstrap-select/js/bootstrap-select.js"></script>
