@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ty.pms.dao.user.UserMapper">
+
+	<resultMap id="BaseResultMap" type="ty.pms.model.user.User">
+		<id column="userId" property="userId" jdbcType="VARCHAR" />
+		<result column="userName" property="userName" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		userId,userName,password
+	</sql>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from user
+		where userId = #{userId,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insert" parameterType="ty.pms.model.user.User">
+		insert into user (userId, userName, password)
+		values 
+		#{userId,jdbcType=VARCHAR},
+		#{userName,jdbcType=VARCHAR}, 
+		#{password,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="ty.pms.model.user.User">
+		insert into user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				userId,
+			</if>
+			<if test="userName != null">
+				userName,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="ty.pms.model.user.User">
+		update user
+		<set>
+			<if test="name != null">
+				userName = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where userId = #{userId,jdbcType=VARCHAR}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="ty.pms.model.user.User">
+		update user 
+		set 
+		userName = #{userName,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR}
+		where
+		userId = #{userId,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where userId = #{userId,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectUserByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where userName = #{userName,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getAll" resultMap="BaseResultMap" parameterType="ty.pms.model.user.User">
+		select
+		<include refid="Base_Column_List" />
+		from user
+	</select>
+	
+</mapper>
