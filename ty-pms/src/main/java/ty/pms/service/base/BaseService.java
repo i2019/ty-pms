@@ -11,17 +11,17 @@ public class BaseService {
 
 	private HttpSession httpSession=null;
 
-	private UserCriteria loginUser;
+	private User loginUser=null;
 	
 	public HttpSession getHttpSession() {
 		httpSession=ServletActionContext.getRequest().getSession();
 		return httpSession;
 	}
 
-	public UserCriteria getLoginUser() {
+	public User getLoginUser() {
 		HttpSession httpSession=getHttpSession();
 		if(null!=httpSession){
-			loginUser=(UserCriteria) httpSession.getAttribute("LoginUser");
+			loginUser=(User) httpSession.getAttribute("LoginUser");
 		}
 		return loginUser;
 	}
