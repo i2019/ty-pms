@@ -1,10 +1,9 @@
 package ty.pms.service.user.impl;
 
 import java.util.Date;
-import java.util.List;
 
 import ty.pms.dao.user.UserMapper;
-import ty.pms.model.user.User;
+
 import ty.pms.model.user.UserCriteria;
 import ty.pms.model.user.UserResult;
 import ty.pms.service.base.BaseService;
@@ -86,4 +85,15 @@ public class UserServiceImpl extends BaseService implements UserService {
 	public Integer deleteByPrimaryKey(String id){
 		return userMapper.deleteByPrimaryKey(id);
 	}
+	
+	public UserResult getUsers(UserCriteria criteria){
+		UserResult userResult=new UserResult();
+		
+		userResult.setResultList(userMapper.getUsers(criteria));
+		userResult.setTotalCount(userMapper.getUsersCount(criteria));
+		
+		return userResult;
+	}
+	
+	
 }

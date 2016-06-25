@@ -1,6 +1,5 @@
 package ty.pms.service.user;
 
-import ty.pms.model.user.User;
 import ty.pms.model.user.UserCriteria;
 import ty.pms.model.user.UserResult;
 
@@ -13,6 +12,8 @@ public interface UserService {
 	UserCriteria selectByPrimaryKey(String id);
 	UserCriteria selectUserByName(String name);
 	UserResult getAll();
+	
+	UserResult getUsers(UserCriteria criteria);
 	/*
 	 * 根据用户id更新用户信息
 	 * */

@@ -37,7 +37,16 @@ public class UserAction extends BaseAction{
 		
 		//获取所有用户
 		userResult=userService.getAll();
-
+		
+		UserCriteria criteria=new UserCriteria();
+		
+		List<String> userNameList=new ArrayList<String>();
+		userNameList.add("p");
+		userNameList.add("ta");
+		
+		criteria.setUserNameList(userNameList);
+		userService.getUsers(criteria);
+		
 		return "list";
 	}
 	/**
@@ -130,6 +139,9 @@ public class UserAction extends BaseAction{
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

@@ -11,6 +11,11 @@ public interface UserMapper {
 	
 	void insertSelective(UserCriteria record);
 	
+    Integer deleteByPrimaryKey(String id);
+
+    String updateByPrimaryKeySelective(UserCriteria record);
+    
+
 	UserCriteria selectByPrimaryKey(String id);
     
 	UserCriteria selectUserByName(String name);
@@ -18,10 +23,8 @@ public interface UserMapper {
     List<User> getAll();
     Integer getAllCount();
 	
-    Integer deleteByPrimaryKey(String id);
-
-    String updateByPrimaryKeySelective(UserCriteria record);
-
+    List<User> getUsers(UserCriteria criteria);
+    Integer getUsersCount(UserCriteria criteria);
 	/*------使用中end----------------------*/
 	
 	

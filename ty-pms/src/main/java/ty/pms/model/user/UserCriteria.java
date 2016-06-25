@@ -11,13 +11,25 @@ public class UserCriteria extends SearchCriteria{
 	 */
 	private static final long serialVersionUID = -7090400382971260627L;
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	private List<String> userNameList;
-	private List<String> userIdList;
+	private String userName;//操作员名称
 	
 	private String userId;//操作员id
-	private String userName;//操作员名称
+	private List<String> userIdList;
+
 	private String password;//密码
+	private List<String> passList;
 	
+	
+	public List<String> getPassList() {
+		return passList;
+	}
+	public void setPassList(List<String> passList) {
+		this.passList = passList;
+	}
 	public String getUserId() {
 		return userId;
 	}
@@ -48,6 +60,43 @@ public class UserCriteria extends SearchCriteria{
 	}
 	public void setUserIdList(List<String> userIdList) {
 		this.userIdList = userIdList;
+	}
+	@Override
+	public String toString() {
+		return "UserCriteria [userNameList=" + userNameList + ", userName="
+				+ userName + ", userId=" + userId + ", userIdList="
+				+ userIdList + ", password=" + password + ", passList="
+				+ passList + ", getPassList()=" + getPassList()
+				+ ", getUserId()=" + getUserId() + ", getUserName()="
+				+ getUserName() + ", getPassword()=" + getPassword()
+				+ ", getUserNameList()=" + getUserNameList()
+				+ ", getUserIdList()=" + getUserIdList()
+				+ ", getSkipResults()=" + getSkipResults()
+				+ ", getMaxResults()=" + getMaxResults() + ", getPageSize()="
+				+ getPageSize() + ", getPageNum()=" + getPageNum()
+				+ ", getSortBy()=" + getSortBy() + ", getDesc()=" + getDesc()
+				+ ", getTotal()=" + getTotal() + ", isNeedPage()="
+				+ isNeedPage() + ", getStart()=" + getStart()
+				+ ", getOwnerList()=" + getOwnerList()
+				+ ", getCreatedByList()=" + getCreatedByList()
+				+ ", getUpdatedByList()=" + getUpdatedByList()
+				+ ", getCreatedTimeBegin()=" + getCreatedTimeBegin()
+				+ ", getCreatedTimeEnd()=" + getCreatedTimeEnd()
+				+ ", getLastModifyTimeBegin()=" + getLastModifyTimeBegin()
+				+ ", getLastModifyTimeEnd()=" + getLastModifyTimeEnd()
+				+ ", getOccurrencedTimeBegin()=" + getOccurrencedTimeBegin()
+				+ ", getOccurrencedTimeEnd()=" + getOccurrencedTimeEnd()
+				+ ", getEndTimeBegin()=" + getEndTimeBegin()
+				+ ", getEndTimeEnd()=" + getEndTimeEnd() + ", getEndTime()="
+				+ getEndTime() + ", getOwner()=" + getOwner()
+				+ ", getOccurrencedTime()=" + getOccurrencedTime()
+				+ ", getCreatedTime()=" + getCreatedTime()
+				+ ", getLastModifyTime()=" + getLastModifyTime()
+				+ ", getCreatedBy()=" + getCreatedBy() + ", getUpdatedBy()="
+				+ getUpdatedBy() + ", getRemark()=" + getRemark()
+				+ ", isDelFlag()=" + isDelFlag() + ", toString()="
+				+ super.toString() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + "]";
 	}
 	
 }
