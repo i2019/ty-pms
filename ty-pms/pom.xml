@@ -118,6 +118,13 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.5</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>2.5</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
