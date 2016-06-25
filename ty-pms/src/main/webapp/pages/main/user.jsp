@@ -21,7 +21,6 @@
 .result_table{ width:100%;}
 .result_table th{ border:#c1cfd9 1px solid; border-top-color:#f6f8fa; background:#d3dde4; font-weight:normal; padding:6px 6px;}
 .result_table td{ border:#c1cfd9 1px solid; text-align:center;padding:6px 6px; background:#fff;}
-
 .result_table th.sortable{ cursor:pointer;}
 .result_table th.sortable:hover{ background:#c1cfd9;}
 .result_table th.sortable.sorted a,
@@ -36,26 +35,20 @@
 .result_table td.td_ia{ cursor:pointer;}
 .result_table td.td_ia:hover{ background:#e5f3e5;}
 .result_table td.off_room:hover{background:#ffeebb;}
-
 .result_table td span.price{font-size:14px; padding-right:20px; background:url(../img/price_arrow.png) no-repeat right 0; display:inline-block; line-height:20px;}
 .result_table td span.price.hover{ background-position:right -50px;}
 .result_table td .p_hover{ position:absolute;left:71px; top:15px; background:#fff; border-top:#4e5663 2px solid; width:120px; font-size:12px; padding:6px; display:none;}
 .result_table td .p_hover p{ line-height:20px; margin:0; padding:0; text-align:left;}
-
 a.link:link,
 a.link:visited{color:#067ab4;}
 a.link:hover{color:#0066cc;}
 a.link_1:link,
 a.link_1:visited{color:#4e5663; text-decoration:none;}
 a.link_1:hover{color:#0066cc; text-decoration:underline;}
-
 .mgR12 { margin-right:12px; }
-
-
 </style>
 
 <script type="text/javascript">
-
 $(document).ready(function(){
 	
 	/* $(".editUser").click(function (){
@@ -134,6 +127,3 @@ $(document).ready(function(){
 	
 </body>
 </html>
-
-
-
