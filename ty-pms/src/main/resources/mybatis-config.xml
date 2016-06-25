@@ -4,13 +4,15 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">  
 <configuration>  
 	<typeAliases>
-		
+		<!-- common -->
 		<typeAlias type="java.lang.Integer" alias="int"/>
 		<typeAlias type="java.lang.String" alias="str"/>
 		<typeAlias type="java.util.List" alias="list"/>
 		
+		<!-- user -->
 		<typeAlias type="ty.pms.model.user.UserResult" alias="userResult"/>
 		<typeAlias type="ty.pms.model.user.UserCriteria" alias="userCriteria"/>
+		<typeAlias type="ty.pms.model.user.User" alias="user"/>
 		
 		
 	</typeAliases>

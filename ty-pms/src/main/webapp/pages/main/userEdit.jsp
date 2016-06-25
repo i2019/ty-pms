@@ -36,8 +36,8 @@
 <script type="text/javascript">
 
 function ajaxVerifyOnly(){
-	if($('#userCriteria_userName').val()){
-		var userName=$('#userCriteria_userName').val();
+	if($('#user_userName').val()){
+		var userName=$('#user_userName').val();
 		$.ajax({
 		   	 type:"POST",
 		   	 async:false,
@@ -56,8 +56,6 @@ function ajaxVerifyOnly(){
 
 $(document).ready(function() {
 	
-	
-	
 	$("#cancelbutton").click(function() {
 		/**  关闭弹出iframe  **/
 		window.parent.$.fancybox.close();
@@ -71,8 +69,6 @@ $(document).ready(function() {
 	
 });
 
-
-
 </script>
 
 </head>
@@ -80,28 +76,27 @@ $(document).ready(function() {
 
 <div id="container" class="center-in-center">
 	<form method="post" action="user_save.action">
-		<s:hidden name="userCriteria.userId"></s:hidden>
+		<s:hidden name="user.userId"></s:hidden>
 		<div class="ui_content">
 			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
 				<tr>
 					<td class="ui_text_rt">用户名</td>
 					<td class="ui_text_lt">
-						<s:textfield onchange="ajaxVerifyOnly()" type="text" id="userCriteria_userName" name="userCriteria.userName" class="ui_input_txt02"/>
-						
+						<s:textfield onchange="ajaxVerifyOnly()" type="text" id="user_userName" name="user.userName" class="ui_input_txt02"/>	
 					</td>
 				</tr>
 				<tr></tr>
 				<tr>
 					<td class="ui_text_rt">密码</td>
 					<td class="ui_text_lt">
-						<s:textfield type="text" id="userCriteria_password" name="userCriteria.password" class="ui_input_txt02"/>
+						<s:textfield type="text" id="user_password" name="user.password" class="ui_input_txt02"/>
 					</td>
 				</tr>
 				<tr></tr>
 				<tr>
 					<td class="ui_text_rt">备注</td>
 					<td class="ui_text_lt">
-						<s:textfield type="text" id="userCriteria_remark" name="userCriteria.remark" class="ui_input_txt02"/>
+						<s:textfield type="text" id="user_remark" name="user.remark" class="ui_input_txt02"/>
 					</td>
 				</tr>
 				<tr><td>&nbsp;</td></tr>

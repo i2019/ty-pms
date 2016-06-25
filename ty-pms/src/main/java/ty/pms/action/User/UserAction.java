@@ -32,7 +32,10 @@ public class UserAction extends BaseAction{
 	
     @Autowired
 	private UserService userService;
-
+	/**
+	 * 查询并展示
+	 * @return
+	 */
 	public String list() {
 		
 		//获取所有用户
@@ -55,32 +58,37 @@ public class UserAction extends BaseAction{
 	 */
 	public String edit(){
 		if(StringUtils.hasText(userId)){
-			userCriteria=userService.selectByPrimaryKey(userId);
-			
+			user=userService.selectByPrimaryKey(userId);	
 		}
 		return "edit";
 	}
-	
+	/**
+	 * 删除用户
+	 * @return
+	 */
 	public String del(){
 		if(StringUtils.hasText(userId)){
 			userService.deleteByPrimaryKey(userId);
 		}
 		return list();
 	}
-	
+	/**
+	 * 新增或者编辑保存
+	 * @return
+	 */
 	public String save(){
-		String userName=userCriteria.getUserName();
-		if(null!=userCriteria 
-				&& StringUtils.hasText(userCriteria.getPassword())
+		String userName=user.getUserName();
+		if(null!=user 
+				&& StringUtils.hasText(user.getPassword())
 				&& StringUtils.hasText(userName)){
 			if(null!=userService.selectUserByName(userName)){
 				getRequest().setAttribute("RepeatedUserName", userName);
 				return "edit";
 			}
-			if(StringUtils.hasText(userCriteria.getUserId())){
-				userService.updateByPrimaryKeySelective(userCriteria);
+			if(StringUtils.hasText(user.getUserId())){
+				userService.updateByPrimaryKeySelective(user);
 			}else{
-				userService.insertSelective(userCriteria);
+				userService.insertSelective(user);
 			}
 		}
 		return "list";

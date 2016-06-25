@@ -3,7 +3,7 @@ package ty.pms.service.user.impl;
 import java.util.Date;
 
 import ty.pms.dao.user.UserMapper;
-
+import ty.pms.model.user.User;
 import ty.pms.model.user.UserCriteria;
 import ty.pms.model.user.UserResult;
 import ty.pms.service.base.BaseService;
@@ -28,14 +28,14 @@ public class UserServiceImpl extends BaseService implements UserService {
 	 * 根据用户id获取用户对象
 	 */
 	@Override
-	public UserCriteria selectByPrimaryKey(String id) {
+	public User selectByPrimaryKey(String id) {
 		return userMapper.selectByPrimaryKey(id);
 	}
 	/**
 	 * 根据用户名获取用户对象
 	 */
 	@Override
-	public UserCriteria selectUserByName(String name) {
+	public User selectUserByName(String name) {
 		return userMapper.selectUserByName(name);
 	}
 	
@@ -52,10 +52,10 @@ public class UserServiceImpl extends BaseService implements UserService {
 	}
 	
 	/**
-	 * 插入新纪录（不为空的字段）
+	 * 插入新纪录（不为空的字段）,返回影响的行数
 	 */
 	@Override
-	public void insertSelective(UserCriteria record) {
+	public Integer insertSelective(User record) {
 		
 		record.setUserId(CommonUtil.generateUUID());
 		record.setDelFlag(false);
@@ -72,13 +72,14 @@ public class UserServiceImpl extends BaseService implements UserService {
 			record.setOwner(userId);
 		}
 		
-		userMapper.insertSelective(record);
+		return userMapper.insertSelective(record);
 	}
 	
-	/*
-	 * 根据用户id更新用户信息
-	 * */
-	public String updateByPrimaryKeySelective(UserCriteria record){
+	/**
+	 * 根据用户id更新用户信息,返回影响的行数
+	 */
+	@Override
+	public Integer updateByPrimaryKeySelective(User record){
 		return userMapper.updateByPrimaryKeySelective(record);
 	}
 	

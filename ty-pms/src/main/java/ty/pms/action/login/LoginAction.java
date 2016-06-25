@@ -30,11 +30,11 @@ public class LoginAction extends BaseAction{
 		
 		
 		if(StringUtils.hasText(username) && StringUtils.hasText(password)){
-			userCriteria=userService.selectUserByName(username);
-			if(null!=userCriteria){
-				if(userCriteria.getPassword().equals(password)){
+			user=userService.selectUserByName(username);
+			if(null!=user){
+				if(user.getPassword().equals(password)){
 					HttpSession httpSession=getHttpSession();
-					httpSession.setAttribute("LoginUser", userCriteria);
+					httpSession.setAttribute("LoginUser", user);
 					return "success";
 				}
 			}

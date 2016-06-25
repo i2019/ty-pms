@@ -9,27 +9,51 @@ public interface UserMapper {
 	
 	/*------使用中begin--------------------*/
 	
-	void insertSelective(UserCriteria record);
+	Integer insertSelective(User record);
 	
+	 /**
+     * 
+     * @param record
+     * @return 更新的行数
+     */
+    Integer updateByPrimaryKeySelective(User record);
+    
+    
+	/**
+	 * @param id
+	 * @return 删除的行数
+	 */
     Integer deleteByPrimaryKey(String id);
 
-    String updateByPrimaryKeySelective(UserCriteria record);
     
-
-	UserCriteria selectByPrimaryKey(String id);
+	User selectByPrimaryKey(String id);
     
-	UserCriteria selectUserByName(String name);
+	User selectUserByName(String name);
     
+	
     List<User> getAll();
+    
     Integer getAllCount();
 	
+    
     List<User> getUsers(UserCriteria criteria);
+    
     Integer getUsersCount(UserCriteria criteria);
+    
 	/*------使用中end----------------------*/
+    
+	/**
+	 * 
+	 * @param record
+	 * @return 
+	 */
+    Integer insert(User record);
 	
-	
-	String insert(UserCriteria record);
-
-    String updateByPrimaryKey(UserCriteria record);
+	/**
+	 * 
+	 * @param record
+	 * @return 更新的行数
+	 */
+    Integer updateByPrimaryKey(User record);
   
 }

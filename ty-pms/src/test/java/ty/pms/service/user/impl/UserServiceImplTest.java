@@ -30,8 +30,9 @@ public class UserServiceImplTest  extends BaseTest<UserService> {
 
 	@Test
 	public void testSelectByPrimaryKey() {
-		UserCriteria user = userService.selectByPrimaryKey("1");
-		Assert.assertEquals("1", user.getUserName());
+		User u = userService.selectUserByName("p");
+		System.out.println(u);
+		Assert.assertEquals("p", u.getUserName());
 	}
 
 	/*@Test

@@ -1,15 +1,20 @@
 package ty.pms.dao.user;
 
+import static org.junit.Assert.*;
+
+import java.util.Date;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import ty.pms.model.user.User;
-import ty.pms.model.user.UserCriteria;
+
 import ty.pms.test.base.BaseTest;
 
 public class UserMapperTest extends BaseTest<UserMapper> {
 
+	
 	private static UserMapper userMapper;
 	
 	@Before
@@ -17,35 +22,49 @@ public class UserMapperTest extends BaseTest<UserMapper> {
 		userMapper = init("userMapper");
 	}
 
-	/*@Test
+	//@Test
 	public void testDeleteByPrimaryKey() {
-		fail("Not yet implemented");
+		Integer id=userMapper.deleteByPrimaryKey("1");
+		System.out.println(id);
+		assertEquals(new Integer(1), id);
 	}
-
+	/*
 	@Test
 	public void testInsert() {
 		fail("Not yet implemented");
 	}
-
+	 */
 	@Test
 	public void testInsertSelective() {
-		fail("Not yet implemented");
+		User c=new User();
+		c.setUserId("y");
+		c.setCreatedTime(new Date());
+		c.setUserName("0");
+		
+		userMapper.insertSelective(c);
 	}
-
-	@Test
+	
+	//@Test
 	public void testUpdateByPrimaryKeySelective() {
-		fail("Not yet implemented");
+		User c=new User();
+		c.setUserId("1");
+		c.setCreatedTime(new Date());
+		
+		userMapper.updateByPrimaryKeySelective(c);
+	}
+	
+	//@Test
+	public void testUpdateByPrimaryKey() {
+		User c=new User();
+		c.setCreatedTime(new Date());
+		
+		userMapper.updateByPrimaryKeySelective(c);
 	}
 
-	@Test
-	public void testUpdateByPrimaryKey() {
-		fail("Not yet implemented");
-	}*/
-
-	@Test
+	//@Test
 	public void testSelectByPrimaryKey() {
-		UserCriteria user = userMapper.selectByPrimaryKey("1");
-		Assert.assertEquals("1", user.getUserName());
+		User user = userMapper.selectByPrimaryKey("1");
+		Assert.assertEquals("b", user.getUserName());
 	}
 
 	/*@Test

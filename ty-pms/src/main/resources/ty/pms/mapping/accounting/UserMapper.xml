@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="ty.pms.dao.user.UserMapper">
 
-	<resultMap id="BaseResultMap" type="ty.pms.model.user.UserCriteria">
+	<resultMap id="userResultMap" type="user">
 		<id column="userId" property="userId" jdbcType="VARCHAR" />
 		<result column="userName" property="userName" jdbcType="VARCHAR" />
 		<result column="password" property="password" jdbcType="VARCHAR" />
@@ -15,23 +15,33 @@
 		<result column="owner" property="owner" jdbcType="VARCHAR" />
 		<result column="createdBy" property="createdBy" jdbcType="VARCHAR" />
 		<result column="updatedBy" property="updatedBy" jdbcType="VARCHAR" />
+		
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 		
 		<result column="delFlag" property="delFlag" jdbcType="TINYINT" />
 	</resultMap>
-	
-	<sql id="Base_Column_List">
+	<!-- 列举所有字段 -->
+	<sql id="allColumns">
 		userId,userName,password,
 		occurrencedTime,endTime,createdTime,lastModifyTime,
   		owner,createdBy,updatedBy,remark,delFlag
 	</sql>
+	<!-- 统计查询结果数 -->
+	<sql id="selectCount">
+		SELECT COUNT(*) FROM
+	</sql>
+	<!-- 根据发生时间降序排序 -->
+	<sql id="occurrencedTimeOrderDESC">
+		ORDER BY occurrencedTime DESC
+	</sql>
+	
 	<delete id="deleteByPrimaryKey" parameterType="int">
 		delete from user
 		where userId = #{userId,jdbcType=VARCHAR}
 	</delete>
 	
-	<insert id="insert" parameterType="ty.pms.model.user.UserCriteria">
-		insert into user (<include refid="Base_Column_List" />)
+	<insert id="insert" parameterType="userCriteria">
+		insert into user (<include refid="allColumns" />)
 		values(
 		#{userId,jdbcType=VARCHAR},
 		#{userName,jdbcType=VARCHAR}, 
@@ -46,7 +56,8 @@
 		#{remark,jdbcType=VARCHAR}, 
 		#{delFlag,jdbcType=TINYINT})
 	</insert>
-	<insert id="insertSelective" parameterType="ty.pms.model.user.UserCriteria">
+	
+	<insert id="insertSelective" parameterType="userCriteria">
 		insert into user
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="userId != null">
@@ -84,7 +95,7 @@
 				remark,
 			</if>
 			<if test="delFlag != null">
-				delFlag,
+				delFlag
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -122,12 +133,12 @@
 				#{remark,jdbcType=VARCHAR}, 
 			</if>
 			<if test="delFlag != null">
-				#{delFlag,jdbcType=TINYINT},
+				#{delFlag,jdbcType=TINYINT}
 			</if>
 		</trim>
 	</insert>
 	
-	<update id="updateByPrimaryKeySelective" parameterType="ty.pms.model.user.UserCriteria">
+	<update id="updateByPrimaryKeySelective" parameterType="userCriteria">
 		update user
 		<set>
 			<if test="userName != null">
@@ -167,7 +178,7 @@
 		where userId = #{userId,jdbcType=VARCHAR}
 	</update>
 	
-	<update id="updateByPrimaryKey" parameterType="ty.pms.model.user.UserCriteria">
+	<update id="updateByPrimaryKey" parameterType="userCriteria">
 		update user 
 		set 
 		userName = #{userName,jdbcType=VARCHAR},
@@ -185,34 +196,34 @@
 		userId = #{userId,jdbcType=VARCHAR}
 	</update>
 	
-	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="str">
+	<select id="selectByPrimaryKey" resultMap="userResultMap" parameterType="str">
 		select
-		<include refid="Base_Column_List" />
+		<include refid="allColumns" />
 		from user
 		where userId = #{userId,jdbcType=VARCHAR} and delFlag=0
 	</select>
 
-	<select id="selectUserByName" resultMap="BaseResultMap" parameterType="str">
+	<select id="selectUserByName" resultMap="userResultMap" parameterType="str">
 		select
-		<include refid="Base_Column_List" />
+		<include refid="allColumns" />
 		from user
 		where userName = #{userName,jdbcType=VARCHAR} and delFlag=0
 	</select>
 	
 	<select resultType="int" id="getAllCount">
-		SELECT COUNT(*) FROM USER
+		<include refid="selectCount" /> USER
 	</select>
 	
-	<select id="getAll" resultMap="BaseResultMap">
+	<select id="getAll" resultMap="userResultMap">
 		select
-		<include refid="Base_Column_List" />
+		<include refid="allColumns" />
 		from user 
 		where delFlag=0
-		ORDER BY occurrencedTime DESC
+		<include refid="occurrencedTimeOrderDESC" />
 	</select>
     
     <select id="getUsersCount" resultType="int" parameterType="userCriteria">
-    	SELECT COUNT(*) FROM USER
+    	<include refid="selectCount" /> USER
     	<where>
     		delFlag=0
     		<if test="userName != null">
@@ -277,8 +288,8 @@
 			
     	</where>
     </select>
-    <select id="getUsers" resultMap="BaseResultMap" resultType="userResult" parameterType="userCriteria">
-    	select <include refid="Base_Column_List" /> from user 
+    <select id="getUsers" resultMap="userResultMap" resultType="userResult" parameterType="userCriteria">
+    	select <include refid="allColumns" /> from user 
     	<where>
     		delFlag=0
     		<if test="userName != null">
@@ -342,7 +353,7 @@
 			</if>
 			
     	</where>
-    	ORDER BY occurrencedTime DESC
+    	<include refid="occurrencedTimeOrderDESC" />
     </select>
     
 </mapper>
