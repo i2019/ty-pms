@@ -3,8 +3,6 @@ package ty.pms.action.User;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
@@ -14,6 +12,7 @@ import com.alibaba.fastjson.JSONObject;
 import ty.pms.action.base.BaseAction;
 import ty.pms.model.user.User;
 import ty.pms.model.user.UserCriteria;
+import ty.pms.model.user.UserResult;
 import ty.pms.service.user.UserService;
 
 public class UserAction extends BaseAction{
@@ -23,10 +22,13 @@ public class UserAction extends BaseAction{
 	 */
 	private static final long serialVersionUID = 2269552141446088700L;
 	
+	private String userId;
 	private User user;
 	private UserCriteria userCriteria;
 	
 	private List<User> userList=new ArrayList<User>();
+	
+	private UserResult userResult=new UserResult();
 	
     @Autowired
 	private UserService userService;
@@ -34,16 +36,8 @@ public class UserAction extends BaseAction{
 	public String list() {
 		
 		//获取所有用户
-		List<User> users=userService.getAll();
-		if(null!=user){
-			userList=users;
-		}
-		userList=users;
-		/*
-		//获取当前用户
-		HttpSession httpSession=getHttpSession();
-		user=(User) httpSession.getAttribute("LoginUser");
-		*/
+		userResult=userService.getAll();
+
 		return "list";
 	}
 	/**
@@ -51,8 +45,18 @@ public class UserAction extends BaseAction{
 	 * @return
 	 */
 	public String edit(){
-		
+		if(StringUtils.hasText(userId)){
+			userCriteria=userService.selectByPrimaryKey(userId);
+			
+		}
 		return "edit";
+	}
+	
+	public String del(){
+		if(StringUtils.hasText(userId)){
+			userService.deleteByPrimaryKey(userId);
+		}
+		return list();
 	}
 	
 	public String save(){
@@ -64,7 +68,11 @@ public class UserAction extends BaseAction{
 				getRequest().setAttribute("RepeatedUserName", userName);
 				return "edit";
 			}
-			userService.insertSelective(userCriteria);
+			if(StringUtils.hasText(userCriteria.getUserId())){
+				userService.updateByPrimaryKeySelective(userCriteria);
+			}else{
+				userService.insertSelective(userCriteria);
+			}
 		}
 		return "list";
 	}
@@ -82,6 +90,12 @@ public class UserAction extends BaseAction{
 		}
 	}
 	
+	public UserResult getUserResult() {
+		return userResult;
+	}
+	public void setUserResult(UserResult userResult) {
+		this.userResult = userResult;
+	}
 	public List<User> getUserList() {
 		return userList;
 	}
@@ -110,6 +124,12 @@ public class UserAction extends BaseAction{
 	}
 	public void setUserCriteria(UserCriteria userCriteria) {
 		this.userCriteria = userCriteria;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 }

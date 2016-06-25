@@ -7,6 +7,7 @@ import org.springframework.util.StringUtils;
 
 import ty.pms.action.base.BaseAction;
 import ty.pms.model.user.User;
+import ty.pms.model.user.UserCriteria;
 import ty.pms.service.user.UserService;
 
 public class LoginAction extends BaseAction{
@@ -19,6 +20,8 @@ public class LoginAction extends BaseAction{
 	private User user;
 
 	private UserService userService;
+	
+	private UserCriteria userCriteria;
 
 	public String execute() {
 		HttpServletRequest request=getRequest();
@@ -27,17 +30,25 @@ public class LoginAction extends BaseAction{
 		
 		
 		if(StringUtils.hasText(username) && StringUtils.hasText(password)){
-			user=userService.selectUserByName(username);
-			if(null!=user){
-				if(user.getPassword().equals(password)){
+			userCriteria=userService.selectUserByName(username);
+			if(null!=userCriteria){
+				if(userCriteria.getPassword().equals(password)){
 					HttpSession httpSession=getHttpSession();
-					httpSession.setAttribute("LoginUser", user);
+					httpSession.setAttribute("LoginUser", userCriteria);
 					return "success";
 				}
 			}
 		}
 		
 		return "fail";
+	}
+
+	public UserCriteria getUserCriteria() {
+		return userCriteria;
+	}
+
+	public void setUserCriteria(UserCriteria userCriteria) {
+		this.userCriteria = userCriteria;
 	}
 
 	public User getUser() {

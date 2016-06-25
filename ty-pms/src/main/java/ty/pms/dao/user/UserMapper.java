@@ -7,27 +7,26 @@ import ty.pms.model.user.UserCriteria;
 
 public interface UserMapper {
 	
-	
 	/*------使用中begin--------------------*/
-	
 	
 	void insertSelective(UserCriteria record);
 	
-	User selectByPrimaryKey(String id);
+	UserCriteria selectByPrimaryKey(String id);
     
-    User selectUserByName(String name);
+	UserCriteria selectUserByName(String name);
     
     List<User> getAll();
+    Integer getAllCount();
 	
+    Integer deleteByPrimaryKey(String id);
+
+    String updateByPrimaryKeySelective(UserCriteria record);
+
 	/*------使用中end----------------------*/
 	
 	
 	String insert(UserCriteria record);
 
-	String deleteByPrimaryKey(String id);
-
-    String updateByPrimaryKeySelective(User record);
-
-    String updateByPrimaryKey(User record);
+    String updateByPrimaryKey(UserCriteria record);
   
 }

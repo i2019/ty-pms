@@ -2,22 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="ty.pms.dao.user.UserMapper">
 
-	<resultMap id="BaseResultMap" type="ty.pms.model.user.User">
+	<resultMap id="BaseResultMap" type="ty.pms.model.user.UserCriteria">
 		<id column="userId" property="userId" jdbcType="VARCHAR" />
 		<result column="userName" property="userName" jdbcType="VARCHAR" />
 		<result column="password" property="password" jdbcType="VARCHAR" />
 		
-		<result column="occurrencedTime" property="userName" jdbcType="DATE" />
-		<result column="endTime" property="password" jdbcType="DATE" />
-		<result column="createdTime" property="userName" jdbcType="DATE" />
-		<result column="lastModifyTime" property="password" jdbcType="DATE" />
+		<result column="occurrencedTime" property="occurrencedTime" jdbcType="DATE" />
+		<result column="endTime" property="endTime" jdbcType="DATE" />
+		<result column="createdTime" property="createdTime" jdbcType="DATE" />
+		<result column="lastModifyTime" property="lastModifyTime" jdbcType="DATE" />
 		
-		<result column="owner" property="userName" jdbcType="VARCHAR" />
-		<result column="createdBy" property="userName" jdbcType="VARCHAR" />
-		<result column="updatedBy" property="password" jdbcType="VARCHAR" />
-		<result column="remark" property="password" jdbcType="VARCHAR" />
+		<result column="owner" property="owner" jdbcType="VARCHAR" />
+		<result column="createdBy" property="createdBy" jdbcType="VARCHAR" />
+		<result column="updatedBy" property="updatedBy" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
 		
-		<result column="delFlag" property="password" jdbcType="TINYINT" />
+		<result column="delFlag" property="delFlag" jdbcType="TINYINT" />
 	</resultMap>
 	
 	<sql id="Base_Column_List">
@@ -25,8 +25,8 @@
 		occurrencedTime,endTime,createdTime,lastModifyTime,
   		owner,createdBy,updatedBy,remark,delFlag
 	</sql>
-	
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+	<!--根据主键 物理删除 返回影响的行数 -->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from user
 		where userId = #{userId,jdbcType=VARCHAR}
 	</delete>
@@ -128,49 +128,47 @@
 		</trim>
 	</insert>
 	
-	
-	<update id="updateByPrimaryKeySelective" parameterType="ty.pms.model.user.User">
+	<update id="updateByPrimaryKeySelective" parameterType="ty.pms.model.user.UserCriteria">
 		update user
 		<set>
-			<if test="name != null">
+			<if test="userName != null">
 				userName = #{userName,jdbcType=VARCHAR},
 			</if>
 			<if test="password != null">
 				password = #{password,jdbcType=VARCHAR},
 			</if>
-			
 			<if test="occurrencedTime != null">
-				#{occurrencedTime,jdbcType=DATE}),
+				occurrencedTime=#{occurrencedTime,jdbcType=DATE},
 			</if>
 			<if test="endTime != null">
-				#{endTime,jdbcType=DATE}),
+				endTime=#{endTime,jdbcType=DATE},
 			</if>
 			<if test="lastModifyTime != null">
-				#{lastModifyTime,jdbcType=DATE}),
+				lastModifyTime=#{lastModifyTime,jdbcType=DATE},
 			</if>
 			<if test="createdTime != null">
-				#{createdTime,jdbcType=DATE}),
+				createdTime=#{createdTime,jdbcType=DATE},
 			</if>
 			<if test="owner != null">
-				#{owner,jdbcType=VARCHAR},
+				owner=#{owner,jdbcType=VARCHAR},
 			</if>
 			<if test="createdBy != null">
-				#{createdBy,jdbcType=VARCHAR},
+				createdBy=#{createdBy,jdbcType=VARCHAR},
 			</if>
 			<if test="updatedBy != null">
-				#{updatedBy,jdbcType=VARCHAR}),
+				updatedBy=#{updatedBy,jdbcType=VARCHAR},
 			</if>
 			<if test="remark != null">
-				#{remark,jdbcType=VARCHAR}, 
+				remark=#{remark,jdbcType=VARCHAR}, 
 			</if>
 			<if test="delFlag != null">
-				#{delFlag,jdbcType=TINYINT}),
+				delFlag=#{delFlag,jdbcType=TINYINT}
 			</if>
 		</set>
 		where userId = #{userId,jdbcType=VARCHAR}
 	</update>
 	
-	<update id="updateByPrimaryKey" parameterType="ty.pms.model.user.User">
+	<update id="updateByPrimaryKey" parameterType="ty.pms.model.user.UserCriteria">
 		update user 
 		set 
 		userName = #{userName,jdbcType=VARCHAR},
@@ -202,10 +200,13 @@
 		where userName = #{userName,jdbcType=VARCHAR}
 	</select>
 	
-	<select id="getAll" resultMap="BaseResultMap" parameterType="ty.pms.model.user.User">
+	<select resultType="java.lang.Integer" id="getAllCount">
+		SELECT COUNT(*) FROM USER
+	</select>
+	<select id="getAll" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
 		from user
 	</select>
-	
+
 </mapper>

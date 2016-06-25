@@ -6,6 +6,7 @@ import java.util.List;
 import ty.pms.dao.user.UserMapper;
 import ty.pms.model.user.User;
 import ty.pms.model.user.UserCriteria;
+import ty.pms.model.user.UserResult;
 import ty.pms.service.base.BaseService;
 import ty.pms.service.user.UserService;
 import ty.pms.util.CommonUtil;
@@ -14,7 +15,7 @@ public class UserServiceImpl extends BaseService implements UserService {
 	
 	private UserMapper userMapper;
 
-	private User loginUser=null;
+	private UserCriteria loginUser=null;
 	
 	public UserMapper getUserMapper() {
 		return userMapper;
@@ -28,22 +29,27 @@ public class UserServiceImpl extends BaseService implements UserService {
 	 * 根据用户id获取用户对象
 	 */
 	@Override
-	public User selectByPrimaryKey(String id) {
+	public UserCriteria selectByPrimaryKey(String id) {
 		return userMapper.selectByPrimaryKey(id);
 	}
 	/**
 	 * 根据用户名获取用户对象
 	 */
 	@Override
-	public User selectUserByName(String name) {
+	public UserCriteria selectUserByName(String name) {
 		return userMapper.selectUserByName(name);
 	}
 	
 	/*
 	 * 获取所有对象
 	 */
-	public List<User> getAll(){
-		return userMapper.getAll();
+	public UserResult getAll(){
+		UserResult userResult=new UserResult();
+
+		userResult.setResultList(userMapper.getAll());
+		userResult.setTotalCount(userMapper.getAllCount());
+		
+		return userResult;
 	}
 	
 	/**
@@ -70,4 +76,14 @@ public class UserServiceImpl extends BaseService implements UserService {
 		userMapper.insertSelective(record);
 	}
 	
+	/*
+	 * 根据用户id更新用户信息
+	 * */
+	public String updateByPrimaryKeySelective(UserCriteria record){
+		return userMapper.updateByPrimaryKeySelective(record);
+	}
+	
+	public Integer deleteByPrimaryKey(String id){
+		return userMapper.deleteByPrimaryKey(id);
+	}
 }

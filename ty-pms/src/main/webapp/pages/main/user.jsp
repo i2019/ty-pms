@@ -17,7 +17,7 @@
 <script type="text/javascript" src="scripts/artDialog/artDialog.js?skin=default"></script>
 
 <style type="text/css">
-
+.bt_wp{ border-top:#c1cfd9 1px solid;}
 .result_table{ width:100%;}
 .result_table th{ border:#c1cfd9 1px solid; border-top-color:#f6f8fa; background:#d3dde4; font-weight:normal; padding:6px 6px;}
 .result_table td{ border:#c1cfd9 1px solid; text-align:center;padding:6px 6px; background:#fff;}
@@ -42,10 +42,41 @@
 .result_table td .p_hover{ position:absolute;left:71px; top:15px; background:#fff; border-top:#4e5663 2px solid; width:120px; font-size:12px; padding:6px; display:none;}
 .result_table td .p_hover p{ line-height:20px; margin:0; padding:0; text-align:left;}
 
+a.link:link,
+a.link:visited{color:#067ab4;}
+a.link:hover{color:#0066cc;}
+a.link_1:link,
+a.link_1:visited{color:#4e5663; text-decoration:none;}
+a.link_1:hover{color:#0066cc; text-decoration:underline;}
+
+.mgR12 { margin-right:12px; }
+
+
 </style>
 
 <script type="text/javascript">
+
 $(document).ready(function(){
+	
+	/* $(".editUser").click(function (){
+	  alert($(this).attr("id"));
+	}); */
+	
+	/** 编辑   **/
+	$(".editUser").fancybox({
+		
+//			'href'  : 'user_edit.action?userId='+$(this).attr("id"),
+	    	'width' : 733,
+	        'height' : 530,
+	        'type' : 'iframe',
+	        'hideOnOverlayClick' : false,
+	        'showCloseButton' : true,
+	        'onClosed' : function() { 
+	        	console.log('user_edit.action?userId='+$("#userId").val());
+	        	window.location.href = 'user_list.action';
+	        }
+	 });
+	
 	/** 新增   **/
     $("#addBtn").fancybox({
     	'href'  : 'user_edit.action',
@@ -53,7 +84,7 @@ $(document).ready(function(){
         'height' : 530,
         'type' : 'iframe',
         'hideOnOverlayClick' : false,
-        'showCloseButton' : false,
+        'showCloseButton' : true,
         'onClosed' : function() { 
         	window.location.href = 'user_list.action';
         }
@@ -70,30 +101,37 @@ $(document).ready(function(){
 		<div class="ui_content">
 			<div class="ui_text_indent">
 				<div id="box_border">
-					<div id="box_center">
-						
+					<div id="box_center">	
 					</div>
 					<br>
 					<div id="box_bottom">
-						
-						<input type="button" value="新增" class="ui_input_btn01" id="addBtn" /> 
-						
+						<input type="button" value="新增" class="ui_input_btn01" id="addBtn" /> 	
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
-
 <hr>
 
-<display:table name="userList" pagesize="20" size="20" class="result_table" partialList="true">
-			<display:column property="userName" title="用户名"/>
-			<display:column property="userId"  title="用户ID" />
-			<display:column property="password"  title="用户密码" />
-</display:table>
-
-
+<!--列表样式-->
+<div class="bt_wp">
+	<display:table name="userResult.resultList" id="userList" export="true" sort="list" 
+	class="result_table" requestURI="" pagesize="2" size="userResult.totalCount" partialList="true">
+		<display:setProperty name="sort.amount" value="list"/>
+		<display:column property="userName" title="用户名"/>
+		<display:column property="userId"  title="用户ID" />
+		<display:column property="password"  title="用户密码" />
+		<display:column title="操作">
+			<input type="hidden" id="userId_${userList.userId}" value="${userList.userId}"/>
+			<a href="user_edit.action?userId=${userList.userId}" class="editUser link mgR12">
+				编辑</a>
+			<a href="user_del.action?userId=${userList.userId}" class="delUser link">
+				删除</a>
+		</display:column>
+	</display:table>
+</div>
+	
 </body>
 </html>
 
