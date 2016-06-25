@@ -16,6 +16,7 @@ public class UserServiceImpl extends BaseService implements UserService {
 
 	private User loginUser=null;
 	
+	
 	public UserMapper getUserMapper() {
 		return userMapper;
 	}

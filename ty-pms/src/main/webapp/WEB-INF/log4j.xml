@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%t] %c{1}.%M(%L) | %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="../ty-pms-logs/ty-pms.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%t] [%c.%M(%L)] - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="ty-pms-actionInterceptor" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="../ty-pms-logs/ty-pms-actionInterceptor.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%t] [%c.%M(%L)] - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="availabilityImpl_appender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="../ty-pms-logs/ty-pms-availability.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%t] [%c.%M(%L)] - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="reservation_appender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="../ty-pms-logs/ty-pms-reservation.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%t] [%c.%M(%L)] - %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="net.sf.ehcache">
+		<level value="ERROR" />
+	</logger>
+
+	<logger name="org.apache">
+		<level value="WARN" />
+	</logger>
+	<logger name="org.apache.struts2.util.TextProviderHelper"
+		additivity="false">
+		<level value="ERROR" />
+	</logger>
+
+	<logger name="org.apache.velocity">
+		<level value="FATAL" />
+	</logger>
+	<logger name="com.opensymphony.xwork2.util.OgnlUtil">
+		<level value="ERROR" />
+	</logger>
+	<logger name="com.opensymphony.xwork2.ognl.OgnlValueStack">
+		<level value="ERROR" />
+	</logger>
+	<logger name="org.springframework">
+		<level value="INFO" />
+	</logger>
+
+	<!-- Suppress success logging from InteractiveAuthenticationSuccessEvent -->
+	<logger name="org.springframework.security">
+		<level value="ERROR" />
+	</logger>
+
+	<logger name="com.ccm">
+		<level value="INFO" />
+	</logger>
+
+	<logger name="com.ibatis"> 
+		<level value="DEBUG" /> 
+	</logger> 
+	<logger name="java.sql"> 
+		<level value="debug" /> 
+	</logger> 
+
+	<logger name="com.ccm.mc.webapp.interceptor.LogActionInterceptor"
+		additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="ty-pms-actionInterceptor" />
+	</logger>
+
+	<logger name="availabilityImpl" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="availabilityImpl_appender" />
+	</logger>
+
+	<logger name="reservation" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="reservation_appender" />
+	</logger>
+
+	<root>
+		<level value="WARN" />
+		<appender-ref ref="CONSOLE" />
+		<!-- <appender-ref ref="file" /> -->
+	</root>
+
+</log4j:configuration>

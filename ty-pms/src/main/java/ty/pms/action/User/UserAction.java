@@ -3,6 +3,8 @@ package ty.pms.action.User;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
@@ -21,6 +23,8 @@ public class UserAction extends BaseAction{
 	 * 
 	 */
 	private static final long serialVersionUID = 2269552141446088700L;
+	
+	private Log log = LogFactory.getLog(UserAction.class);
 	
 	private String userId;
 	private User user;
@@ -43,7 +47,11 @@ public class UserAction extends BaseAction{
 		
 		userResult=userService.getUsers(userCriteria);
 		
+		//log.debug(userResult);
+		log.info("userList count :"+userResult.getTotalCount());
+		
 		return "list";
+		
 	}
 	/**
 	 * 编辑或新增
