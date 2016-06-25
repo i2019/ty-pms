@@ -24,12 +24,11 @@ public class UserAction extends BaseAction{
 	
 	private String userId;
 	private User user;
-	private UserCriteria userCriteria;
-	
-	private List<User> userList=new ArrayList<User>();
-	
+	private UserCriteria userCriteria=new UserCriteria();
 	private UserResult userResult=new UserResult();
-	
+	private List<User> userList=new ArrayList<User>();
+	private List<String> userNameList=new ArrayList<String>();
+
     @Autowired
 	private UserService userService;
 	/**
@@ -38,17 +37,11 @@ public class UserAction extends BaseAction{
 	 */
 	public String list() {
 		
-		//获取所有用户
-		userResult=userService.getAll();
+		if(!StringUtils.hasText(userCriteria.getUserName())){
+			userCriteria.setUserName(null);
+		}
 		
-		UserCriteria criteria=new UserCriteria();
-		
-		List<String> userNameList=new ArrayList<String>();
-		userNameList.add("p");
-		userNameList.add("ta");
-		
-		criteria.setUserNameList(userNameList);
-		userService.getUsers(criteria);
+		userResult=userService.getUsers(userCriteria);
 		
 		return "list";
 	}
@@ -78,16 +71,20 @@ public class UserAction extends BaseAction{
 	 */
 	public String save(){
 		String userName=user.getUserName();
+		//用户名密码必填
 		if(null!=user 
-				&& StringUtils.hasText(user.getPassword())
-				&& StringUtils.hasText(userName)){
-			if(null!=userService.selectUserByName(userName)){
-				getRequest().setAttribute("RepeatedUserName", userName);
-				return "edit";
-			}
+		&& StringUtils.hasText(user.getPassword())
+		&& StringUtils.hasText(userName)){	
+			//如果存在用户id，则为编辑，后台update
 			if(StringUtils.hasText(user.getUserId())){
 				userService.updateByPrimaryKeySelective(user);
 			}else{
+			//如果不存在用户id，则为新增，后台insert
+				//用户名唯一，否则返回编辑页面
+				if(null!=userService.selectUserByName(userName)){
+					getRequest().setAttribute("RepeatedUserName", userName);
+					return "edit";
+				}
 				userService.insertSelective(user);
 			}
 		}
@@ -150,6 +147,12 @@ public class UserAction extends BaseAction{
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public List<String> getUserNameList() {
+		return userNameList;
+	}
+	public void setUserNameList(List<String> userNameList) {
+		this.userNameList = userNameList;
 	}
 
 }

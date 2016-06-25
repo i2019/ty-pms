@@ -3,13 +3,15 @@ package ty.pms.dao.user;
 import static org.junit.Assert.*;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import ty.pms.model.user.User;
-
+import ty.pms.model.user.UserCriteria;
+import ty.pms.model.user.UserResult;
 import ty.pms.test.base.BaseTest;
 
 public class UserMapperTest extends BaseTest<UserMapper> {
@@ -34,7 +36,7 @@ public class UserMapperTest extends BaseTest<UserMapper> {
 		fail("Not yet implemented");
 	}
 	 */
-	@Test
+	//@Test
 	public void testInsertSelective() {
 		User c=new User();
 		c.setUserId("y");
@@ -71,10 +73,14 @@ public class UserMapperTest extends BaseTest<UserMapper> {
 	public void testSelectUserByName() {
 		fail("Not yet implemented");
 	}
-
+	 */
 	@Test
-	public void testGetAll() {
-		fail("Not yet implemented");
-	}*/
+	public void testGetUsers() {
+
+		List<User> us=userMapper.getUsers(new UserCriteria());
+		for (User u : us) {
+			System.out.println(u+"-------"+u.getCreatedTime());
+		}
+	}
 
 }

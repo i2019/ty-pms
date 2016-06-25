@@ -31,8 +31,8 @@
 		SELECT COUNT(*) FROM
 	</sql>
 	<!-- 根据发生时间降序排序 -->
-	<sql id="occurrencedTimeOrderDESC">
-		ORDER BY occurrencedTime DESC
+	<sql id="createdTimeDESC">
+		ORDER BY createdTime DESC
 	</sql>
 	
 	<delete id="deleteByPrimaryKey" parameterType="int">
@@ -219,7 +219,7 @@
 		<include refid="allColumns" />
 		from user 
 		where delFlag=0
-		<include refid="occurrencedTimeOrderDESC" />
+		<include refid="createdTimeDESC" />
 	</select>
     
     <select id="getUsersCount" resultType="int" parameterType="userCriteria">
@@ -227,7 +227,7 @@
     	<where>
     		delFlag=0
     		<if test="userName != null">
-				and userName = #{userName},
+				and userName = #{userName}
 			</if>
 			<if test="userNameList != null">
    			 	and userName in
@@ -237,55 +237,50 @@
   			</if>
   			
 			<if test="password != null">
-				and password = #{password},
+				and password = #{password}
+			</if>
+		
+			<if test="occurrencedTime != null">
+				and occurrencedTime=#{occurrencedTime}
 			</if>
 			
-			<if test="occurrencedTime != null">
-				and occurrencedTime=#{occurrencedTime},
+			<if test="endTime != null">
+				and endTime=#{endTime}
+			</if>
+			
+			<if test="lastModifyTime != null">
+				and lastModifyTime=#{lastModifyTime}
+			</if>
+			
+			<if test="createdTime != null">
+				and createdTime=#{createdTime}
 			</if>
 			<if test="createdTimeBegin != null">
 				<![CDATA[
-				and occurrencedTime>=#{createdTimeBegin},
+				and createdTime>=#{createdTimeBegin}
 				]]>     
 			</if>
 			<if test="createdTimeEnd != null">
 				<![CDATA[
-				and occurrencedTime<=#{createdTimeEnd},
+				and createdTime<=#{createdTimeEnd}
 				]]>     
 			</if>
 			
-			<if test="occurrencedTime != null">
-				and occurrencedTime=#{occurrencedTime},
-			</if>
-			
-			<if test="endTime != null">
-				and endTime=#{endTime},
-			</if>
-			
-			<if test="lastModifyTime != null">
-				and lastModifyTime=#{lastModifyTime},
-			</if>
-			
-			<if test="createdTime != null">
-				and createdTime=#{createdTime},
-			</if>
-			
 			<if test="owner != null">
-				and owner=#{owner},
+				and owner=#{owner}
 			</if>
 			
 			<if test="createdBy != null">
-				and createdBy=#{createdBy},
+				and createdBy=#{createdBy}
 			</if>
 			
 			<if test="updatedBy != null">
-				and updatedBy=#{updatedBy},
+				and updatedBy=#{updatedBy}
 			</if>
 			
 			<if test="remark != null">
-				 and remark like CONCAT('%','${remark}','%' )   
+				 and remark like CONCAT('%','${remark}','%' ) 
 			</if>
-			
     	</where>
     </select>
     <select id="getUsers" resultMap="userResultMap" resultType="userResult" parameterType="userCriteria">
@@ -293,7 +288,7 @@
     	<where>
     		delFlag=0
     		<if test="userName != null">
-				and userName = #{userName},
+				and userName = #{userName}
 			</if>
 			<if test="userNameList != null">
    			 	and userName in
@@ -303,57 +298,52 @@
   			</if>
   			
 			<if test="password != null">
-				and password = #{password},
+				and password = #{password}
+			</if>
+		
+			<if test="occurrencedTime != null">
+				and occurrencedTime=#{occurrencedTime}
 			</if>
 			
-			<if test="occurrencedTime != null">
-				and occurrencedTime=#{occurrencedTime},
+			<if test="endTime != null">
+				and endTime=#{endTime}
+			</if>
+			
+			<if test="lastModifyTime != null">
+				and lastModifyTime=#{lastModifyTime}
+			</if>
+			
+			<if test="createdTime != null">
+				and createdTime=#{createdTime}
 			</if>
 			<if test="createdTimeBegin != null">
 				<![CDATA[
-				and occurrencedTime>=#{createdTimeBegin},
+				and createdTime>=#{createdTimeBegin}
 				]]>     
 			</if>
 			<if test="createdTimeEnd != null">
 				<![CDATA[
-				and occurrencedTime<=#{createdTimeEnd},
+				and createdTime<=#{createdTimeEnd}
 				]]>     
 			</if>
 			
-			<if test="occurrencedTime != null">
-				and occurrencedTime=#{occurrencedTime},
-			</if>
-			
-			<if test="endTime != null">
-				and endTime=#{endTime},
-			</if>
-			
-			<if test="lastModifyTime != null">
-				and lastModifyTime=#{lastModifyTime},
-			</if>
-			
-			<if test="createdTime != null">
-				and createdTime=#{createdTime},
-			</if>
-			
 			<if test="owner != null">
-				and owner=#{owner},
+				and owner=#{owner}
 			</if>
 			
 			<if test="createdBy != null">
-				and createdBy=#{createdBy},
+				and createdBy=#{createdBy}
 			</if>
 			
 			<if test="updatedBy != null">
-				and updatedBy=#{updatedBy},
+				and updatedBy=#{updatedBy}
 			</if>
 			
 			<if test="remark != null">
-				 and remark like CONCAT('%','${remark}','%' )   
+				 and remark like CONCAT('%','${remark}','%' )
 			</if>
-			
     	</where>
-    	<include refid="occurrencedTimeOrderDESC" />
+    	<include refid="createdTimeDESC" />
     </select>
     
 </mapper>

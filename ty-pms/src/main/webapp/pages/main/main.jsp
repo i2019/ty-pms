@@ -308,7 +308,7 @@
 				<ul>
 					<li>
 						<img alt="当前用户" src="images/common/user.jpg">：
-						<span>${userCriteria.userName }</span>
+						<span>${user.userName }</span>
 					</li>
 					<li>
 						<img alt="今天是" src="images/common/date.jpg">：

@@ -49,15 +49,11 @@ a.link_1:hover{color:#0066cc; text-decoration:underline;}
 </style>
 
 <script type="text/javascript">
+ 
 $(document).ready(function(){
-	
-	/* $(".editUser").click(function (){
-	  alert($(this).attr("id"));
-	}); */
-	
+
 	/** 编辑   **/
-	$(".editUser").fancybox({
-		
+	$(".editUser").fancybox({	
 //			'href'  : 'user_edit.action?userId='+$(this).attr("id"),
 	    	'width' : 733,
 	        'height' : 530,
@@ -83,29 +79,30 @@ $(document).ready(function(){
         }
     });
 });
+ 
 </script>
 </head>
 <body>
 
-<hr>
-	
-<form id="submitForm" name="submitForm" action="" method="post">
+<form id="userForm" name="userForm" action="user_list.action" method="post">
 	<div id="container">
 		<div class="ui_content">
 			<div class="ui_text_indent">
 				<div id="box_border">
-					<div id="box_center">	
+					<div id="box_center">
+						用户名:	
+						<s:textfield type="text" id="userCriteria_userName" name="userCriteria.userName" class="ui_input_txt02"/>
 					</div>
 					<br>
 					<div id="box_bottom">
-						<input type="button" value="新增" class="ui_input_btn01" id="addBtn" /> 	
+						<input type="submit" value="查询" class="ui_input_btn01" id="searchBtn" /> 	
+						<input type="button" value="新增" class="ui_input_btn01" id="addBtn" /> 		
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
-<hr>
 
 <!--列表样式-->
 <div class="bt_wp">
@@ -113,8 +110,7 @@ $(document).ready(function(){
 	class="result_table" requestURI="" pagesize="2" size="userResult.totalCount" partialList="true">
 		<display:setProperty name="sort.amount" value="list"/>
 		<display:column property="userName" title="用户名"/>
-		<display:column property="userId"  title="用户ID" />
-		<display:column property="password"  title="用户密码" />
+		<display:column property="remark"  title="备注" />
 		<display:column title="操作">
 			<input type="hidden" id="userId_${userList.userId}" value="${userList.userId}"/>
 			<a href="user_edit.action?userId=${userList.userId}" class="editUser link mgR12">
