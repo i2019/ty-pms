@@ -117,6 +117,7 @@ $(document).ready(function(){
 				编辑</a>
 			<a href="user_del.action?userId=${userList.userId}" class="delUser link">
 				删除</a>
+				
 		</display:column>
 	</display:table>
 </div>
