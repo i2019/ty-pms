@@ -27,14 +27,12 @@ public class LoginAction extends BaseAction{
 		HttpServletRequest request=getRequest();
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
-		
-		
+
 		if(StringUtils.hasText(username) && StringUtils.hasText(password)){
 			user=userService.selectByName(username);
 			if(null!=user){
 				if(user.getPassword().equals(password)){
-					HttpSession httpSession=getHttpSession();
-					httpSession.setAttribute("LoginUser", user);
+					setLoginUser(user);	
 					return "success";
 				}
 			}

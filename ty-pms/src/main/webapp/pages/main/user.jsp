@@ -115,9 +115,10 @@ $(document).ready(function(){
 			<input type="hidden" id="userId_${userList.userId}" value="${userList.userId}"/>
 			<a href="user_edit.action?userId=${userList.userId}" class="editUser link mgR12">
 				编辑</a>
-			<a href="user_del.action?userId=${userList.userId}" class="delUser link">
-				删除</a>
-				
+			<c:if test="${loginUser.userId != userList.userId }">
+				<a href="user_del.action?userId=${userList.userId}" class="delUser link">
+					删除</a>
+			</c:if>	
 		</display:column>
 	</display:table>
 </div>

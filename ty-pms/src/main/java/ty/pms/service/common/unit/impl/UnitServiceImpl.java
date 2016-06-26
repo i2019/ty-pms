@@ -16,10 +16,10 @@ public class UnitServiceImpl extends BaseService implements UnitService {
 	//@Autowired
 	private UnitMapper mapper;
 
-	private User loginUser=null;
-	
 	@Override
 	public Integer insertSelective(Unit record) {
+		
+		User loginUser=null;
 		
 		record.setUnitId(CommonUtil.generateUUID());
 		record.setDelFlag(false);
@@ -81,14 +81,6 @@ public class UnitServiceImpl extends BaseService implements UnitService {
 
 	public void setMapper(UnitMapper mapper) {
 		this.mapper = mapper;
-	}
-
-	public User getLoginUser() {
-		return loginUser;
-	}
-
-	public void setLoginUser(User loginUser) {
-		this.loginUser = loginUser;
 	}
 
 }

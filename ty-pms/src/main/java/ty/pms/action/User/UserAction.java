@@ -3,6 +3,8 @@ package ty.pms.action.User;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +34,7 @@ public class UserAction extends BaseAction{
 	private UserResult userResult=new UserResult();
 	private List<User> userList=new ArrayList<User>();
 	private List<String> userNameList=new ArrayList<String>();
-
+	private User loginUser;
     @Autowired
 	private UserService userService;
 	/**
@@ -40,6 +42,8 @@ public class UserAction extends BaseAction{
 	 * @return
 	 */
 	public String list() {
+		
+		loginUser=getLoginUser();
 		
 		//displaytag 分页
 		int pageSize = this.getCurrentPageSize("userList");
@@ -74,8 +78,12 @@ public class UserAction extends BaseAction{
 	 * @return
 	 */
 	public String del(){
-		if(StringUtils.hasText(userId)){
-			userService.deleteByPrimaryKey(userId);
+		loginUser=getLoginUser();
+		if(StringUtils.hasText(userId) && null!=loginUser){
+			//当前登录用户不可删除自己
+			if(!userId.equalsIgnoreCase(loginUser.getUserId())){
+				userService.deleteByPrimaryKey(userId);
+			}
 		}
 		return list();
 	}
@@ -84,6 +92,7 @@ public class UserAction extends BaseAction{
 	 * @return
 	 */
 	public String save(){
+		loginUser=getLoginUser();
 		String userName=user.getUserName();
 		//用户名密码必填
 		if(null!=user 
@@ -92,6 +101,9 @@ public class UserAction extends BaseAction{
 			//如果存在用户id，则为编辑，后台update
 			if(StringUtils.hasText(user.getUserId())){
 				userService.updateByPrimaryKeySelective(user);
+				if(user.getUserId().equalsIgnoreCase(loginUser.getUserId())){
+					setLoginUser(userService.selectByPrimaryKey(user.getUserId()));	
+				}
 			}else{
 			//如果不存在用户id，则为新增，后台insert
 				//用户名唯一，否则返回编辑页面
@@ -168,5 +180,11 @@ public class UserAction extends BaseAction{
 	public void setUserNameList(List<String> userNameList) {
 		this.userNameList = userNameList;
 	}
-
+	public Log getLog() {
+		return log;
+	}
+	public void setLog(Log log) {
+		this.log = log;
+	}
+	
 }

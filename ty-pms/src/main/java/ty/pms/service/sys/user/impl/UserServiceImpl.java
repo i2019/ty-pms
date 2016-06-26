@@ -14,13 +14,12 @@ public class UserServiceImpl extends BaseService implements UserService {
 	
 	private UserMapper mapper;
 
-	private User loginUser=null;
-	
 	/**
 	 * 插入新纪录（不为空的字段）,返回影响的行数
 	 */
 	@Override
 	public Integer insertSelective(User record) {
+		User loginUser=null;
 		
 		record.setUserId(CommonUtil.generateUUID());
 		record.setDelFlag(false);
@@ -97,12 +96,4 @@ public class UserServiceImpl extends BaseService implements UserService {
 		this.mapper = mapper;
 	}
 
-	public User getLoginUser() {
-		return loginUser;
-	}
-
-	public void setLoginUser(User loginUser) {
-		this.loginUser = loginUser;
-	}
-	
 }

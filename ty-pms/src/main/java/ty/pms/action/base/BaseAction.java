@@ -11,6 +11,7 @@ import org.apache.struts2.ServletActionContext;
 import org.displaytag.tags.TableTagParameters;
 import org.displaytag.util.ParamEncoder;
 
+import ty.pms.model.sys.user.User;
 import ty.pms.util.Constants;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -58,6 +59,22 @@ public class BaseAction extends ActionSupport{
 	 */
 	public HttpServletResponse getResponse() {
 		return ServletActionContext.getResponse();
+	}
+	
+	public User getLoginUser() {
+		HttpSession httpSession=getHttpSession();
+		User loginUser=null;
+		if(null!=httpSession){
+			loginUser=(User) httpSession.getAttribute("LoginUser");
+		}
+		return loginUser;
+	}
+	public void setLoginUser(User user){
+		HttpSession httpSession=getHttpSession();
+		if(httpSession!=null){
+			httpSession.setAttribute("LoginUser", user);
+			getRequest().setAttribute("username", user.getUserName());
+		}
 	}
 	
 	// 取得每页多少条
