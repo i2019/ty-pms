@@ -107,7 +107,7 @@ $(document).ready(function(){
 <!--列表样式-->
 <div class="bt_wp">
 	<display:table name="userResult.resultList" id="userList" sort="list" 
-	class="result_table" requestURI="" pagesize="2" size="userResult.totalCount" partialList="true">
+	class="result_table" requestURI="" pagesize="20" size="userResult.totalCount" partialList="true">
 		<display:setProperty name="sort.amount" value="list"/>
 		<display:column property="userName" title="用户名"/>
 		<display:column property="remark"  title="备注" />

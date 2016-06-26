@@ -1,4 +1,4 @@
-package ty.pms.model.user;
+package ty.pms.model.sys.user;
 
 import java.util.List;
 

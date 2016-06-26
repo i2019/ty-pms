@@ -6,7 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
+import org.displaytag.tags.TableTagParameters;
+import org.displaytag.util.ParamEncoder;
+
+import ty.pms.util.Constants;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -54,5 +59,20 @@ public class BaseAction extends ActionSupport{
 	public HttpServletResponse getResponse() {
 		return ServletActionContext.getResponse();
 	}
-
+	
+	// 取得每页多少条
+	public int getCurrentPageSize(String tableId) {
+		int pageNumber = Constants.PAGE_SIZE;
+		return pageNumber;
+	}
+	// 取得当前页
+	public int getCurrentPageNo(String tableId) {
+		String pageId = new ParamEncoder(tableId).encodeParameterName(TableTagParameters.PARAMETER_PAGE);
+		// 从请求中取得当前页，如不存在设置第一页为默认页
+		int pageNumber = 1;
+		if (StringUtils.isNotEmpty(getRequest().getParameter(pageId))) {
+			pageNumber = Integer.parseInt(getRequest().getParameter(pageId));
+		}
+		return pageNumber;
+	}
 }

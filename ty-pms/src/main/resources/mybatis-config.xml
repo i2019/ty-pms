@@ -10,13 +10,21 @@
 		<typeAlias type="java.util.List" alias="list"/>
 		
 		<!-- user -->
-		<typeAlias type="ty.pms.model.user.UserResult" alias="userResult"/>
-		<typeAlias type="ty.pms.model.user.UserCriteria" alias="userCriteria"/>
-		<typeAlias type="ty.pms.model.user.User" alias="user"/>
+		<typeAlias type="ty.pms.model.sys.user.UserResult" alias="userResult"/>
+		<typeAlias type="ty.pms.model.sys.user.UserCriteria" alias="userCriteria"/>
+		<typeAlias type="ty.pms.model.sys.user.User" alias="user"/>
+		
+		<!-- unit -->
+		<typeAlias type="ty.pms.model.common.unit.UnitResult" alias="unitResult"/>
+		<typeAlias type="ty.pms.model.common.unit.UnitCriteria" alias="unitCriteria"/>
+		<typeAlias type="ty.pms.model.common.unit.Unit" alias="unit"/>
 		
 		
 	</typeAliases>
+	
     <mappers>  
         <mapper resource="ty/pms/mapping/accounting/UserMapper.xml"/>  
-    </mappers>  
+         <mapper resource="ty/pms/mapping/accounting/UnitMapper.xml"/>  
+    </mappers> 
+     
 </configuration>

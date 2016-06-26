@@ -4,8 +4,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
-import ty.pms.model.user.User;
-import ty.pms.model.user.UserCriteria;
+import ty.pms.model.sys.user.User;
+import ty.pms.model.sys.user.UserCriteria;
 
 public class BaseService {
 

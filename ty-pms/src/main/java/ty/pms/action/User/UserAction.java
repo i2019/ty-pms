@@ -12,10 +12,10 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import ty.pms.action.base.BaseAction;
-import ty.pms.model.user.User;
-import ty.pms.model.user.UserCriteria;
-import ty.pms.model.user.UserResult;
-import ty.pms.service.user.UserService;
+import ty.pms.model.sys.user.User;
+import ty.pms.model.sys.user.UserCriteria;
+import ty.pms.model.sys.user.UserResult;
+import ty.pms.service.sys.user.UserService;
 
 public class UserAction extends BaseAction{
 
@@ -41,11 +41,17 @@ public class UserAction extends BaseAction{
 	 */
 	public String list() {
 		
+		//displaytag 分页
+		int pageSize = this.getCurrentPageSize("userList");
+		int pageNo = this.getCurrentPageNo("userList");
+		userCriteria.setPageNum(pageNo);
+		userCriteria.setPageSize(pageSize);
+
 		if(!StringUtils.hasText(userCriteria.getUserName())){
 			userCriteria.setUserName(null);
 		}
 		
-		userResult=userService.getUsers(userCriteria);
+		userResult=userService.getByCriteria(userCriteria);
 		
 		//log.debug(userResult);
 		log.info("userList count :"+userResult.getTotalCount());
@@ -89,7 +95,7 @@ public class UserAction extends BaseAction{
 			}else{
 			//如果不存在用户id，则为新增，后台insert
 				//用户名唯一，否则返回编辑页面
-				if(null!=userService.selectUserByName(userName)){
+				if(null!=userService.selectByName(userName)){
 					getRequest().setAttribute("RepeatedUserName", userName);
 					return "edit";
 				}
@@ -102,7 +108,7 @@ public class UserAction extends BaseAction{
 	public void ajaxVerifyOnly(){
 		String userName = getRequest().getParameter("userName");
 		if(StringUtils.hasText(userName)){
-			if(null!=userService.selectUserByName(userName)){
+			if(null!=userService.selectByName(userName)){
 				JSONObject repeatedUserName=new JSONObject();
 				repeatedUserName.put("repeatedUserName",userName);
 				JSONArray jArr=new JSONArray();

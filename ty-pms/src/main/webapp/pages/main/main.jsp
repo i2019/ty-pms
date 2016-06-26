@@ -12,7 +12,6 @@
 <link href="style/authority/jquery.fancybox-1.3.4.css" rel="stylesheet" type="text/css" media="screen"></link>
 <link href="style/login/login.css" rel="stylesheet" type="text/css" media="screen"></link>
 
-
 <script type="text/javascript" src="scripts/jquery/jquery-1.7.1.js"></script>
 <script type="text/javascript" src="scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
 <script type="text/javascript" src="scripts/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
@@ -46,6 +45,17 @@
 	</script>
 	<script type="text/javascript">
 	/*二级菜单*/
+	$(document).ready(function(){
+		$(document).ajaxStart(onStart).ajaxSuccess(onStop);
+		/** 默认异步加载"业务模块"目录  **/
+		 loadMenu('YEWUMOKUAI', "dleft_tab1");
+		// 默认展开所有节点
+		if( zTree ){
+			// 默认展开所有节点
+			zTree.expandAll(true);
+		}
+	});
+	
 		/* zTree插件加载目录的处理  */
 		var zTree;
 		
@@ -181,58 +191,53 @@
 			} 
 		}
 		
+function loadMenu(resourceType, treeObj){
+ var data=null;
+ //业务模块
+ if('dleft_tab1' == treeObj){
 		
-		$(document).ready(function(){
-			$(document).ajaxStart(onStart).ajaxSuccess(onStop);
-			/** 默认异步加载"业务模块"目录  **/
-			 loadMenu('YEWUMOKUAI', "dleft_tab1");
-			// 默认展开所有节点
-			if( zTree ){
-				// 默认展开所有节点
-				zTree.expandAll(true);
-			}
-		});
-		
-		function loadMenu(resourceType, treeObj){
-			var data=null;
-			if('dleft_tab1' == treeObj){
-				
-			data = [
-			        
-			 ];
-				 
-			 $("#dleft_tab1").show();
-			 $("#dleft_tab2").hide();
-			 $("#dleft_tab3").hide();
-			}else  if('dleft_tab2' == treeObj){
-				
- data = [
-{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":221,"resourceName":"用户管理","resourceOrder":0,"resourceType":""},
-{"accessPath":"user_list.action","checked":false,"delFlag":0,"parentID":221,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":22131,"resourceName":"系统用户","resourceOrder":0,"resourceType":""},
-  ];
-				 
-				 $("#dleft_tab2").show();
-				 $("#dleft_tab1").hide();
-				 $("#dleft_tab3").hide();
-			}else  if('dleft_tab3' == treeObj){
-				 $("#dleft_tab3").show();
-				 $("#dleft_tab1").hide();
-				 $("#dleft_tab2").hide();
-			} 
-			
-			// 如果返回数据不为空，加载"业务模块"目录
-            if(data != null){
-                // 将返回的数据赋给zTree
-                $.fn.zTree.init($("#"+treeObj), setting, data);
-                zTree = $.fn.zTree.getZTreeObj(treeObj);
-                if( zTree ){
-                    // 默认展开所有节点
-                    zTree.expandAll(true);
-                }
-            }	
-            
-		}
-		
+  data = [
+	{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":121,"resourceName":"理财记账","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"parentID":121,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":12131,"resourceName":"基础设置","resourceOrder":0,"resourceType":""},
+	{"accessPath":"user_list.action","checked":false,"delFlag":0,"parentID":12131,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":1213141,"resourceName":"资金单位","resourceOrder":0,"resourceType":""},
+	{"accessPath":"user_list.action","checked":false,"delFlag":0,"parentID":12131,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":1213142,"resourceName":"产生事由","resourceOrder":0,"resourceType":""},
+ ];
+		 
+	 $("#dleft_tab1").show();
+	 $("#dleft_tab2").hide();
+	 $("#dleft_tab3").hide();
+	 
+	 //系统管理
+	}else  if('dleft_tab2' == treeObj){
+						
+		 data = [
+			{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":221,"resourceName":"用户管理","resourceOrder":0,"resourceType":""},
+			{"accessPath":"user_list.action","checked":false,"delFlag":0,"parentID":221,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":22131,"resourceName":"系统用户","resourceOrder":0,"resourceType":""},
+		  ];
+		 
+		 $("#dleft_tab2").show();
+		 $("#dleft_tab1").hide();
+		 $("#dleft_tab3").hide();
+	//其他
+	}else  if('dleft_tab3' == treeObj){
+		 $("#dleft_tab3").show();
+		 $("#dleft_tab1").hide();
+		 $("#dleft_tab2").hide();
+	} 
+	
+	// 如果返回数据不为空，加载"业务模块"目录
+          if(data != null){
+              // 将返回的数据赋给zTree
+              $.fn.zTree.init($("#"+treeObj), setting, data);
+              zTree = $.fn.zTree.getZTreeObj(treeObj);
+              if( zTree ){
+                  // 默认展开所有节点
+                  zTree.expandAll(true);
+              }
+          }	
+          
+}
+
 		//ajax start function
 		function onStart(){
 			$("#ajaxDialog").show();

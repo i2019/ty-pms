@@ -1,8 +1,8 @@
-package ty.pms.model.user;
+package ty.pms.model.common.unit;
 
 import ty.pms.model.base.SearchResult;
 
-public class UserResult extends SearchResult<User>{
+public class UnitResult extends SearchResult<Unit>{
 
 	/**
 	 * 

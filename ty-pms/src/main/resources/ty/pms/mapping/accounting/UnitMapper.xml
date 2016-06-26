@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="ty.pms.dao.sys.user.UserMapper">
+<mapper namespace="ty.pms.dao.common.unit.UnitMapper">
 
-	<resultMap id="userResultMap" type="user">
-		<id column="userId" property="userId" jdbcType="VARCHAR" />
-		<result column="userName" property="userName" jdbcType="VARCHAR" />
-		<result column="password" property="password" jdbcType="VARCHAR" />
+	<resultMap id="unitResultMap" type="unit">
+		<id column="unitId" property="unitId" jdbcType="VARCHAR" />
+		<result column="unitName" property="unitName" jdbcType="VARCHAR" />
 		
 		<result column="occurrencedTime" property="occurrencedTime" jdbcType="TIMESTAMP" />
 		<result column="endTime" property="endTime" jdbcType="TIMESTAMP" />
@@ -30,7 +29,7 @@
 	
 	<!-- 列举所有字段 -->
 	<sql id="allColumns">
-		userId,userName,password,
+		unitId,unitName,
 		occurrencedTime,endTime,createdTime,lastModifyTime,
   		owner,createdBy,updatedBy,remark,delFlag
 	</sql>
@@ -43,17 +42,14 @@
 		ORDER BY createdTime DESC
 	</sql>
 	
-	<insert id="insertSelective" parameterType="user">
-		insert into user
+	<insert id="insertSelective" parameterType="unit">
+		insert into unit
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="userId != null">
-				userId,
+			<if test="unitId != null">
+				unitId,
 			</if>
-			<if test="userName != null">
-				userName,
-			</if>
-			<if test="password != null">
-				password,
+			<if test="unitName != null">
+				unitName,
 			</if>
 			
 			<if test="occurrencedTime != null">
@@ -85,15 +81,13 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="userId != null">
-				#{userId,jdbcType=VARCHAR},
+			<if test="unitId != null">
+				#{unitId,jdbcType=VARCHAR},
 			</if>
-			<if test="userName != null">
-				#{userName,jdbcType=VARCHAR},
+			<if test="unitName != null">
+				#{unitName,jdbcType=VARCHAR},
 			</if>
-			<if test="password != null">
-				#{password,jdbcType=VARCHAR},
-			</if>
+			
 			<if test="occurrencedTime != null">
 				#{occurrencedTime,jdbcType=TIMESTAMP},
 			</if>
@@ -124,15 +118,13 @@
 		</trim>
 	</insert>
 	
-	<update id="updateByPrimaryKeySelective" parameterType="user">
-		update user
+	<update id="updateByPrimaryKeySelective" parameterType="unit">
+		update unit
 		<set>
-			<if test="userName != null">
-				userName = #{userName,jdbcType=VARCHAR},
+			<if test="unitName != null">
+				unitName = #{unitName,jdbcType=VARCHAR},
 			</if>
-			<if test="password != null">
-				password = #{password,jdbcType=VARCHAR},
-			</if>
+		
 			<if test="occurrencedTime != null">
 				occurrencedTime=#{occurrencedTime,jdbcType=TIMESTAMP},
 			</if>
@@ -161,57 +153,54 @@
 				delFlag=#{delFlag,jdbcType=TINYINT}
 			</if>
 		</set>
-		where userId = #{userId,jdbcType=VARCHAR}
+		where unitId = #{unitId,jdbcType=VARCHAR}
 	</update>
 	
 	<delete id="deleteByPrimaryKey" parameterType="int">
-		delete from user
-		where userId = #{userId,jdbcType=VARCHAR}
+		delete from unit
+		where unitId = #{unitId,jdbcType=VARCHAR}
 	</delete>
 	
-	<select id="selectByPrimaryKey" resultMap="userResultMap" parameterType="str">
-		select 
+	<select id="selectByPrimaryKey" resultMap="unitResultMap" parameterType="str">
+		select
 		<include refid="allColumns" />
-		from user
-		where userId = #{userId,jdbcType=VARCHAR} and delFlag=0
+		from unit
+		where unitId = #{unitId,jdbcType=VARCHAR} and delFlag=0
 	</select>
 
-	<select id="selectByName" resultMap="userResultMap" parameterType="str">
+	<select id="selectByName" resultMap="unitResultMap" parameterType="str">
 		select
 		<include refid="allColumns" />
-		from user
-		where userName = #{userName,jdbcType=VARCHAR} and delFlag=0
+		from unit
+		where unitName = #{unitName,jdbcType=VARCHAR} and delFlag=0
 	</select>
 	
-	<select id="getAllCount" resultType="int" >
-		<include refid="selectCount" /> USER
+	<select resultType="int" id="getAllCount">
+		<include refid="selectCount" /> unit 
+		where delFlag=0
 	</select>
-	<select id="getAll" resultMap="userResultMap">
+	<select id="getAll" resultMap="unitResultMap">
 		select
 		<include refid="allColumns" />
-		from user 
+		from unit 
 		where delFlag=0
 		<include refid="createdTimeDESC" />
 	</select>
-    
-    <select id="getByCriteriaCount" resultType="int" parameterType="userCriteria">
-    	<include refid="selectCount" /> USER
+	
+    <select id="getByCriteriaCount" resultType="int" parameterType="unitCriteria">
+    	<include refid="selectCount" /> unit
     	<where>
     		delFlag=0
-    		<if test="userName != null">
-				and userName = #{userName}
+    		<if test="unitName != null">
+				and unitName = #{unitName}
 			</if>
-			<if test="userNameList != null">
-   			 	and userName in
-		      	<foreach collection="userNameList" item="userName" index="index" open="(" close=")" separator=",">
-		            #{userName}
+			<if test="unitNameList != null">
+   			 	and unitName in
+		      	<foreach collection="unitNameList" item="unitName" index="index" open="(" close=")" separator=",">
+		            #{unitName}
 		        </foreach>
   			</if>
   			
-			<if test="password != null">
-				and password = #{password}
-			</if>
-		
 			<if test="occurrencedTime != null">
 				and occurrencedTime=#{occurrencedTime}
 			</if>
@@ -255,24 +244,21 @@
 			</if>
     	</where>
     </select>
-    <select id="getByCriteria" resultMap="userResultMap" resultType="userResult" parameterType="userCriteria">
-    	select <include refid="allColumns" /> from user 
+    
+    <select id="getByCriteria" resultMap="unitResultMap" resultType="unitResult" parameterType="unitCriteria">
+    	select <include refid="allColumns" /> from unit 
     	<where>
     		delFlag=0
-    		<if test="userName != null">
-				and userName = #{userName}
+    		<if test="unitName != null">
+				and unitName = #{unitName}
 			</if>
-			<if test="userNameList != null">
-   			 	and userName in
-		      	<foreach collection="userNameList" item="userName" index="index" open="(" close=")" separator=",">
-		            #{userName}
+			<if test="unitNameList != null">
+   			 	and unitName in
+		      	<foreach collection="unitNameList" item="unitName" index="index" open="(" close=")" separator=",">
+		            #{unitName}
 		        </foreach>
   			</if>
   			
-			<if test="password != null">
-				and password = #{password}
-			</if>
-		
 			<if test="occurrencedTime != null">
 				and occurrencedTime=#{occurrencedTime}
 			</if>

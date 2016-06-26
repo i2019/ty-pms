@@ -6,9 +6,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.util.StringUtils;
 
 import ty.pms.action.base.BaseAction;
-import ty.pms.model.user.User;
-import ty.pms.model.user.UserCriteria;
-import ty.pms.service.user.UserService;
+import ty.pms.model.sys.user.User;
+import ty.pms.model.sys.user.UserCriteria;
+import ty.pms.service.sys.user.UserService;
 
 public class LoginAction extends BaseAction{
 
@@ -30,7 +30,7 @@ public class LoginAction extends BaseAction{
 		
 		
 		if(StringUtils.hasText(username) && StringUtils.hasText(password)){
-			user=userService.selectUserByName(username);
+			user=userService.selectByName(username);
 			if(null!=user){
 				if(user.getPassword().equals(password)){
 					HttpSession httpSession=getHttpSession();
