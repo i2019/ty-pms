@@ -8,22 +8,33 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <constant name="struts.devMode" value="true" />
 
+	<include file ="struts-default.xml" />    
+
     <package name="default" namespace="/" extends="struts-default">
 		
+		<interceptors> 
+            <interceptor name ="auth" class ="ty.pms.interceptor.AuthorizationInterceptor" /> 
+        </interceptors > 
+        
 		<!--  
 			Spring 整合 Struts2 时, 在 Struts2 中配置的 Spring 的 Action 的 class 需要指向 IOC 容器中该 bean 的 id
 		-->
 		<action name="login_*" class="loginAction" method="{1}">
 		    <result name="success">/pages/main/main.jsp</result>
-		    <result name="fail">/index.jsp</result>
+		    <result name="fail">/index.jsp</result>     
 		</action>
 		
 		<action name="user_*" class="ty.pms.action.User.UserAction"
 			method="{1}">
+			<interceptor-ref name ="auth" /> 
+			<result name="login">/index.jsp</result>
+			
 			<result name="list">/pages/main/user.jsp</result>
 			<result name="edit">/pages/main/userEdit.jsp</result>
+			
 		</action>
 		
     </package>
 
+	
 </struts>

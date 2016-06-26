@@ -1,16 +1,16 @@
 package ty.pms.action.login;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.util.StringUtils;
 
+import ty.pms.action.base.Action;
 import ty.pms.action.base.BaseAction;
 import ty.pms.model.sys.user.User;
 import ty.pms.model.sys.user.UserCriteria;
 import ty.pms.service.sys.user.UserService;
 
-public class LoginAction extends BaseAction{
+public class LoginAction extends BaseAction implements Action{
 
 	/**
 	 * 
@@ -18,7 +18,7 @@ public class LoginAction extends BaseAction{
 	private static final long serialVersionUID = 2269552141446088700L;
 
 	private User user;
-
+	private String userName;
 	private UserService userService;
 	
 	private UserCriteria userCriteria;

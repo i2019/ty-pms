@@ -24,7 +24,7 @@
 	
     <mappers>  
         <mapper resource="ty/pms/mapping/accounting/UserMapper.xml"/>  
-         <mapper resource="ty/pms/mapping/accounting/UnitMapper.xml"/>  
+        <mapper resource="ty/pms/mapping/accounting/UnitMapper.xml"/>  
     </mappers> 
      
 </configuration>

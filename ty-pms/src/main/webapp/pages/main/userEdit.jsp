@@ -85,9 +85,9 @@ $(document).ready(function() {
 </head>
 <body>
 <!--  type="hidden" -->
-<input id="loginUserName" value="${LoginUserName }"/>
-<input id="loginUserId" value="${LoginUserId }"/>
-<input id="editUserId" value="${userId }"/>
+<input type="hidden" id="loginUserName" value="${LoginUserName }"/>
+<input type="hidden" id="loginUserId" value="${LoginUserId }"/>
+<input type="hidden" id="editUserId" value="${userId }"/>
  
 <div id="container" class="center-in-center">
 	<form method="post" action="user_save.action" id="userEditForm">

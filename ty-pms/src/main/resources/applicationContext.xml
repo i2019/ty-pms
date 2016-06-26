@@ -61,7 +61,6 @@
 		<property name="mapper" ref="unitMapper"></property>
 	</bean>
 
-
 	<!-- action -->
 	<!-- 注意: 在 IOC 容器中配置 Struts2 的 Action 时, 需要配置 scope 属性, 其值必须为 prototype -->
 	<bean id="loginAction" class="ty.pms.action.login.LoginAction" scope="prototype">
