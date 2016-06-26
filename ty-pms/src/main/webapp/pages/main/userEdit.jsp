@@ -70,6 +70,7 @@ $(document).ready(function() {
 		//如果当前登录用户的用户名发生修改则需要重新登录
 		if((loginUserId==editUserId) && (loginUserName!=editUserName)){
 			top.document.location.href='/ty-pms/index.jsp';
+			//window,location.href="logout.jsp";
 			alert('当前登录用户名已经修改，请用新的用户名重新登录！');
 		}
 	
@@ -92,38 +93,49 @@ $(document).ready(function() {
 <div id="container" class="center-in-center">
 	<form method="post" action="user_save.action" id="userEditForm">
 		<s:hidden name="user.userId"></s:hidden>
-		<div class="ui_content">
-			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
-				<tr>
-					<td class="ui_text_rt">用户名</td>
-					<td class="ui_text_lt">
-						<s:textfield onchange="ajaxVerifyOnly()" type="text" id="user_userName" name="user.userName" class="ui_input_txt02"/>	
-					</td>
-				</tr>
-				<tr></tr>
-				<tr>
-					<td class="ui_text_rt">密码</td>
-					<td class="ui_text_lt">
-						<s:textfield type="text" id="user_password" name="user.password" class="ui_input_txt02"/>
-					</td>
-				</tr>
-				<tr></tr>
-				<tr>
-					<td class="ui_text_rt">备注</td>
-					<td class="ui_text_lt">
-						<s:textfield type="text" id="user_remark" name="user.remark" class="ui_input_txt02"/>
-					</td>
-				</tr>
-				<tr><td>&nbsp;</td></tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td class="ui_text_lt">
-						&nbsp;<input id="submitbutton" type="button" value="提交" class="ui_input_btn01"/>
-						&nbsp;<input id="cancelbutton" type="button" value="取消" class="ui_input_btn01"/>
-					</td>
-				</tr>
-			</table>
-		</div>
+		
+			<div class="container_list">
+				<div class="list_criteria">
+				    <div class="criteria_label">
+						用户名:
+					</div>
+					<div class="criteria_value">
+						<s:textfield onchange="ajaxVerifyOnly()" type="text" id="user_userName" name="user.userName" class="text_value"/>	
+					</div>	
+				</div>
+				
+				<div class="list_criteria">
+				    <div class="criteria_label">
+						密码:
+					</div>
+					<div class="criteria_value">
+						<s:textfield type="text" id="user_password" name="user.password" class="text_value"/>	
+					</div>	
+				</div>
+				<div class="list_criteria">
+				    <div class="criteria_label">
+						确认密码: 仅当新建用户时显示
+					</div>
+					<div class="criteria_value">
+						<s:textfield type="text" id="re_password" class="text_value"/>	
+					</div>	
+				</div>
+				
+				<div class="list_criteria">
+				    <div class="criteria_label">
+						备注:
+					</div>
+					<div class="criteria_value">
+						<s:textfield type="text" id="user_remark" name="user.remark" class="text_value"/>	
+					</div>	
+				</div>
+			</div>
+			
+			<div class="list_button">
+				<input type="submit" value="提交" class="button_search" id="submitbutton" /> 	
+				<input type="button" value="取消" class="button_create" id="cancelbutton" /> 		
+			</div>
+			
 	</form>
 </div>
 

@@ -17,7 +17,7 @@
 <script type="text/javascript" src="scripts/artDialog/artDialog.js?skin=default"></script>
 
 <style type="text/css">
-.bt_wp{ border-top:#c1cfd9 1px solid;}
+.pannel_display { border-top:#c1cfd9 1px solid;}
 .result_table{ width:100%;}
 .result_table th{ border:#c1cfd9 1px solid; border-top-color:#f6f8fa; background:#d3dde4; font-weight:normal; padding:6px 6px;}
 .result_table td{ border:#c1cfd9 1px solid; text-align:center;padding:6px 6px; background:#fff;}
@@ -61,7 +61,6 @@ $(document).ready(function(){
 	        'hideOnOverlayClick' : false,
 	        'showCloseButton' : true,
 	        'onClosed' : function() { 
-	        	console.log('user_edit.action?userId='+$("#userId").val());
 	        	window.location.href = 'user_list.action';
 	        }
 	 });
@@ -84,43 +83,69 @@ $(document).ready(function(){
 </head>
 <body>
 
-<form id="userForm" name="userForm" action="user_list.action" method="post">
-	<div id="container">
-		<div class="ui_content">
-			<div class="ui_text_indent">
-				<div id="box_border">
-					<div id="box_center">
-						用户名:	
-						<s:textfield type="text" id="userCriteria_userName" name="userCriteria.userName" class="ui_input_txt02"/>
+<div class="pannel_out">
+	<div class="pannel_form">		
+		<s:form id="userForm" name="userForm" action="user_list.action" method="post">
+			<div class="container_list">
+				
+				<div class="list_criteria">
+				    <div class="criteria_label">
+						用户名: 复选框
 					</div>
-					<br>
-					<div id="box_bottom">
-						<input type="submit" value="查询" class="ui_input_btn01" id="searchBtn" /> 	
-						<input type="button" value="新增" class="ui_input_btn01" id="addBtn" /> 		
+					<div class="criteria_value">
+						<s:textfield type="text" id="userCriteria_userNameList" name="userCriteria.userNameList" class="text_value"/>
+					</div>	
+				</div>
+				<div class="list_criteria">
+				    <div class="criteria_label">
+						创建开始时间: 时间选择器
 					</div>
+					<div class="criteria_value">
+						<s:textfield type="text" id="userCriteria_createdTimeBegin" name="userCriteria.createdTimeBegin" class="text_value"/>
+					</div>	
+				</div>
+				<div class="list_criteria">
+				    <div class="criteria_label">
+						创建结束时间: 时间选择器
+					</div>
+					<div class="criteria_value">
+						<s:textfield type="text" id="userCriteria_createdTimeEnd" name="userCriteria.createdTimeEnd" class="text_value"/>
+					</div>	
+				</div>
+				<div class="list_criteria">
+				    <div class="criteria_label">
+						备注: 模糊查询  文本域
+					</div> 
+					<div class="criteria_value">
+						<s:textfield type="text" id="userCriteria_userName" name="userCriteria.remark" class="text_value"/>
+					</div>	
+				</div>
+				
+				<div class="list_button">
+					<input type="submit" value="查询" class="button_search" id="searchBtn" /> 	
+					<input type="button" value="新增" class="button_create" id="addBtn" /> 		
 				</div>
 			</div>
-		</div>
+		</s:form>
 	</div>
-</form>
-
-<!--列表样式-->
-<div class="bt_wp">
-	<display:table name="userResult.resultList" id="userList" sort="list" 
-	class="result_table" requestURI="" pagesize="20" size="userResult.totalCount" partialList="true">
-		<display:setProperty name="sort.amount" value="list"/>
-		<display:column property="userName" title="用户名"/>
-		<display:column property="remark"  title="备注" />
-		<display:column title="操作">
-			<input type="hidden" id="userId_${userList.userId}" value="${userList.userId}"/>
-			<a href="user_edit.action?userId=${userList.userId}" class="editUser link mgR12">
-				编辑</a>
-			<c:if test="${loginUser.userId != userList.userId }">
-				<a href="user_del.action?userId=${userList.userId}" class="delUser link">
-					删除</a>
-			</c:if>	
-		</display:column>
-	</display:table>
+	<!--列表样式-->
+	<div class="pannel_display">
+		<display:table name="userResult.resultList" id="userList" sort="list" 
+			class="result_table" requestURI="" pagesize="20" size="userResult.totalCount" partialList="true">
+			<display:setProperty name="sort.amount" value="list"/>
+			<display:column property="userName" title="用户名"/>
+			<display:column property="remark"  title="备注" />
+			<display:column title="操作">
+				<input type="hidden" id="userId_${userList.userId}" value="${userList.userId}"/>
+				<a href="user_edit.action?userId=${userList.userId}" class="editUser link mgR12">
+					编辑</a>
+				<c:if test="${loginUser.userId != userList.userId }">
+					<a href="user_del.action?userId=${userList.userId}" class="delUser link">
+						删除</a>
+				</c:if>	
+			</display:column>
+		</display:table>
+	</div>
 </div>
 	
 </body>
