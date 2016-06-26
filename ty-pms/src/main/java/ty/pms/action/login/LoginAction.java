@@ -41,6 +41,10 @@ public class LoginAction extends BaseAction{
 		return "fail";
 	}
 
+	public String relogin(){
+		return "relogin";
+	}
+	
 	public UserCriteria getUserCriteria() {
 		return userCriteria;
 	}

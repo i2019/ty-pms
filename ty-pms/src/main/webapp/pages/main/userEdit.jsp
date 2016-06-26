@@ -62,9 +62,20 @@ $(document).ready(function() {
 	});
 	
 	$("#submitbutton").click(function() {
-		/**  关闭弹出iframe  **/
+		
+		var loginUserName=$("#loginUserName").val();
+		var loginUserId=$("#loginUserId").val();
+		var editUserId=$("#editUserId").val();
+		var editUserName=$("#user_userName").val();
+		//如果当前登录用户的用户名发生修改则需要重新登录
+		if((loginUserId==editUserId) && (loginUserName!=editUserName)){
+			top.document.location.href='/ty-pms/index.jsp';
+			alert('当前登录用户名已经修改，请用新的用户名重新登录！');
+		}
+	
 		window.parent.$.fancybox.close();
-		$('form').submit();
+		$('#userEditForm').submit();
+		
 	});
 	
 });
@@ -73,9 +84,13 @@ $(document).ready(function() {
 
 </head>
 <body>
-
+<!--  type="hidden" -->
+<input id="loginUserName" value="${LoginUserName }"/>
+<input id="loginUserId" value="${LoginUserId }"/>
+<input id="editUserId" value="${userId }"/>
+ 
 <div id="container" class="center-in-center">
-	<form method="post" action="user_save.action">
+	<form method="post" action="user_save.action" id="userEditForm">
 		<s:hidden name="user.userId"></s:hidden>
 		<div class="ui_content">
 			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">

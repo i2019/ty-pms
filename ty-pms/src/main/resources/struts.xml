@@ -13,7 +13,7 @@
 		<!--  
 			Spring 整合 Struts2 时, 在 Struts2 中配置的 Spring 的 Action 的 class 需要指向 IOC 容器中该 bean 的 id
 		-->
-		<action name="login" class="loginAction">
+		<action name="login_*" class="loginAction" method="{1}">
 		    <result name="success">/pages/main/main.jsp</result>
 		    <result name="fail">/index.jsp</result>
 		</action>

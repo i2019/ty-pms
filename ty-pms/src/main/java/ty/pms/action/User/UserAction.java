@@ -116,7 +116,7 @@ public class UserAction extends BaseAction{
 		}
 		return "list";
 	}
-	
+
 	public void ajaxVerifyOnly(){
 		String userName = getRequest().getParameter("userName");
 		if(StringUtils.hasText(userName)){

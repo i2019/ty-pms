@@ -313,7 +313,7 @@ function loadMenu(resourceType, treeObj){
 				<ul>
 					<li>
 						<img alt="当前用户" src="images/common/user.jpg">：
-						<span>${user.userName }</span>
+						<span id="loginUserName">${user.userName }</span>
 					</li>
 					<li>
 						<img alt="今天是" src="images/common/date.jpg">：

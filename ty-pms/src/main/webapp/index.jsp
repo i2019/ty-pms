@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/base.jsp"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,14 +16,13 @@
 	</div>
 </div>
 
-<form action="login.action" method="post">
+<form action="login_execute.action" method="post">
 <div id="content">
 	<center>
 		<div class="con">
 			<div class="con_title">
 				<span class="con_title_sp">欢迎登录PMS系统</span>
 			</div>
-			
 			<div class="con_panel">
 				<div class="con_input">
 					<span>用户名：</span>
