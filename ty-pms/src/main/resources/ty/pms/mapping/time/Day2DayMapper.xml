@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="ty.pms.dao.common.unit.UnitMapper">
+<mapper namespace="ty.pms.dao.time.day2day.Day2DayMapper">
 
-	<resultMap id="unitResultMap" type="unit">
-		<id column="unitId" property="unitId" jdbcType="VARCHAR" />
-		<result column="unitName" property="unitName" jdbcType="VARCHAR" />
+	<resultMap id="resultMap" type="day2day">
+		<id column="d2Id" property="d2Id" jdbcType="VARCHAR" />
+		<result column="d2Descrip" property="d2Descrip" jdbcType="VARCHAR" />
 		
 		<result column="occurrencedTime" property="occurrencedTime" jdbcType="TIMESTAMP" />
 		<result column="endTime" property="endTime" jdbcType="TIMESTAMP" />
@@ -29,7 +29,7 @@
 	
 	<!-- 列举所有字段 -->
 	<sql id="allColumns">
-		unitId,unitName,
+		d2Id,d2Descrip,
 		occurrencedTime,endTime,createdTime,lastModifyTime,
   		owner,createdBy,updatedBy,remark,delFlag
 	</sql>
@@ -37,19 +37,19 @@
 	<sql id="selectCount">
 		SELECT COUNT(*) FROM
 	</sql>
-	<!-- 根据创建时间降序排序 -->
+	<!-- 根据发生时间降序排序 -->
 	<sql id="createdTimeDESC">
-		ORDER BY createdTime DESC
+		ORDER BY occurrencedTime DESC
 	</sql>
 	
-	<insert id="insertSelective" parameterType="unit">
-		insert into unit
+	<insert id="insertSelective" parameterType="day2day">
+		insert into day2day
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="unitId != null">
-				unitId,
+			<if test="d2Id != null">
+				d2Id,
 			</if>
-			<if test="unitName != null">
-				unitName,
+			<if test="d2Descrip != null">
+				d2Descrip,
 			</if>
 			
 			<if test="occurrencedTime != null">
@@ -81,11 +81,11 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="unitId != null">
-				#{unitId,jdbcType=VARCHAR},
+			<if test="d2Id != null">
+				#{d2Id,jdbcType=VARCHAR},
 			</if>
-			<if test="unitName != null">
-				#{unitName,jdbcType=VARCHAR},
+			<if test="d2Descrip != null">
+				#{d2Descrip,jdbcType=VARCHAR},
 			</if>
 			
 			<if test="occurrencedTime != null">
@@ -118,11 +118,11 @@
 		</trim>
 	</insert>
 	
-	<update id="updateByPrimaryKeySelective" parameterType="unit">
-		update unit
+	<update id="updateByPrimaryKeySelective" parameterType="day2day">
+		update day2day
 		<set>
-			<if test="unitName != null">
-				unitName = #{unitName,jdbcType=VARCHAR},
+			<if test="d2Descrip != null">
+				d2Descrip = #{d2Descrip,jdbcType=VARCHAR},
 			</if>
 		
 			<if test="occurrencedTime != null">
@@ -153,51 +153,51 @@
 				delFlag=#{delFlag,jdbcType=TINYINT}
 			</if>
 		</set>
-		where unitId = #{unitId,jdbcType=VARCHAR}
+		where d2Id = #{d2Id,jdbcType=VARCHAR}
 	</update>
 	
 	<delete id="deleteByPrimaryKey" parameterType="int">
-		delete from unit
-		where unitId = #{unitId,jdbcType=VARCHAR}
+		delete from day2day
+		where d2Id = #{d2Id,jdbcType=VARCHAR}
 	</delete>
 	
-	<select id="selectByPrimaryKey" resultMap="unitResultMap" parameterType="str">
+	<select id="selectByPrimaryKey" resultMap="resultMap" parameterType="str">
 		select
 		<include refid="allColumns" />
-		from unit
-		where unitId = #{unitId,jdbcType=VARCHAR} and delFlag=0
+		from day2day
+		where d2Id = #{d2Id,jdbcType=VARCHAR} and delFlag=0
 	</select>
 
-	<select id="selectByName" resultMap="unitResultMap" parameterType="str">
+	<select id="selectByName" resultMap="resultMap" parameterType="str">
 		select
 		<include refid="allColumns" />
-		from unit
-		where unitName = #{unitName,jdbcType=VARCHAR} and delFlag=0
+		from day2day
+		where d2Descrip = #{d2Descrip,jdbcType=VARCHAR} and delFlag=0
 	</select>
 	
 	<select resultType="int" id="getAllCount">
-		<include refid="selectCount" /> unit 
+		<include refid="selectCount" /> day2day 
 		where delFlag=0
 	</select>
-	<select id="getAll" resultMap="unitResultMap">
+	<select id="getAll" resultMap="resultMap">
 		select
 		<include refid="allColumns" />
-		from unit 
+		from day2day 
 		where delFlag=0
 		<include refid="createdTimeDESC" />
 	</select>
 	
-    <select id="getByCriteriaCount" resultType="int" parameterType="unitCriteria">
-    	<include refid="selectCount" /> unit
+    <select id="getByCriteriaCount" resultType="int" parameterType="day2dayCriteria">
+    	<include refid="selectCount" /> day2day
     	<where>
     		delFlag=0
-    		<if test="unitName != null">
-				and unitName = #{unitName}
+    		<if test="d2Descrip != null">
+				and d2Descrip = #{d2Descrip}
 			</if>
-			<if test="unitNameList != null">
-   			 	and unitName in
-		      	<foreach collection="unitNameList" item="unitName" index="index" open="(" close=")" separator=",">
-		            #{unitName}
+			<if test="d2DescripList != null">
+   			 	and d2Descrip in
+		      	<foreach collection="d2DescripList" item="d2Descrip" index="index" open="(" close=")" separator=",">
+		            #{d2Descrip}
 		        </foreach>
   			</if>
   			
@@ -245,17 +245,17 @@
     	</where>
     </select>
     
-    <select id="getByCriteria" resultMap="unitResultMap" resultType="unitResult" parameterType="unitCriteria">
-    	select <include refid="allColumns" /> from unit 
+    <select id="getByCriteria" resultMap="resultMap" resultType="day2dayResult" parameterType="day2dayCriteria">
+    	select <include refid="allColumns" /> from day2day 
     	<where>
     		delFlag=0
-    		<if test="unitName != null">
-				and unitName = #{unitName}
+    		<if test="d2Descrip != null">
+				and d2Descrip = #{d2Descrip}
 			</if>
-			<if test="unitNameList != null">
-   			 	and unitName in
-		      	<foreach collection="unitNameList" item="unitName" index="index" open="(" close=")" separator=",">
-		            #{unitName}
+			<if test="d2DescripList != null">
+   			 	and d2Descrip in
+		      	<foreach collection="d2DescripList" item="d2Descrip" index="index" open="(" close=")" separator=",">
+		            #{d2Descrip}
 		        </foreach>
   			</if>
   			

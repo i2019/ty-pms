@@ -7,6 +7,6 @@ public class Day2DayResult extends SearchResult<Day2Day>{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6759895706596036063L;
-	
+	private static final long serialVersionUID = 2362226282681821063L;
+
 }

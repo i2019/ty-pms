@@ -5,11 +5,11 @@ import java.util.List;
 import ty.pms.model.base.SearchCriteria;
 
 public class IncomeCriteria extends SearchCriteria{
-	
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7090400382971260627L;
+	private static final long serialVersionUID = 6232100572168400560L;
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

@@ -38,7 +38,7 @@
 	<sql id="selectCount">
 		SELECT COUNT(*) FROM
 	</sql>
-	<!-- 根据发生时间降序排序 -->
+	<!-- 根据创建时间降序排序 -->
 	<sql id="createdTimeDESC">
 		ORDER BY createdTime DESC
 	</sql>

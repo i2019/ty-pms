@@ -3,7 +3,7 @@ package ty.pms.model.account.expenditure;
 import ty.pms.model.base.BaseObject;
 
 public class Expenditure extends BaseObject{
-	 
+ 
 	private String expenditureId;
 	private String expenditureAmount;
 	private String causeId;

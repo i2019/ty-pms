@@ -3,7 +3,7 @@ package ty.pms.model.account.income;
 import ty.pms.model.base.BaseObject;
 
 public class Income extends BaseObject{
-	 
+	
 	private String incomeId;
 	private String incomeAmount;
 	private String causeId;

@@ -4,27 +4,113 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">  
 <configuration>  
 	<typeAliases>
-		<!-- common -->
+		<!--  
+	  	 以下就是mybatis默认为我们注册的别名,可直接使用
+	
+	    registerAlias("string", String.class);
+	 
+	    registerAlias("byte", Byte.class);
+	    registerAlias("long", Long.class);
+	    registerAlias("short", Short.class);
+	    registerAlias("int", Integer.class);
+	    registerAlias("integer", Integer.class);
+	    registerAlias("double", Double.class);
+	    registerAlias("float", Float.class);
+	    registerAlias("boolean", Boolean.class);
+	 
+	    registerAlias("byte[]", Byte[].class);
+	    registerAlias("long[]", Long[].class);
+	    registerAlias("short[]", Short[].class);
+	    registerAlias("int[]", Integer[].class);
+	    registerAlias("integer[]", Integer[].class);
+	    registerAlias("double[]", Double[].class);
+	    registerAlias("float[]", Float[].class);
+	    registerAlias("boolean[]", Boolean[].class);
+	 
+	    registerAlias("_byte", byte.class);
+	    registerAlias("_long", long.class);
+	    registerAlias("_short", short.class);
+	    registerAlias("_int", int.class);
+	    registerAlias("_integer", int.class);
+	    registerAlias("_double", double.class);
+	    registerAlias("_float", float.class);
+	    registerAlias("_boolean", boolean.class);
+	 
+	    registerAlias("_byte[]", byte[].class);
+	    registerAlias("_long[]", long[].class);
+	    registerAlias("_short[]", short[].class);
+	    registerAlias("_int[]", int[].class);
+	    registerAlias("_integer[]", int[].class);
+	    registerAlias("_double[]", double[].class);
+	    registerAlias("_float[]", float[].class);
+	    registerAlias("_boolean[]", boolean[].class);
+	 
+	    registerAlias("date", Date.class);
+	    registerAlias("decimal", BigDecimal.class);
+	    registerAlias("bigdecimal", BigDecimal.class);
+	    registerAlias("biginteger", BigInteger.class);
+	    registerAlias("object", Object.class);
+	 
+	    registerAlias("date[]", Date[].class);
+	    registerAlias("decimal[]", BigDecimal[].class);
+	    registerAlias("bigdecimal[]", BigDecimal[].class);
+	    registerAlias("biginteger[]", BigInteger[].class);
+	    registerAlias("object[]", Object[].class);
+	 
+	    registerAlias("map", Map.class);
+	    registerAlias("hashmap", HashMap.class);
+	    registerAlias("list", List.class);
+	    registerAlias("arraylist", ArrayList.class);
+	    registerAlias("collection", Collection.class);
+	    registerAlias("iterator", Iterator.class);
+	 
+	    registerAlias("ResultSet", ResultSet.class);
+	    -->
 		<typeAlias type="java.lang.Integer" alias="int"/>
 		<typeAlias type="java.lang.String" alias="str"/>
 		<typeAlias type="java.util.List" alias="list"/>
 		
-		<!-- user -->
 		<typeAlias type="ty.pms.model.sys.user.UserResult" alias="userResult"/>
 		<typeAlias type="ty.pms.model.sys.user.UserCriteria" alias="userCriteria"/>
 		<typeAlias type="ty.pms.model.sys.user.User" alias="user"/>
 		
-		<!-- unit -->
 		<typeAlias type="ty.pms.model.common.unit.UnitResult" alias="unitResult"/>
 		<typeAlias type="ty.pms.model.common.unit.UnitCriteria" alias="unitCriteria"/>
 		<typeAlias type="ty.pms.model.common.unit.Unit" alias="unit"/>
 		
-		
+		<typeAlias type="ty.pms.model.time.day2day.Day2DayResult" alias="day2dayResult"/> 
+		<typeAlias type="ty.pms.model.time.day2day.Day2DayCriteria" alias="day2dayCriteria"/>
+		<typeAlias type="ty.pms.model.time.day2day.Day2Day" alias="day2day"/>
+
+		<!--
+		      通过package, 可以直接指定package的名字， mybatis会自动扫描你指定包下面的javabean,
+		      并且默认设置一个别名，默认的名字为： javabean 的首字母小写的非限定类名来作为它的别名。
+		      也可在javabean 加上注解@Alias 来自定义别名， 例如： @Alias(user) 
+		  <package name="com.demo.entity"/>
+       	 -->
+       	 <package name="ty.pms.model.common.cause"/>
+       	 <package name="ty.pms.model.account.expenditure"/>
+       	 <package name="ty.pms.model.account.income"/>
+       	 <!-- 
+	       	<typeAlias type="ty.pms.model.common.cause.Cause" alias="cause"/>
+			<typeAlias type="ty.pms.model.common.cause.CauseCriteria" alias="causeCriteria"/>
+			<typeAlias type="ty.pms.model.common.cause.CauseResult" alias="Result"/>
+			
+			<typeAlias type="ty.pms.model.account.expenditure.ExpenditureResult" alias="expenditureResult"/>
+			<typeAlias type="ty.pms.model.account.expenditure.ExpenditureCriteria" alias="expenditureCriteria"/>
+			<typeAlias type="ty.pms.model.account.expenditure.Expenditure" alias="expenditure"/>
+	
+			<typeAlias type="ty.pms.model.account.income.IncomeResult" alias="incomeResult"/>
+			<typeAlias type="ty.pms.model.account.income.IncomeCriteria" alias="incomeCriteria"/>
+			<typeAlias type="ty.pms.model.account.income.Income" alias="income"/>
+       	  -->
 	</typeAliases>
 	
     <mappers>  
         <mapper resource="ty/pms/mapping/accounting/UserMapper.xml"/>  
         <mapper resource="ty/pms/mapping/accounting/UnitMapper.xml"/>  
+        <mapper resource="ty/pms/mapping/time/Day2DayMapper.xml"/>  
+        
     </mappers> 
      
 </configuration>

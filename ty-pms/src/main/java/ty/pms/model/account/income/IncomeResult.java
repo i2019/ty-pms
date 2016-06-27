@@ -7,6 +7,7 @@ public class IncomeResult extends SearchResult<Income>{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6759895706596036063L;
-	
+	private static final long serialVersionUID = 8600183759005311929L;
+
+
 }

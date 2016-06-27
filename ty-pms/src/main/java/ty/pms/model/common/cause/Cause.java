@@ -3,7 +3,7 @@ package ty.pms.model.common.cause;
 import ty.pms.model.base.BaseObject;
 
 public class Cause extends BaseObject{
-	 
+	
 	private String causeId;
 	private String causeName;
 	

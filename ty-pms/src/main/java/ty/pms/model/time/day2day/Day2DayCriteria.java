@@ -9,7 +9,7 @@ public class Day2DayCriteria extends SearchCriteria{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7090400382971260627L;
+	private static final long serialVersionUID = 3632743294237517716L;
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

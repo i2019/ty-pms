@@ -38,8 +38,8 @@ public class UserMapperTest extends BaseTest<UserMapper> {
 		c.setUserId(CommonUtil.generateUUID());
 		c.setCreatedTime(new Date());
 		c.setUserName(CommonUtil.generateUUID().substring(27));
-		
-		userMapper.insertSelective(c);
+		System.out.println(userMapper.selectByName("v"));
+		//userMapper.insertSelective(c);
 	}
 	
 	//@Test
