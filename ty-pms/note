@@ -1,2 +1,146 @@
 
-http://www.fancybox.net/api
+######################################################################################
+
+
+
+######################################################################################
+
+
+
+######################################################################################
+####################### SQL:Create DB and Table
+CREATE DATABASE IF NOT EXISTS `ty` DEFAULT CHARACTER SET utf8;
+USE `ty`;
+
+CREATE TABLE `expenditure` (
+  `expenditureId` VARCHAR(32) NOT NULL COMMENT '支出id',
+  `expenditureAmount` decimal(19,4) NOT NULL default '0.0000' COMMENT '支出金额',
+  `causeId` VARCHAR(32) DEFAULT NULL COMMENT '发生原因',
+  `unitId` VARCHAR(32) DEFAULT NULL COMMENT '单位',
+  `occurrencedTime` DATETIME DEFAULT NULL COMMENT '发生时间',
+  `endTime` DATETIME DEFAULT NULL COMMENT '结束时间',
+  `owner` VARCHAR(32) DEFAULT NULL COMMENT '所有者',
+  `createdTime` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `lastModifyTime` DATETIME DEFAULT NULL COMMENT '修改时间',
+  `createdBy` VARCHAR(32) DEFAULT NULL COMMENT '创建者',
+  `updatedBy` VARCHAR(32) DEFAULT NULL COMMENT '修改者',
+  `remark` VARCHAR(1024) DEFAULT NULL COMMENT '备注',
+  `delFlag` TINYINT(1) DEFAULT NULL COMMENT '删除标志',
+  PRIMARY KEY  (`expenditureId`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `income` (
+  `incomeId` VARCHAR(32) NOT NULL COMMENT '收入id',
+  `incomeAmount` decimal(19,4) NOT NULL default '0.0000' COMMENT '收入金额',
+  `causeId` VARCHAR(32) DEFAULT NULL COMMENT '发生原因',
+  `unitId` VARCHAR(32) DEFAULT NULL COMMENT '单位',
+  `occurrencedTime` DATETIME DEFAULT NULL COMMENT '发生时间',
+   `endTime` DATETIME DEFAULT NULL COMMENT '结束时间',
+  `owner` VARCHAR(32) DEFAULT NULL COMMENT '所有者',
+  `createdTime` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `lastModifyTime` DATETIME DEFAULT NULL COMMENT '修改时间',
+  `createdBy` VARCHAR(32) DEFAULT NULL COMMENT '创建者',
+  `updatedBy` VARCHAR(32) DEFAULT NULL COMMENT '修改者',
+  `remark` VARCHAR(1024) DEFAULT NULL COMMENT '备注',
+  `delFlag` TINYINT(1) DEFAULT NULL COMMENT '删除标志',
+  PRIMARY KEY  (`incomeId`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `user` (
+  `userId` VARCHAR(32) NOT NULL COMMENT '操作员id',
+  `userName` VARCHAR(50) NOT NULL COMMENT '操作员名称',
+  `password` VARCHAR(50) DEFAULT NULL COMMENT '密码',
+  `occurrencedTime` DATETIME DEFAULT NULL COMMENT '发生时间',
+   `endTime` DATETIME DEFAULT NULL COMMENT '结束时间',
+  `owner` VARCHAR(32) DEFAULT NULL COMMENT '所有者',
+  `createdTime` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `lastModifyTime` DATETIME DEFAULT NULL COMMENT '修改时间',
+  `createdBy` VARCHAR(32) DEFAULT NULL COMMENT '创建者',
+  `updatedBy` VARCHAR(32) DEFAULT NULL COMMENT '修改者',
+  `remark` VARCHAR(1024) DEFAULT NULL COMMENT '备注',
+  `delFlag` TINYINT(1) DEFAULT NULL COMMENT '删除标志',
+  PRIMARY KEY  (`userId`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `unit` (
+  `unitId` VARCHAR(32) NOT NULL COMMENT '单位id',
+  `unitName` VARCHAR(50) NOT NULL COMMENT '单位名称',
+  `occurrencedTime` DATETIME DEFAULT NULL COMMENT '发生时间',
+   `endTime` DATETIME DEFAULT NULL COMMENT '结束时间',
+  `owner` VARCHAR(32) DEFAULT NULL COMMENT '所有者',
+  `createdTime` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `lastModifyTime` DATETIME DEFAULT NULL COMMENT '修改时间',
+  `createdBy` VARCHAR(32) DEFAULT NULL COMMENT '创建者',
+  `updatedBy` VARCHAR(32) DEFAULT NULL COMMENT '修改者',
+  `remark` VARCHAR(1024) DEFAULT NULL COMMENT '备注',
+  `delFlag` TINYINT(1) DEFAULT NULL COMMENT '删除标志',
+  PRIMARY KEY  (`unitId`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `cause` (
+  `causeId` VARCHAR(32) NOT NULL COMMENT '原由id',
+  `causeName` VARCHAR(50) NOT NULL COMMENT '原由名称',
+  `occurrencedTime` DATETIME DEFAULT NULL COMMENT '发生时间',
+  `endTime` DATETIME DEFAULT NULL COMMENT '结束时间',
+  `owner` VARCHAR(32) DEFAULT NULL COMMENT '所有者',
+  `createdTime` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `lastModifyTime` DATETIME DEFAULT NULL COMMENT '修改时间',
+  `createdBy` VARCHAR(32) DEFAULT NULL COMMENT '创建者',
+  `updatedBy` VARCHAR(32) DEFAULT NULL COMMENT '修改者',
+  `remark` VARCHAR(1024) DEFAULT NULL COMMENT '备注',
+  `delFlag` TINYINT(1) DEFAULT NULL COMMENT '删除标志',
+  PRIMARY KEY  (`causeId`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+alter `cause` ADD COLUMN parentId VARCHAR(32) DEFAULT NULL COMMENT '父Id';
+
+
+CREATE TABLE `day2day` (
+  `d2Id` VARCHAR(32) NOT NULL COMMENT '每日流水账id',
+  `d2Descrip` VARCHAR(1024) DEFAULT NULL COMMENT '每日流水账描述',
+  `occurrencedTime` DATETIME DEFAULT NULL COMMENT '发生时间',
+  `endTime` DATETIME DEFAULT NULL COMMENT '结束时间',
+  `owner` VARCHAR(32) DEFAULT NULL COMMENT '所有者',
+  `createdTime` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `lastModifyTime` DATETIME DEFAULT NULL COMMENT '修改时间',
+  `createdBy` VARCHAR(32) DEFAULT NULL COMMENT '创建者',
+  `updatedBy` VARCHAR(32) DEFAULT NULL COMMENT '修改者',
+  `remark` VARCHAR(1024) DEFAULT NULL COMMENT '备注',
+  `delFlag` TINYINT(1) DEFAULT NULL COMMENT '删除标志',
+  PRIMARY KEY  (`d2Id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `menst` (
+  `menstId` VARCHAR(32) NOT NULL COMMENT '小红id',
+  `occurrencedTime` DATETIME DEFAULT NULL COMMENT '发生时间',
+  `endTime` DATETIME DEFAULT NULL COMMENT '结束时间',
+  `owner` VARCHAR(32) DEFAULT NULL COMMENT '所有者',
+  `createdTime` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `lastModifyTime` DATETIME DEFAULT NULL COMMENT '修改时间',
+  `createdBy` VARCHAR(32) DEFAULT NULL COMMENT '创建者',
+  `updatedBy` VARCHAR(32) DEFAULT NULL COMMENT '修改者',
+  `remark` VARCHAR(1024) DEFAULT NULL COMMENT '备注',
+  `delFlag` TINYINT(1) DEFAULT NULL COMMENT '删除标志',
+  PRIMARY KEY  (`menstId`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
+######################################################################################
+
+
+
+
+######################################################################################
+
+
+
+######################################################################################
+

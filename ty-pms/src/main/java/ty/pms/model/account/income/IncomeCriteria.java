@@ -1,5 +1,6 @@
 package ty.pms.model.account.income;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import ty.pms.model.base.SearchCriteria;
@@ -18,12 +19,32 @@ public class IncomeCriteria extends SearchCriteria{
 	private String incomeId;
 	private List<String> incomeIdList;
 	
-	private String incomeAmount;
-	private List<String> incomeAmountList;
+	private BigDecimal incomeAmount;
+	private BigDecimal incomeAmountBegin;
+	private BigDecimal incomeAmountEnd;
 	
 	private String causeId;
 	private List<String> causeIdList;
 	
+	public BigDecimal getIncomeAmount() {
+		return incomeAmount;
+	}
+	public void setIncomeAmount(BigDecimal incomeAmount) {
+		this.incomeAmount = incomeAmount;
+	}
+	public BigDecimal getIncomeAmountBegin() {
+		return incomeAmountBegin;
+	}
+	public void setIncomeAmountBegin(BigDecimal incomeAmountBegin) {
+		this.incomeAmountBegin = incomeAmountBegin;
+	}
+	public BigDecimal getIncomeAmountEnd() {
+		return incomeAmountEnd;
+	}
+	public void setIncomeAmountEnd(BigDecimal incomeAmountEnd) {
+		this.incomeAmountEnd = incomeAmountEnd;
+	}
+
 	private String unitId;
 	private List<String> unitIdList;
 
@@ -39,18 +60,7 @@ public class IncomeCriteria extends SearchCriteria{
 	public void setIncomeIdList(List<String> incomeIdList) {
 		this.incomeIdList = incomeIdList;
 	}
-	public String getIncomeAmount() {
-		return incomeAmount;
-	}
-	public void setIncomeAmount(String incomeAmount) {
-		this.incomeAmount = incomeAmount;
-	}
-	public List<String> getIncomeAmountList() {
-		return incomeAmountList;
-	}
-	public void setIncomeAmountList(List<String> incomeAmountList) {
-		this.incomeAmountList = incomeAmountList;
-	}
+	
 	public String getCauseId() {
 		return causeId;
 	}

@@ -65,16 +65,20 @@ public class UserServiceImplTest  extends BaseTest<UserService> {
 		d.setTime(System.currentTimeMillis());
 		//c.setCreatedTimeEnd(d);
 		
+		c.setRemark("2");
+		
 		UserResult r=new UserResult();
 		r=userService.getByCriteria(c);
 		
 		System.out.println("结果数："+r.getTotalCount());
 		
 		List<User> us=r.getResultList();
+		//us=userService.selectByName("v");
+		
 		System.out.println("查询数："+us.size());
 		
 		for (User u : us) {
-			System.out.println(u+"-------"+u.getCreatedTime());
+			System.out.println(u.getRemark()+"-------"+u.getCreatedTime());
 		}
 		
 	}

@@ -91,6 +91,7 @@
        	 <package name="ty.pms.model.common.cause"/>
        	 <package name="ty.pms.model.account.expenditure"/>
        	 <package name="ty.pms.model.account.income"/>
+       	 <package name="ty.pms.model.health.menst"/>
        	 <!-- 
 	       	<typeAlias type="ty.pms.model.common.cause.Cause" alias="cause"/>
 			<typeAlias type="ty.pms.model.common.cause.CauseCriteria" alias="causeCriteria"/>
@@ -107,9 +108,16 @@
 	</typeAliases>
 	
     <mappers>  
+    
         <mapper resource="ty/pms/mapping/accounting/UserMapper.xml"/>  
         <mapper resource="ty/pms/mapping/accounting/UnitMapper.xml"/>  
+        <mapper resource="ty/pms/mapping/accounting/CauseMapper.xml"/>
+        <mapper resource="ty/pms/mapping/accounting/IncomeMapper.xml"/>  
+        <mapper resource="ty/pms/mapping/accounting/ExpenditureMapper.xml"/>  
+        
         <mapper resource="ty/pms/mapping/time/Day2DayMapper.xml"/>  
+        
+        <mapper resource="ty/pms/mapping/health/MenstMapper.xml"/>  
         
     </mappers> 
      

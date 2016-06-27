@@ -1,11 +1,13 @@
 package ty.pms.model.account.income;
 
+import java.math.BigDecimal;
+
 import ty.pms.model.base.BaseObject;
 
 public class Income extends BaseObject{
 	
 	private String incomeId;
-	private String incomeAmount;
+	private BigDecimal incomeAmount;
 	private String causeId;
 	private String unitId;
 	
@@ -15,10 +17,10 @@ public class Income extends BaseObject{
 	public void setIncomeId(String incomeId) {
 		this.incomeId = incomeId;
 	}
-	public String getIncomeAmount() {
+	public BigDecimal getIncomeAmount() {
 		return incomeAmount;
 	}
-	public void setIncomeAmount(String incomeAmount) {
+	public void setIncomeAmount(BigDecimal incomeAmount) {
 		this.incomeAmount = incomeAmount;
 	}
 	public String getCauseId() {
@@ -32,6 +34,20 @@ public class Income extends BaseObject{
 	}
 	public void setUnitId(String unitId) {
 		this.unitId = unitId;
+	}
+	@Override
+	public String toString() {
+		return "Income [incomeId=" + incomeId + ", incomeAmount="
+				+ incomeAmount + ", causeId=" + causeId + ", unitId=" + unitId
+				+ ", getEndTime()=" + getEndTime() + ", getOwner()="
+				+ getOwner() + ", getOccurrencedTime()=" + getOccurrencedTime()
+				+ ", getCreatedTime()=" + getCreatedTime()
+				+ ", getLastModifyTime()=" + getLastModifyTime()
+				+ ", getCreatedBy()=" + getCreatedBy() + ", getUpdatedBy()="
+				+ getUpdatedBy() + ", getRemark()=" + getRemark()
+				+ ", isDelFlag()=" + isDelFlag() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
 	
 }

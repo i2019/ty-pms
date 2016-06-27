@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="ty.pms.dao.time.day2day.Day2DayMapper">
+<mapper namespace="ty.pms.dao.common.cause.CauseMapper">
 
-	<resultMap id="resultMap" type="day2day">
-		<id column="d2Id" property="d2Id" jdbcType="VARCHAR" />
-		<result column="d2Descrip" property="d2Descrip" jdbcType="VARCHAR" />
+	<resultMap id="resultMap" type="Cause">
+		<id column="causeId" property="causeId" jdbcType="VARCHAR" />
+		<result column="causeName" property="causeName" jdbcType="VARCHAR" />
 		
 		<result column="occurrencedTime" property="occurrencedTime" jdbcType="TIMESTAMP" />
 		<result column="endTime" property="endTime" jdbcType="TIMESTAMP" />
@@ -29,7 +29,7 @@
 	
 	<!-- 列举所有字段 -->
 	<sql id="allColumns">
-		d2Id,d2Descrip,
+		causeId,causeName,
 		occurrencedTime,endTime,createdTime,lastModifyTime,
   		owner,createdBy,updatedBy,remark,delFlag
 	</sql>
@@ -42,14 +42,14 @@
 		ORDER BY occurrencedTime DESC
 	</sql>
 	
-	<insert id="insertSelective" parameterType="day2day">
-		insert into day2day
+	<insert id="insertSelective" parameterType="Cause">
+		insert into Cause
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="d2Id != null">
-				d2Id,
+			<if test="causeId != null">
+				causeId,
 			</if>
-			<if test="d2Descrip != null">
-				d2Descrip,
+			<if test="causeName != null">
+				causeName,
 			</if>
 			
 			<if test="occurrencedTime != null">
@@ -81,11 +81,11 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="d2Id != null">
-				#{d2Id,jdbcType=VARCHAR},
+			<if test="causeId != null">
+				#{causeId,jdbcType=VARCHAR},
 			</if>
-			<if test="d2Descrip != null">
-				#{d2Descrip,jdbcType=VARCHAR},
+			<if test="causeName != null">
+				#{causeName,jdbcType=VARCHAR},
 			</if>
 			
 			<if test="occurrencedTime != null">
@@ -118,11 +118,11 @@
 		</trim>
 	</insert>
 	
-	<update id="updateByPrimaryKeySelective" parameterType="day2day">
-		update day2day
+	<update id="updateByPrimaryKeySelective" parameterType="Cause">
+		update Cause
 		<set>
-			<if test="d2Descrip != null">
-				d2Descrip = #{d2Descrip,jdbcType=VARCHAR},
+			<if test="causeName != null">
+				causeName = #{causeName,jdbcType=VARCHAR},
 			</if>
 		
 			<if test="occurrencedTime != null">
@@ -153,52 +153,52 @@
 				delFlag=#{delFlag,jdbcType=TINYINT}
 			</if>
 		</set>
-		where d2Id = #{d2Id,jdbcType=VARCHAR}
+		where causeId = #{causeId,jdbcType=VARCHAR}
 	</update>
 	
 	<delete id="deleteByPrimaryKey" parameterType="int">
-		delete from day2day
-		where d2Id = #{d2Id,jdbcType=VARCHAR}
+		delete from Cause
+		where causeId = #{causeId,jdbcType=VARCHAR}
 	</delete>
 	
 	<select id="selectByPrimaryKey" resultMap="resultMap" parameterType="str">
 		select
 		<include refid="allColumns" />
-		from day2day
-		where d2Id = #{d2Id,jdbcType=VARCHAR} and delFlag=0
+		from Cause
+		where causeId = #{causeId,jdbcType=VARCHAR} and delFlag=0
 	</select>
 	
-	<!-- 根据描述模糊查询 -->
+	<!-- 根据名称查询 -->
 	<select id="selectByName" resultMap="resultMap" parameterType="str">
 		select
 		<include refid="allColumns" />
-		from day2day where delFlag=0
-		and d2Descrip like CONCAT('%',#{d2Descrip},'%' )
+		from Cause where delFlag=0
+		and causeName = #{causeName,jdbcType=VARCHAR}
 	</select>
 	
 	<select resultType="int" id="getAllCount">
-		<include refid="selectCount" /> day2day 
+		<include refid="selectCount" /> Cause 
 		where delFlag=0
 	</select>
 	<select id="getAll" resultMap="resultMap">
 		select
 		<include refid="allColumns" />
-		from day2day 
+		from Cause 
 		where delFlag=0
 		<include refid="createdTimeDESC" />
 	</select>
 	
-    <select id="getByCriteriaCount" resultType="int" parameterType="day2dayCriteria">
-    	<include refid="selectCount" /> day2day
+    <select id="getByCriteriaCount" resultType="int" parameterType="CauseCriteria">
+    	<include refid="selectCount" /> Cause
     	<where>
     		delFlag=0
-    		<if test="d2Descrip != null">
-				and d2Descrip = #{d2Descrip}
+    		<if test="causeName != null">
+				and causeName = #{causeName}
 			</if>
-			<if test="d2DescripList != null">
-   			 	and d2Descrip in
-		      	<foreach collection="d2DescripList" item="d2Descrip" index="index" open="(" close=")" separator=",">
-		            #{d2Descrip}
+			<if test="causeNameList != null">
+   			 	and causeName in
+		      	<foreach collection="causeNameList" item="causeName" index="index" open="(" close=")" separator=",">
+		            #{causeName}
 		        </foreach>
   			</if>
   			
@@ -246,17 +246,17 @@
     	</where>
     </select>
     
-    <select id="getByCriteria" resultMap="resultMap" resultType="day2dayResult" parameterType="day2dayCriteria">
-    	select <include refid="allColumns" /> from day2day 
+    <select id="getByCriteria" resultMap="resultMap" resultType="CauseResult" parameterType="CauseCriteria">
+    	select <include refid="allColumns" /> from Cause 
     	<where>
     		delFlag=0
-    		<if test="d2Descrip != null">
-				and d2Descrip = #{d2Descrip}
+    		<if test="causeName != null">
+				and causeName = #{causeName}
 			</if>
-			<if test="d2DescripList != null">
-   			 	and d2Descrip in
-		      	<foreach collection="d2DescripList" item="d2Descrip" index="index" open="(" close=")" separator=",">
-		            #{d2Descrip}
+			<if test="causeNameList != null">
+   			 	and causeName in
+		      	<foreach collection="causeNameList" item="causeName" index="index" open="(" close=")" separator=",">
+		            #{causeName}
 		        </foreach>
   			</if>
   			

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="ty.pms.dao.time.day2day.Day2DayMapper">
+<mapper namespace="ty.pms.dao.account.income.IncomeMapper">
 
-	<resultMap id="resultMap" type="day2day">
-		<id column="d2Id" property="d2Id" jdbcType="VARCHAR" />
-		<result column="d2Descrip" property="d2Descrip" jdbcType="VARCHAR" />
+	<resultMap id="resultMap" type="Income">
+		<id column="incomeId" property="incomeId" jdbcType="VARCHAR" />
+		<result column="incomeAmount" property="incomeAmount" jdbcType="DECIMAL" />
 		
 		<result column="occurrencedTime" property="occurrencedTime" jdbcType="TIMESTAMP" />
 		<result column="endTime" property="endTime" jdbcType="TIMESTAMP" />
@@ -29,7 +29,7 @@
 	
 	<!-- 列举所有字段 -->
 	<sql id="allColumns">
-		d2Id,d2Descrip,
+		incomeId,incomeAmount,
 		occurrencedTime,endTime,createdTime,lastModifyTime,
   		owner,createdBy,updatedBy,remark,delFlag
 	</sql>
@@ -42,14 +42,14 @@
 		ORDER BY occurrencedTime DESC
 	</sql>
 	
-	<insert id="insertSelective" parameterType="day2day">
-		insert into day2day
+	<insert id="insertSelective" parameterType="Income">
+		insert into Income
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="d2Id != null">
-				d2Id,
+			<if test="incomeId != null">
+				incomeId,
 			</if>
-			<if test="d2Descrip != null">
-				d2Descrip,
+			<if test="incomeAmount != null">
+				incomeAmount,
 			</if>
 			
 			<if test="occurrencedTime != null">
@@ -81,11 +81,11 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="d2Id != null">
-				#{d2Id,jdbcType=VARCHAR},
+			<if test="incomeId != null">
+				#{incomeId,jdbcType=VARCHAR},
 			</if>
-			<if test="d2Descrip != null">
-				#{d2Descrip,jdbcType=VARCHAR},
+			<if test="incomeAmount != null">
+				#{incomeAmount,jdbcType=VARCHAR},
 			</if>
 			
 			<if test="occurrencedTime != null">
@@ -118,11 +118,11 @@
 		</trim>
 	</insert>
 	
-	<update id="updateByPrimaryKeySelective" parameterType="day2day">
-		update day2day
+	<update id="updateByPrimaryKeySelective" parameterType="Income">
+		update Income
 		<set>
-			<if test="d2Descrip != null">
-				d2Descrip = #{d2Descrip,jdbcType=VARCHAR},
+			<if test="incomeAmount != null">
+				incomeAmount = #{incomeAmount,jdbcType=DECIMAL},
 			</if>
 		
 			<if test="occurrencedTime != null">
@@ -153,54 +153,49 @@
 				delFlag=#{delFlag,jdbcType=TINYINT}
 			</if>
 		</set>
-		where d2Id = #{d2Id,jdbcType=VARCHAR}
+		where incomeId = #{incomeId,jdbcType=VARCHAR}
 	</update>
 	
 	<delete id="deleteByPrimaryKey" parameterType="int">
-		delete from day2day
-		where d2Id = #{d2Id,jdbcType=VARCHAR}
+		delete from Income
+		where incomeId = #{incomeId,jdbcType=VARCHAR}
 	</delete>
 	
 	<select id="selectByPrimaryKey" resultMap="resultMap" parameterType="str">
 		select
 		<include refid="allColumns" />
-		from day2day
-		where d2Id = #{d2Id,jdbcType=VARCHAR} and delFlag=0
+		from Income
+		where incomeId = #{incomeId,jdbcType=VARCHAR} and delFlag=0
 	</select>
 	
-	<!-- 根据描述模糊查询 -->
+	<!-- 根据金额查询 -->
 	<select id="selectByName" resultMap="resultMap" parameterType="str">
 		select
 		<include refid="allColumns" />
-		from day2day where delFlag=0
-		and d2Descrip like CONCAT('%',#{d2Descrip},'%' )
+		from Income where delFlag=0
+		and incomeAmount = #{incomeAmount,jdbcType=DECIMAL}
 	</select>
 	
 	<select resultType="int" id="getAllCount">
-		<include refid="selectCount" /> day2day 
+		<include refid="selectCount" /> Income 
 		where delFlag=0
 	</select>
 	<select id="getAll" resultMap="resultMap">
 		select
 		<include refid="allColumns" />
-		from day2day 
+		from Income 
 		where delFlag=0
 		<include refid="createdTimeDESC" />
 	</select>
 	
-    <select id="getByCriteriaCount" resultType="int" parameterType="day2dayCriteria">
-    	<include refid="selectCount" /> day2day
+    <select id="getByCriteriaCount" resultType="int" parameterType="IncomeCriteria">
+    	<include refid="selectCount" /> Income
     	<where>
     		delFlag=0
-    		<if test="d2Descrip != null">
-				and d2Descrip = #{d2Descrip}
+    		<if test="incomeAmount != null">
+				and incomeAmount = #{incomeAmount}
 			</if>
-			<if test="d2DescripList != null">
-   			 	and d2Descrip in
-		      	<foreach collection="d2DescripList" item="d2Descrip" index="index" open="(" close=")" separator=",">
-		            #{d2Descrip}
-		        </foreach>
-  			</if>
+			
   			
 			<if test="occurrencedTime != null">
 				and occurrencedTime=#{occurrencedTime}
@@ -246,26 +241,50 @@
     	</where>
     </select>
     
-    <select id="getByCriteria" resultMap="resultMap" resultType="day2dayResult" parameterType="day2dayCriteria">
-    	select <include refid="allColumns" /> from day2day 
+    <select id="getByCriteria" resultMap="resultMap" resultType="IncomeResult" parameterType="IncomeCriteria">
+    	select <include refid="allColumns" /> from Income 
     	<where>
     		delFlag=0
-    		<if test="d2Descrip != null">
-				and d2Descrip = #{d2Descrip}
+    		<if test="incomeAmount != null">
+				and incomeAmount = #{incomeAmount}
 			</if>
-			<if test="d2DescripList != null">
-   			 	and d2Descrip in
-		      	<foreach collection="d2DescripList" item="d2Descrip" index="index" open="(" close=")" separator=",">
-		            #{d2Descrip}
-		        </foreach>
-  			</if>
-  			
+			<if test="incomeAmountBegin != null">
+				<![CDATA[
+				and incomeAmount >= #{incomeAmountBegin}
+				]]>   
+			</if>
+  			<if test="incomeAmountEnd != null">
+				<![CDATA[
+				and incomeAmount <= #{incomeAmountEnd}
+				]]>   
+			</if>
+			
 			<if test="occurrencedTime != null">
 				and occurrencedTime=#{occurrencedTime}
+			</if>
+			<if test="occurrencedTimeBegin != null">
+				<![CDATA[
+				and occurrencedTime>=#{occurrencedTimeBegin}
+				]]>     
+			</if>
+			<if test="occurrencedTimeEnd != null">
+				<![CDATA[
+				and occurrencedTime<=#{occurrencedTimeEnd}
+				]]>     
 			</if>
 			
 			<if test="endTime != null">
 				and endTime=#{endTime}
+			</if>
+			<if test="endTimeBegin != null">
+				<![CDATA[
+				and endTime>=#{endTimeBegin}
+				]]>     
+			</if>
+			<if test="endTimeEnd != null">
+				<![CDATA[
+				and endTime<=#{endTimeEnd}
+				]]>     
 			</if>
 			
 			<if test="lastModifyTime != null">
@@ -289,15 +308,33 @@
 			<if test="owner != null">
 				and owner=#{owner}
 			</if>
-			
+			<if test="ownerList != null">
+   			 	and owner in
+		      	<foreach collection="ownerList" item="owner" index="index" open="(" close=")" separator=",">
+		            #{owner}
+		        </foreach>
+  			</if>
+  			
 			<if test="createdBy != null">
 				and createdBy=#{createdBy}
 			</if>
-			
+			<if test="createdByList != null">
+   			 	and createdBy in
+		      	<foreach collection="createdByList" item="createdBy" index="index" open="(" close=")" separator=",">
+		            #{createdBy}
+		        </foreach>
+  			</if>
+  			
 			<if test="updatedBy != null">
 				and updatedBy=#{updatedBy}
 			</if>
-			
+			<if test="updatedByList != null">
+   			 	and createdBy in
+		      	<foreach collection="updatedByList" item="updatedBy" index="index" open="(" close=")" separator=",">
+		            #{updatedBy}
+		        </foreach>
+  			</if>
+  			
 			<if test="remark != null">
 				 and remark like CONCAT('%','${remark}','%' )
 			</if>

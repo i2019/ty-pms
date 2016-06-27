@@ -1,5 +1,6 @@
 package ty.pms.model.account.expenditure;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import ty.pms.model.base.SearchCriteria;
@@ -20,8 +21,9 @@ public class ExpenditureCriteria extends SearchCriteria{
 	private String expenditureId;
 	private List<String> expenditureIdList;
 	
-	private String expenditureAmount;
-	private List<String> expenditureAmountList;
+	private BigDecimal expenditureAmount;
+	private BigDecimal expenditureAmountBegin;
+	private BigDecimal expenditureAmountEnd;
 	
 	private String causeId;
 	private List<String> causeIdList;
@@ -30,6 +32,24 @@ public class ExpenditureCriteria extends SearchCriteria{
 	private List<String> unitIdList;
 
 	
+	public BigDecimal getExpenditureAmount() {
+		return expenditureAmount;
+	}
+	public void setExpenditureAmount(BigDecimal expenditureAmount) {
+		this.expenditureAmount = expenditureAmount;
+	}
+	public BigDecimal getExpenditureAmountBegin() {
+		return expenditureAmountBegin;
+	}
+	public void setExpenditureAmountBegin(BigDecimal expenditureAmountBegin) {
+		this.expenditureAmountBegin = expenditureAmountBegin;
+	}
+	public BigDecimal getExpenditureAmountEnd() {
+		return expenditureAmountEnd;
+	}
+	public void setExpenditureAmountEnd(BigDecimal expenditureAmountEnd) {
+		this.expenditureAmountEnd = expenditureAmountEnd;
+	}
 	public String getExpenditureId() {
 		return expenditureId;
 	}
@@ -42,18 +62,7 @@ public class ExpenditureCriteria extends SearchCriteria{
 	public void setExpenditureIdList(List<String> expenditureIdList) {
 		this.expenditureIdList = expenditureIdList;
 	}
-	public String getExpenditureAmount() {
-		return expenditureAmount;
-	}
-	public void setExpenditureAmount(String expenditureAmount) {
-		this.expenditureAmount = expenditureAmount;
-	}
-	public List<String> getExpenditureAmountList() {
-		return expenditureAmountList;
-	}
-	public void setExpenditureAmountList(List<String> expenditureAmountList) {
-		this.expenditureAmountList = expenditureAmountList;
-	}
+	
 	public String getCauseId() {
 		return causeId;
 	}

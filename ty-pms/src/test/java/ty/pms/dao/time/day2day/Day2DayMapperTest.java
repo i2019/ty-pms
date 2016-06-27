@@ -2,6 +2,7 @@ package ty.pms.dao.time.day2day;
 
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,8 +33,12 @@ public class Day2DayMapperTest extends BaseTest<Day2DayMapper> {
 		
 		//day2DayMapper.insertSelective(record);
 		
-		
-		System.out.println(record);
+		List<Day2Day> ds= day2DayMapper.selectByName("洗漱,吃了点粥,然后骑自行车去公司");
+		System.out.println(ds);
+//		for (Day2Day day2Day : ds) {
+//			System.out.println(day2Day);
+//		}
+		//System.out.println(record);
 		
 	}
 

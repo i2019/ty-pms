@@ -213,6 +213,7 @@ function loadMenu(resourceType, treeObj){
  
 	
 	
+	
 	{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":1122,"resourceName":"时间管理","resourceOrder":0,"resourceType":""},
 	
 	{"accessPath":"","checked":false,"delFlag":0,"parentID":1122,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":112231,"resourceName":"基础设置","resourceOrder":0,"resourceType":""},
@@ -227,6 +228,11 @@ function loadMenu(resourceType, treeObj){
 	{"accessPath":"","checked":false,"delFlag":0,"parentID":112233,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11223341,"resourceName":"时间汇总报表","resourceOrder":0,"resourceType":""},
 	{"accessPath":"","checked":false,"delFlag":0,"parentID":112233,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11223342,"resourceName":"时间详细报表","resourceOrder":0,"resourceType":""},
 
+	
+	{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":1123,"resourceName":"健康管理","resourceOrder":0,"resourceType":""},
+	
+	{"accessPath":"","checked":false,"delFlag":0,"parentID":1123,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":112331,"resourceName":"健康记录","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"parentID":112331,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11223141,"resourceName":"小红","resourceOrder":0,"resourceType":""},
 	];
 		 
 	 $("#dleft_tab1").show();

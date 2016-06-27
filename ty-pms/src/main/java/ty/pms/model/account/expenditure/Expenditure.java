@@ -1,11 +1,13 @@
 package ty.pms.model.account.expenditure;
 
+import java.math.BigDecimal;
+
 import ty.pms.model.base.BaseObject;
 
 public class Expenditure extends BaseObject{
  
 	private String expenditureId;
-	private String expenditureAmount;
+	private BigDecimal expenditureAmount;
 	private String causeId;
 	private String unitId;
 
@@ -15,10 +17,11 @@ public class Expenditure extends BaseObject{
 	public void setExpenditureId(String expenditureId) {
 		this.expenditureId = expenditureId;
 	}
-	public String getExpenditureAmount() {
+	
+	public BigDecimal getExpenditureAmount() {
 		return expenditureAmount;
 	}
-	public void setExpenditureAmount(String expenditureAmount) {
+	public void setExpenditureAmount(BigDecimal expenditureAmount) {
 		this.expenditureAmount = expenditureAmount;
 	}
 	public String getCauseId() {
@@ -32,6 +35,21 @@ public class Expenditure extends BaseObject{
 	}
 	public void setUnitId(String unitId) {
 		this.unitId = unitId;
+	}
+	@Override
+	public String toString() {
+		return "Expenditure [expenditureId=" + expenditureId
+				+ ", expenditureAmount=" + expenditureAmount + ", causeId="
+				+ causeId + ", unitId=" + unitId + ", getEndTime()="
+				+ getEndTime() + ", getOwner()=" + getOwner()
+				+ ", getOccurrencedTime()=" + getOccurrencedTime()
+				+ ", getCreatedTime()=" + getCreatedTime()
+				+ ", getLastModifyTime()=" + getLastModifyTime()
+				+ ", getCreatedBy()=" + getCreatedBy() + ", getUpdatedBy()="
+				+ getUpdatedBy() + ", getRemark()=" + getRemark()
+				+ ", isDelFlag()=" + isDelFlag() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
 	
 }
