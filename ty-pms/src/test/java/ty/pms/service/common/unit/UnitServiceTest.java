@@ -21,8 +21,15 @@ public class UnitServiceTest  extends BaseTest<UnitService> {
 	public void test(){
 		Unit record=new Unit();
 		//record.setUnitId(CommonUtil.generateUUID());
-		record.setUnitName("UN-"+CommonUtil.generateUUID().substring(28));
-		unitService.insertSelective(record);
+		//record.setUnitName("UN-"+CommonUtil.generateUUID().substring(28));
+		
+		//插入
+		//unitService.insertSelective(record);
+		
+		//删除
+		//unitService.deleteByPrimaryKey("4c41de2d60e943938be00803e7ed00db");
+		
+		System.out.println(unitService.selectByName("yuan"));
 	}
 
 	public static UnitService getUnitService() {
