@@ -30,7 +30,8 @@ public class Day2DayMapperTest extends BaseTest<Day2DayMapper> {
 		record.setD2Descrip("Desc-"+(CommonUtil.generateUUID().substring(25) ));
 		record.setOccurrencedTime(new Date());
 		
-		day2DayMapper.insertSelective(record);
+		//day2DayMapper.insertSelective(record);
+		
 		
 		System.out.println(record);
 		

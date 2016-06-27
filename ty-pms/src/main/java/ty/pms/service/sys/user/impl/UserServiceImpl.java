@@ -65,7 +65,7 @@ public class UserServiceImpl extends BaseService implements UserService {
 	 * 根据用户名获取用户对象
 	 */
 	@Override
-	public User selectByName(String name) {
+	public List<User> selectByName(String name) {
 		return mapper.selectByName(name);
 	}
 	

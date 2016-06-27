@@ -36,8 +36,8 @@ public interface Dao <T,C>{
 	 * @param name
 	 * @return
 	 */
-	T selectByName(String name);
-    
+	List<T> selectByName(String name);
+	
 	/**
 	 * 
 	 * @return

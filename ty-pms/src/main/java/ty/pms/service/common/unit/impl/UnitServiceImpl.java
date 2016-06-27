@@ -1,6 +1,7 @@
 package ty.pms.service.common.unit.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import ty.pms.dao.common.unit.UnitMapper;
 import ty.pms.model.common.unit.Unit;
@@ -55,7 +56,7 @@ public class UnitServiceImpl extends BaseService implements UnitService {
 	}
 
 	@Override
-	public Unit selectByName(String name) {
+	public List<Unit> selectByName(String name) {
 		return mapper.selectByName(name);
 	}
 

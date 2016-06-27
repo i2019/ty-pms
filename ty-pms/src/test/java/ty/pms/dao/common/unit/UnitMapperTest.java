@@ -3,6 +3,7 @@ package ty.pms.dao.common.unit;
 import static org.junit.Assert.*;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -33,8 +34,8 @@ public class UnitMapperTest extends BaseTest<UnitMapper> {
 		record.setOccurrencedTime(new Date());
 		//unitMapper.insertSelective(record);
 		
-		record=unitMapper.selectByName("yuan");
-		System.out.println(record);
+		List<Unit> records=unitMapper.selectByName("yuan");
+		System.out.println(records);
 		
 	}
 

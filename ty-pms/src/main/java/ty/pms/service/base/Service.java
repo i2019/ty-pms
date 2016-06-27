@@ -1,5 +1,7 @@
 package ty.pms.service.base;
 
+import java.util.List;
+
 public interface Service <T,R,C>{
 	
 	Integer insertSelective(T record);
@@ -10,7 +12,7 @@ public interface Service <T,R,C>{
 		
 	T selectByPrimaryKey(String id);
 	
-	T selectByName(String name);
+	List<T> selectByName(String name);
 	
 	R getAll();
 	

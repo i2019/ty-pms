@@ -26,9 +26,7 @@ public class UserServiceImplTest  extends BaseTest<UserService> {
 	
 	//@Test
 	public void testSelectByPrimaryKey() {
-		User u = userService.selectByName("k");
-		System.out.println(u);
-		Assert.assertEquals("k", u.getUserName());
+	
 	}
 
 	//@Test

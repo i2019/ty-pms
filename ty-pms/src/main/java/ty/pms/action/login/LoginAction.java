@@ -1,5 +1,7 @@
 package ty.pms.action.login;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.util.StringUtils;
@@ -18,7 +20,6 @@ public class LoginAction extends BaseAction implements Action{
 	private static final long serialVersionUID = 2269552141446088700L;
 
 	private User user;
-	private String userName;
 	private UserService userService;
 	
 	private UserCriteria userCriteria;
@@ -29,10 +30,10 @@ public class LoginAction extends BaseAction implements Action{
 		String password=request.getParameter("password");
 
 		if(StringUtils.hasText(username) && StringUtils.hasText(password)){
-			user=userService.selectByName(username);
-			if(null!=user){
-				if(user.getPassword().equals(password)){
-					setLoginUser(user);	
+			List<User> users=userService.selectByName(username);
+			if(null!=users && users.size()>0){
+				if(users.get(0).getPassword().equals(password)){
+					setLoginUser(users.get(0));	
 					return "success";
 				}
 			}
