@@ -1,6 +1,8 @@
 package ty.pms.service.sys.user.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import ty.pms.dao.sys.user.UserMapper;
 import ty.pms.model.sys.user.User;
@@ -94,6 +96,16 @@ public class UserServiceImpl extends BaseService implements UserService {
 
 	public void setMapper(UserMapper mapper) {
 		this.mapper = mapper;
+	}
+
+	@Override
+	public List<String> getUserNameList() {
+		List<String> uns=new ArrayList<String>();
+		List<User> us=mapper.getAll();
+		for (User user : us) {
+			uns.add(user.getUserName());
+		}
+		return uns;
 	}
 
 }

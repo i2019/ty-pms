@@ -93,7 +93,11 @@ $(document).ready(function(){
 						用户名: (复选框)
 					</div>
 					<div class="criteria_value">
-						<s:textfield type="text" id="userCriteria_userNameList" name="userCriteria.userNameList" class="text_value"/>
+						<select id="userCriteria_userNameList" name="userCriteria.userNameList" class="text_value" multiple="multiple">
+							<c:forEach items="${userNameList}" var="userName">	
+								<option value="${userName}">${userName}</option>
+							</c:forEach>
+						</select>
 					</div>	
 				</div>
 				<div class="list_criteria">

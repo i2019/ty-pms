@@ -35,6 +35,7 @@ public class UserAction extends BaseAction{
 	private List<User> userList=new ArrayList<User>();
 	private List<String> userNameList=new ArrayList<String>();
 	private User loginUser;
+	
     @Autowired
 	private UserService userService;
 	/**
@@ -60,6 +61,9 @@ public class UserAction extends BaseAction{
 		//log.debug(userResult);
 		log.info("userList count :"+userResult.getTotalCount());
 		
+		//查询条件
+		userNameList=userService.getUserNameList();
+		
 		return "list";
 		
 	}
@@ -71,6 +75,10 @@ public class UserAction extends BaseAction{
 		if(StringUtils.hasText(userId)){
 			user=userService.selectByPrimaryKey(userId);	
 		}
+		
+		//查询条件
+		userNameList=userService.getUserNameList();
+				
 		return "edit";
 	}
 	/**
@@ -85,6 +93,9 @@ public class UserAction extends BaseAction{
 				userService.deleteByPrimaryKey(userId);
 			}
 		}
+		//查询条件
+		userNameList=userService.getUserNameList();
+				
 		return list();
 	}
 	/**
