@@ -90,7 +90,7 @@ $(document).ready(function(){
 				
 				<div class="list_criteria">
 				    <div class="criteria_label">
-						用户名: 复选框
+						用户名: (复选框)
 					</div>
 					<div class="criteria_value">
 						<s:textfield type="text" id="userCriteria_userNameList" name="userCriteria.userNameList" class="text_value"/>
@@ -98,7 +98,7 @@ $(document).ready(function(){
 				</div>
 				<div class="list_criteria">
 				    <div class="criteria_label">
-						创建开始时间: 时间选择器
+						创建开始时间: (时间选择器  精确到小时或者分 推荐使用datetimepicker)
 					</div>
 					<div class="criteria_value">
 						<s:textfield type="text" id="userCriteria_createdTimeBegin" name="userCriteria.createdTimeBegin" class="text_value"/>
@@ -106,7 +106,7 @@ $(document).ready(function(){
 				</div>
 				<div class="list_criteria">
 				    <div class="criteria_label">
-						创建结束时间: 时间选择器
+						创建结束时间:  ( 时间选择器)
 					</div>
 					<div class="criteria_value">
 						<s:textfield type="text" id="userCriteria_createdTimeEnd" name="userCriteria.createdTimeEnd" class="text_value"/>
@@ -114,7 +114,7 @@ $(document).ready(function(){
 				</div>
 				<div class="list_criteria">
 				    <div class="criteria_label">
-						备注: 模糊查询  文本域
+						备注: (模糊查询  文本域)
 					</div> 
 					<div class="criteria_value">
 						<s:textfield type="text" id="userCriteria_userName" name="userCriteria.remark" class="text_value"/>

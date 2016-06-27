@@ -114,7 +114,7 @@ $(document).ready(function() {
 				</div>
 				<div class="list_criteria">
 				    <div class="criteria_label">
-						确认密码: 仅当新建用户时显示
+						确认密码: (仅当新建用户时显示)
 					</div>
 					<div class="criteria_value">
 						<s:textfield type="text" id="re_password" class="text_value"/>	
