@@ -75,7 +75,6 @@ public class BaseAction extends ActionSupport{
 			httpSession.setAttribute("LoginUser", user);
 			httpSession.setAttribute("LoginUserName", user.getUserName());
 			httpSession.setAttribute("LoginUserId", user.getUserId());
-			getRequest().setAttribute("username", user.getUserName());
 		}
 	}
 	

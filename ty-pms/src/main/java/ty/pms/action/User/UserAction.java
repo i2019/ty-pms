@@ -3,8 +3,6 @@ package ty.pms.action.User;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -131,7 +129,8 @@ public class UserAction extends BaseAction{
 	public void ajaxVerifyOnly(){
 		String userName = getRequest().getParameter("userName");
 		if(StringUtils.hasText(userName)){
-			if(null!=userService.selectByName(userName)){
+			List<User> us=userService.selectByName(userName);
+			if(null!=us && us.size()>0){
 				JSONObject repeatedUserName=new JSONObject();
 				repeatedUserName.put("repeatedUserName",userName);
 				JSONArray jArr=new JSONArray();

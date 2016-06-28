@@ -4,6 +4,7 @@ encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/WEB-INF/log4j.properties=UTF-8
 encoding//src/main/webapp/index.jsp=UTF-8
 encoding//src/main/webapp/pages/main/main.jsp=UTF-8
+encoding//src/main/webapp/style.jsp=UTF-8
 encoding//src/test/java=UTF-8
 encoding//src/test/resources=UTF-8
 encoding/<project>=UTF-8

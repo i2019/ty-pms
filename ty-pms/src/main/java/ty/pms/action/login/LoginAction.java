@@ -33,7 +33,8 @@ public class LoginAction extends BaseAction implements Action{
 			List<User> users=userService.selectByName(username);
 			if(null!=users && users.size()>0){
 				if(users.get(0).getPassword().equals(password)){
-					setLoginUser(users.get(0));	
+					user=users.get(0);
+					setLoginUser(user);	
 					return "success";
 				}
 			}
