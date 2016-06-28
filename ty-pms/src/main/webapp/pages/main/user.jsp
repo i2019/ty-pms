@@ -12,7 +12,14 @@
 </style>
 
 <script type="text/javascript">
- 
+
+//Bootstrap 弹出框（Popover）插件
+$(function () { $('.popover-show').popover('show');});
+$(function () { $('.popover-hide').popover('hide');});
+$(function () { $('.popover-destroy').popover('destroy');});
+$(function () { $('.popover-toggle').popover('toggle');});
+$(function () { $(".popover-options a").popover({html : true });});
+
 $(document).ready(function(){
 
 	/** 编辑   **/
@@ -42,79 +49,58 @@ $(document).ready(function(){
     });
 });
 </script>
-
 </head>
-
 <body>
-
-<div class="pannel_out">
-	<div class="pannel_form">		
-		<s:form id="userForm" name="userForm" action="user_list.action" method="post">
-			<div class="container_list">
-				
-				<div class="list_criteria">
-				    <div class="criteria_label">
-						用户名: (复选框)
-					</div>
-					<div class="criteria_value">
-						<select id="userCriteria_userNameList" name="userCriteria.userNameList" class="text_value" multiple="multiple">
-							<c:forEach items="${userNameList}" var="userName">	
-								<option value="${userName}">${userName}</option>
-							</c:forEach>
-						</select>
-					</div>	
-				</div>
-				<div class="list_criteria">
-				    <div class="criteria_label">
-						创建开始时间: (时间选择器  精确到小时或者分 推荐使用datetimepicker)
-					</div>
-					<div class="criteria_value">
-						<s:textfield type="text" id="userCriteria_createdTimeBegin" name="userCriteria.createdTimeBegin" class="text_value"/>
-					</div>	
-				</div>
-				<div class="list_criteria">
-				    <div class="criteria_label">
-						创建结束时间:  ( 时间选择器)
-					</div>
-					<div class="criteria_value">
-						<s:textfield type="text" id="userCriteria_createdTimeEnd" name="userCriteria.createdTimeEnd" class="text_value"/>
-					</div>	
-				</div>
-				<div class="list_criteria">
-				    <div class="criteria_label">
-						备注: (模糊查询  文本域)
-					</div> 
-					<div class="criteria_value">
-						<s:textfield type="text" id="userCriteria_userName" name="userCriteria.remark" class="text_value"/>
-					</div>	
-				</div>
-				
-				<div class="list_button">
-					<input type="submit" value="查询" class="button_search" id="searchBtn" /> 	
-					<input type="button" value="新增" class="button_create" id="addBtn" /> 		
-				</div>
-			</div>
-		</s:form>
-	</div>
-	<!--列表样式-->
-	<div class="pannel_display">
-		<display:table name="userResult.resultList" id="userList" sort="list" 
-			class="result_table" requestURI="" pagesize="20" size="userResult.totalCount" partialList="true">
-			<display:setProperty name="sort.amount" value="list"/>
-			<display:column property="userName" title="用户名"/>
-			<display:column property="remark"  title="备注" />
-			<display:column title="操作">
-				<input type="hidden" id="userId_${userList.userId}" value="${userList.userId}"/>
-				<a href="user_edit.action?userId=${userList.userId}" class="editUser link mgR12">
-					编辑</a>
-				<c:if test="${loginUser.userId != userList.userId }">
-					<a href="user_del.action?userId=${userList.userId}" class="delUser link">
-						删除</a>
-				</c:if>	
-			</display:column>
-		</display:table>
-	</div>
+<hr class="solided notopMargin">
+<form class="form-horizontal" role="form">
+        <div class="form-group">
+           <label class="text-muted col-sm-1 control-label" for="ds_host">主机名</label>
+           <div class="col-sm-2">
+              <s:textfield name="userCriteria.userName" cssClass="form-control w220" type="text"></s:textfield>
+           </div>
+           <label class="text-muted col-sm-1 control-label" for="ds_name">数据库名</label>
+           <div class="col-sm-2">
+              <s:textfield name="userCriteria.userName" cssClass="form-control w220" type="text"></s:textfield>
+           </div>
+            <label class="text-muted col-sm-1 control-label" for="ds_name">数据库名</label>
+           <div class="col-sm-2">
+              <s:textfield name="userCriteria.userName" cssClass="form-control w220" type="text"></s:textfield>
+           </div>
+       </div>
+       <hr class="solided notopMargin">
+       <div class="form-group">
+	      <div class="col-sm-offset-4 col-sm-10">
+	         <button type="submit" class="btn btn-default w120 mleft10"><a class="nodecoration">查询</a></button>
+	         <button type="submit" class="btn btn-default w120"><a class="nodecoration">重置</a></button>
+	      </div>
+  	 </div>
+</form>
+<hr class="solided notopMargin">
+<!--列表样式-->
+<div class="pannel_display">
+	<display:table name="userResult.resultList" id="userList" sort="list" 
+		class="result_table" requestURI="" pagesize="20" size="userResult.totalCount" partialList="true">
+		<display:setProperty name="sort.amount" value="list"/>
+		<display:column property="userName" title="用户名"/>
+		<display:column title="备注">
+			<a type="button" class="popover-hide" 
+			      title="Popover title" data-container="body" 
+			      data-toggle="popover" data-placement="top" 
+			      data-content="${userList.remark}">
+			              <label >${userList.remark}</label>   
+	   		</a>
+		</display:column>
+		<display:column title="操作">
+			<input type="hidden" id="userId_${userList.userId}" value="${userList.userId}"/>
+			<a href="user_edit.action?userId=${userList.userId}" class="editUser link mgR12">
+				编辑</a>
+			<c:if test="${loginUser.userId != userList.userId }">
+				<a href="user_del.action?userId=${userList.userId}" class="delUser link">
+					删除</a>
+			</c:if>	
+		</display:column>
+	</display:table>
 </div>
-	
+<hr class="solided notopMargin">
 </body>
 </html>

@@ -1384,7 +1384,8 @@
 			setting.treeObj = obj;
 			setting.treeObj.empty();
 			settings[setting.treeId] = setting;
-			if ($.browser.msie && parseInt($.browser.version)<7) {
+			//if ($.browser.msie && parseInt($.browser.version)<7) {
+			if (false && parseInt($.browser.version)<7) {
 				setting.view.expandSpeed = "";
 			}
 

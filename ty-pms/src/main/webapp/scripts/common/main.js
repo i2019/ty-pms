@@ -5,7 +5,8 @@ var setting = {
 		view: {
 			dblClickExpand: false,
 			showLine: false,
-			expandSpeed: ($.browser.msie && parseInt($.browser.version)<=6)?"":"fast"
+			//expandSpeed: ($.browser.msie && parseInt($.browser.version)<=6)?"":"fast"
+			expandSpeed: (false && parseInt($.browser.version)<=6)?"":"fast"
 		},
 		data: {
 			key: {

@@ -12,7 +12,25 @@
      transform: translate(-50%, -50%);   
  }         
  
- 
+/*去掉a下划线*/
+a.nodecoration:link{
+text-decoration:none;
+}
+a.nodecoration:visited{
+text-decoration:none;
+}
+a.nodecoration:hover{
+text-decoration:none;
+}
+a.nodecoration:active{
+text-decoration:none;
+}
+
+hr.dashed{ background:url(../img/hr_dashed_bg.png) repeat-x 0 0;  border:none; *border-top:#9eb2c0 1px dotted; margin:12px 0;*margin:6px 0;}
+hr.dashed.notopMargin{ margin-top:0;}
+hr.solided{border-top:#f2f2f2 1px solid; margin:12px 0;*margin:6px 0;}
+hr.solided.notopMargin{ margin-top:6px;}
+
 /* displaytag */
 .pannel_display { border-top:#c1cfd9 1px solid;}
 .result_table{ width:100%;}
@@ -43,3 +61,15 @@ a.link_1:link,
 a.link_1:visited{color:#4e5663; text-decoration:none;}
 a.link_1:hover{color:#0066cc; text-decoration:underline;}
 .mgR12 { margin-right:12px; }
+
+/*宽度*/
+.w120{width: 120px;}
+.w220{width: 180px;}
+
+/*左内边距*/
+.pleft10{padding-left:10px; }
+
+/*右外边距*/
+.mleft10{
+	margin-right:10px;
+}
