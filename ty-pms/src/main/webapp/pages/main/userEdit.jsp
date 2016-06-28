@@ -68,7 +68,6 @@ function ajaxVerifyOnly(){
 <div id="container" class="center-in-center">
 	<form method="post" action="user_save.action" id="userEditForm">
 		<s:hidden name="user.userId"></s:hidden>
-		
 			<div class="container_list">
 				<div class="list_criteria">
 				    <div class="criteria_label">
@@ -87,15 +86,6 @@ function ajaxVerifyOnly(){
 						<s:textfield type="text" id="user_password" name="user.password" class="text_value"/>	
 					</div>	
 				</div>
-				<div class="list_criteria">
-				    <div class="criteria_label">
-						确认密码: (仅当新建用户时显示)
-					</div>
-					<div class="criteria_value">
-						<s:textfield type="text" id="re_password" class="text_value"/>	
-					</div>	
-				</div>
-				
 				<div class="list_criteria">
 				    <div class="criteria_label">
 						备注:

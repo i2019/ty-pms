@@ -13,13 +13,16 @@
 
 <script type="text/javascript">
 
-//Bootstrap 弹出框（Popover）插件
+
 $(function () { $('.popover-show').popover('show');});
 $(function () { $('.popover-hide').popover('hide');});
 $(function () { $('.popover-destroy').popover('destroy');});
 $(function () { $('.popover-toggle').popover('toggle');});
 $(function () { $(".popover-options a").popover({html : true });});
-
+$(function () { $('.popover-show').on('shown.bs.popover', function () {
+   //alert("当显示时警告消息");
+ })});
+ 
 $(document).ready(function(){
 
 	/** 编辑   **/
@@ -49,12 +52,20 @@ $(document).ready(function(){
     });
 });
 </script>
+
+<style type="text/css">
+
+
+
+</style>
+
 </head>
 <body>
+<div id="LinkDIV"></div>
 <hr class="solided notopMargin">
 <form class="form-horizontal" role="form">
         <div class="form-group">
-           <label class="text-muted col-sm-1 control-label" for="ds_host">主机名</label>
+           <label class="text-muted col-sm-1 control-label" for="ds_host">用户名:</label>
            <div class="col-sm-2">
               <s:textfield name="userCriteria.userName" cssClass="form-control w220" type="text"></s:textfield>
            </div>
@@ -76,20 +87,14 @@ $(document).ready(function(){
   	 </div>
 </form>
 <hr class="solided notopMargin">
+
 <!--列表样式-->
 <div class="pannel_display">
 	<display:table name="userResult.resultList" id="userList" sort="list" 
 		class="result_table" requestURI="" pagesize="20" size="userResult.totalCount" partialList="true">
-		<display:setProperty name="sort.amount" value="list"/>
+		<display:setProperty name="sort.amount" value="list" />
 		<display:column property="userName" title="用户名"/>
-		<display:column title="备注">
-			<a type="button" class="popover-hide" 
-			      title="Popover title" data-container="body" 
-			      data-toggle="popover" data-placement="top" 
-			      data-content="${userList.remark}">
-			              <label >${userList.remark}</label>   
-	   		</a>
-		</display:column>
+		
 		<display:column title="操作">
 			<input type="hidden" id="userId_${userList.userId}" value="${userList.userId}"/>
 			<a href="user_edit.action?userId=${userList.userId}" class="editUser link mgR12">
@@ -99,6 +104,16 @@ $(document).ready(function(){
 					删除</a>
 			</c:if>	
 		</display:column>
+		
+		<display:column title="备注">
+			<div type="button" class="popover-hide" title="备注详情" style="z-index: 9999999;"
+				data-container="body" data-toggle="popover" 
+			      data-placement="bottom" data-content="${userList.remark}"> 
+			      <label class="remarkLabel h20">${userList.remark}</label>
+			      <span></span>   
+	   		</div>
+		</display:column>
+		
 	</display:table>
 </div>
 <hr class="solided notopMargin">
