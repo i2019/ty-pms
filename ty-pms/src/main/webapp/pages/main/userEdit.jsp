@@ -6,19 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
 <style type="text/css">
- 
 </style>
-
 <script type="text/javascript">
-
 $(document).ready(function() {
-	
 	$("#cancelbutton").click(function() {
 		/**  关闭弹出iframe  **/
 		window.parent.$.fancybox.close();
-		
 	});
 	$("#submitbutton").click(function() {
 		var loginUserName=$("#loginUserName").val();
@@ -64,45 +58,45 @@ function ajaxVerifyOnly(){
 <input type="hidden" id="loginUserName" value="${LoginUserName }"/>
 <input type="hidden" id="loginUserId" value="${LoginUserId }"/>
 <input type="hidden" id="editUserId" value="${userId }"/>
- 
+  
 <div id="container" class="center-in-center">
-	<form method="post" action="user_save.action" id="userEditForm">
-		<s:hidden name="user.userId"></s:hidden>
-			<div class="container_list">
-				<div class="list_criteria">
-				    <div class="criteria_label">
-						用户名:
-					</div>
-					<div class="criteria_value">
-						<s:textfield onchange="ajaxVerifyOnly()" type="text" id="user_userName" name="user.userName" class="text_value"/>	
-					</div>	
-				</div>
-				
-				<div class="list_criteria">
-				    <div class="criteria_label">
-						密码:
-					</div>
-					<div class="criteria_value">
-						<s:textfield type="text" id="user_password" name="user.password" class="text_value"/>	
-					</div>	
-				</div>
-				<div class="list_criteria">
-				    <div class="criteria_label">
-						备注:
-					</div>
-					<div class="criteria_value">
-						<s:textfield type="text" id="user_remark" name="user.remark" class="text_value"/>	
-					</div>	
-				</div>
-			</div>
-			
-			<div class="list_button">
-				<input type="submit" value="提交" class="button_search" id="submitbutton" /> 	
-				<input type="button" value="取消" class="button_create" id="cancelbutton" /> 		
-			</div>
-			
-	</form>
+ <form class="form-horizontal" action="user_save.action" id="userEditForm">
+ 		<s:hidden name="user.userId"></s:hidden>
+ 		<!-- 用户名 -->
+        <div class="form-group">
+           <label class="text-muted col-sm-2 control-label" for="ds_host">用户名:</label>
+           <div class="col-sm-10">
+              <s:textfield onchange="ajaxVerifyOnly()" type="text" id="user_userName" name="user.userName" class="text_value"/>	
+		   </div>
+       </div>
+       <!-- 备注 -->
+       <div class="form-group">
+           <label class="text-muted col-sm-1 control-label" for="ds_host"> 密	码:</label>
+           <div class="col-sm-2">
+           		<s:textfield type="text" id="user_password" name="user.password" class="text_value"/>
+           </div>
+       </div>
+       <!-- 备注 -->
+       <div class="form-group">
+           <label class="text-muted col-sm-1 control-label" for="ds_host"> 备	注:</label>
+           <div class="col-sm-2">
+           	 <s:textarea type="text" id="user_remark" name="user.remark" class="text_value"/>	
+           </div>
+       </div>
+       <hr class="solided notopMargin">
+       <div class="form-group">
+	      <div class="col-sm-offset-4 col-sm-10">
+	         <button id="submitbutton" class="btn btn-default w120 mleft10">
+	         		提交
+			  </button>	
+	         <button id="cancelbutton" class="btn btn-default w120">
+	         	取消
+	         </button>	
+	      </div>
+  	 </div>
+</form>
 </div>
+
 
 
 </body>

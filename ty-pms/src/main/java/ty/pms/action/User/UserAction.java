@@ -50,14 +50,11 @@ public class UserAction extends BaseAction{
 		userCriteria.setPageNum(pageNo);
 		userCriteria.setPageSize(pageSize);
 
-		if(!StringUtils.hasText(userCriteria.getUserName())){
-			userCriteria.setUserName(null);
+		if(!StringUtils.hasText(userCriteria.getRemark())){
+			userCriteria.setRemark(null);
 		}
 		
 		userResult=userService.getByCriteria(userCriteria);
-		
-		//log.debug(userResult);
-		log.info("userList count :"+userResult.getTotalCount());
 		
 		//查询条件
 		userNameList=userService.getUserNameList();
@@ -116,7 +113,8 @@ public class UserAction extends BaseAction{
 			}else{
 			//如果不存在用户id，则为新增，后台insert
 				//用户名唯一，否则返回编辑页面
-				if(null!=userService.selectByName(userName)){
+				List<User> uList=userService.selectByName(userName);
+				if(null!=uList && uList.size()>0){
 					getRequest().setAttribute("RepeatedUserName", userName);
 					return "edit";
 				}

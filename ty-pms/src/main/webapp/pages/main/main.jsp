@@ -1,28 +1,24 @@
 <%@ page language="java" errorPage="" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ include file="/base.jsp"%>
 <%@ include file="/style.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>PMS-Main</title>
-
-<script type="text/javascript">
-/*二级菜单*/
-$(document).ready(function(){
-	$(document).ajaxStart(onStart).ajaxSuccess(onStop);
-	/** 默认异步加载"业务模块"目录  **/
-	 loadMenu('YEWUMOKUAI', "dleft_tab1");
-	// 默认展开所有节点
-	if( zTree ){
-		// 默认展开所有节点
-		//zTree.expandAll(true);
-	}
-});
-</script>
-
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>PMS-Main</title>
+		<script type="text/javascript">
+		/*二级菜单*/
+		$(document).ready(function(){
+			$(document).ajaxStart(onStart).ajaxSuccess(onStop);
+			/** 默认异步加载"业务模块"目录  **/
+			 loadMenu('YEWUMOKUAI', "dleft_tab1");
+			// 默认展开所有节点
+			if( zTree ){
+				// 默认展开所有节点
+				//zTree.expandAll(true);
+			}
+		});
+		</script>
 </head>
-
 <body onload="getDateNow()">
     <div id="top">
 		<div id="top_logo">
@@ -84,14 +80,12 @@ $(document).ready(function(){
 		 	</div>
 		 </div>
 	</div>
-	
 	 <!-- side content-->
     <div id="main">
       	<iframe name="right" id="rightMain" 
       	frameborder="no" scrolling="auto" width="100%" height="100%" allowtransparency="true">
       	</iframe>
     </div>
-    
 </body>
 </html>
    
