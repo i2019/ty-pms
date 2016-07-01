@@ -84,7 +84,9 @@ $(document).ready(function(){
 <form class="form-horizontal" role="form">
         <div class="form-group">
            <!-- 用户名 -->
-           <label class="text-muted col-sm-1 control-label" for="ds_host">用户名:</label>
+           <label class="text-muted col-sm-1 control-label" for="ds_host">
+			<fmt:message key="common.user.userName"/>:
+			</label>
            <div class="col-sm-2">
               <select id="userCriteria_userNameList" name="userCriteria.userNameList" class="mut_opt" multiple="multiple">
 					<c:forEach items="${userNameList}" var="userName">	
@@ -133,7 +135,7 @@ $(document).ready(function(){
 		<display:column title="操作">
 			<input type="hidden" id="userId_${userList.userId}" value="${userList.userId}"/>
 			<a href="user_edit.action?userId=${userList.userId}" class="editUser link mgR12">
-				编辑</a>
+				<fmt:message key="common.btn.edit"/></a>
 			<c:if test="${loginUser.userId != userList.userId }">
 				<a href="user_del.action?userId=${userList.userId}" class="delUser link">
 					删除</a>

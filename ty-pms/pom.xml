@@ -8,14 +8,14 @@
 	<name>PMS Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-	
+
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-test</artifactId>
-		    <version>2.5</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>2.5</version>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
@@ -138,37 +138,124 @@
 			<version>1.2.5</version>
 		</dependency>
 	</dependencies>
+
 	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>    <!--这里也可以使用tomcat7-maven-plugin -->
-				<version>2.2</version>   <!--最新版本 -->
-				<configuration>
-					<url>http://localhost:8080/manager/text</url>    <!--配置远程tomcat的路劲 -->
-					<username>admin</username>
-					<password>admin</password>
-					<uriEncoding>UTF-8</uriEncoding>   <!--tomcat的url编码 达到和修改server.xml文件一样的功能 -->
-				</configuration>
-			</plugin>
-		</plugins>
+		<!--pluginManagement可execution报Plugin execution not covered by lifecycle 
+			configuration -->
+			<plugins>
+				<!-- 编译插件 -->
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.0.2</version>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<!-- 处理资源文件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.5</version>
+					<executions>
+						<execution>
+							<id>copy-resources</id>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>copy-resources</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+								<resources>
+									<resource>
+										<directory>src/main/resources</directory>
+										<excludes>
+											<exclude>applicationContext.xml</exclude>
+											<exclude>struts.xml</exclude>
+										</excludes>
+										<filtering>true</filtering>
+									</resource>
+									<resource>
+										<directory>src/main/resources</directory>
+										<includes>
+											<include>applicationContext.xml</include>
+											<include>struts.xml</include>
+										</includes>
+									</resource>
+									<resource>
+										<directory>src/main/java</directory>
+										<includes>
+											<include>**/*.xml</include>
+										</includes>
+									</resource>
+								</resources>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- 拷贝依赖的jar包 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.1</version>
+					<executions>
+						<execution>
+							<id>copy-dependencies</id>
+							<goals>
+								<goal>copy-dependencies</goal>
+							</goals>
+							<configuration>
+								<excludeScope>provided</excludeScope>
+								<outputDirectory>src/main/webapp/WEB-INF/lib</outputDirectory>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- 国际化编译插件 自动将指定的properties文件内的中文编译成unicode编码 -->
+			
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>native2ascii-maven-plugin</artifactId>
+					<version>1.0-alpha-1</version>
+					<configuration>
+						<dest>target/resources</dest>
+						<src>src/main/resources</src>
+					</configuration>
+					<executions>
+						<execution>
+							<id>native2ascii-8859_1</id>
+							<goals>
+								<goal>native2ascii</goal>
+							</goals>
+							<configuration>
+								<encoding>8859_1</encoding>
+								<includes>*.properties,i18n/*_zh*.properties</includes>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				 
+				<!-- tomcat7插件 -->
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<url>http://localhost:8080/manager/text</url><!--配置远程tomcat的路劲 -->
+						<username>admin</username>
+						<password>admin</password>
+						<uriEncoding>UTF-8</uriEncoding><!--tomcat的url编码 达到和修改server.xml文件一样的功能 -->
+					</configuration>
+				</plugin>
+			</plugins>
 	</build>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
 		<jstl.version>1.1.2</jstl.version>
 		<displaytag.version>1.2</displaytag.version>
-
 	</properties>
 
 

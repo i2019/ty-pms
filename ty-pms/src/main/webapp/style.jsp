@@ -62,7 +62,9 @@
 
 <!-- 自定义 all jsp -->
 <script type="text/javascript" src="scripts/common/commonAll.js"></script>
+<!-- 日期时间函数 -->
 <script type="text/javascript" src="scripts/common/datetimeAll.js"></script> 
-
+<!-- js国际化 -->
+<script type="text/javascript" src="tools/i18n/i18n.js"></script> 
 
 
