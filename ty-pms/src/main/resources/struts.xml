@@ -52,6 +52,11 @@
 			<result name="edit">/pages/main/userEdit.jsp</result>	
 		</action>
 		
+		<action name="menu_*" class="ty.pms.action.menu.MenuAction"
+			method="{1}">
+			<result name="list">/pages/main/menu.jsp</result>
+		</action>
+		
     </package>
 
 	

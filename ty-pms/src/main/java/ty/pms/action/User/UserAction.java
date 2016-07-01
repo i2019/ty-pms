@@ -77,7 +77,7 @@ public class UserAction extends BaseAction{
 		return "edit";
 	}
 	/**
-	 * 删除用户
+	 * 删除
 	 * @return
 	 */
 	public String del(){

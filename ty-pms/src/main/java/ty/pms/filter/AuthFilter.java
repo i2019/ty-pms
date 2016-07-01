@@ -56,13 +56,14 @@ public class AuthFilter implements Filter {
 	        //System.out.println("用户请求的URI : "+path);
 	        
 	        // 从session里取userName
-	        String userName = (String) session.getAttribute("userName");
+	        String userName = (String) session.getAttribute("LoginUserName");
 	     
 	         // 样式与脚本文件无需过滤 bootstrap  images scripts style 
 	        if(		path.indexOf("bootstrap") > -1
 	        	|| 	path.indexOf("images") > -1
 	        	|| 	path.indexOf("scripts") > -1
 	        	|| 	path.indexOf("style") > -1
+	        	|| 	path.indexOf("tools") > -1
 	        		) {
 	            chain.doFilter(servletRequest, servletResponse);
 	            return;

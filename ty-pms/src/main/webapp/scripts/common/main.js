@@ -2,28 +2,28 @@
 /* zTree插件加载目录的处理  */
 var zTree;
 var setting = {
-		view: {
-			dblClickExpand: false,
-			showLine: false,
-			//expandSpeed: ($.browser.msie && parseInt($.browser.version)<=6)?"":"fast"
-			expandSpeed: (false && parseInt($.browser.version)<=6)?"":"fast"
+	view: {
+		dblClickExpand: false,
+		showLine: false,
+		//expandSpeed: ($.browser.msie && parseInt($.browser.version)<=6)?"":"fast"
+		expandSpeed: (false && parseInt($.browser.version)<=6)?"":"fast"
+	},
+	data: {
+		key: {
+			name: "resourceName"
 		},
-		data: {
-			key: {
-				name: "resourceName"
-			},
-			simpleData: {
-				enable:true,
-				idKey: "resourceID",
-				pIdKey: "parentID",
-				rootPId: ""
-			}
-		},
-		callback: {
-			//beforeExpand: beforeExpand,
-			//onExpand: onExpand,
-			onClick: zTreeOnClick			
+		simpleData: {
+			enable:true,
+			idKey: "resourceID",
+			pIdKey: "parentID",
+			rootPId: ""
 		}
+	},
+	callback: {
+		beforeExpand: beforeExpand,
+		onExpand: onExpand,
+		onClick: zTreeOnClick			
+	}
 };
 
 /* 侧边栏 隐藏显示控制*/
@@ -246,7 +246,8 @@ function loadMenu(resourceType, treeObj){
 		 data = [
 			{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":2221,"resourceName":"用户管理","resourceOrder":0,"resourceType":""},
 			{"accessPath":"user_list.action","checked":false,"delFlag":0,"parentID":2221,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":222131,"resourceName":"系统用户","resourceOrder":0,"resourceType":""},
-			{"accessPath":"","checked":false,"delFlag":0,"parentID":2221,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":222132,"resourceName":"系统配置","resourceOrder":0,"resourceType":""},
+			{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":2222,"resourceName":"系统配置","resourceOrder":0,"resourceType":""},
+			{"accessPath":"menu_list.action","checked":false,"delFlag":0,"parentID":2222,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":22213241,"resourceName":"菜单管理","resourceOrder":0,"resourceType":""},
 			];
 		 
 		 $("#dleft_tab2").show();
@@ -268,12 +269,13 @@ function loadMenu(resourceType, treeObj){
 	
 	// 如果返回数据不为空，加载"业务模块"目录
 	if(data != null){
+	
 	    // 将返回的数据赋给zTree
 	    $.fn.zTree.init($("#"+treeObj), setting, data);
 	    zTree = $.fn.zTree.getZTreeObj(treeObj);
 	    if( zTree ){
 	        // 默认展开所有节点
-	       // zTree.expandAll(true);
+	       //  zTree.expandAll(true);
 	    }
 	}	
        

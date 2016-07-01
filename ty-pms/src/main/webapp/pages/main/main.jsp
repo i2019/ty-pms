@@ -4,8 +4,11 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<!-- 树形 菜单 样式 -->
+	<link href="style/common/zTreeStyle.css" rel="stylesheet" type="text/css">
 	<title>PMS-Main</title>
-		<script type="text/javascript">
+	<style type="text/css"></style>
+	<script type="text/javascript">
 		/*二级菜单*/
 		$(document).ready(function(){
 			$(document).ajaxStart(onStart).ajaxSuccess(onStop);
@@ -17,7 +20,7 @@
 				//zTree.expandAll(true);
 			}
 		});
-		</script>
+	</script>
 </head>
 <body onload="getDateNow()">
     <div id="top">
@@ -82,8 +85,7 @@
 	</div>
 	 <!-- side content-->
     <div id="main">
-      	<iframe name="right" id="rightMain" 
-      	frameborder="no" scrolling="auto" width="100%" height="100%" allowtransparency="true">
+      	<iframe name="right" id="rightMain" frameborder="no" scrolling="auto" width="100%" height="100%" allowtransparency="true">
       	</iframe>
     </div>
 </body>
