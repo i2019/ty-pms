@@ -142,9 +142,10 @@
 	<build>
 		<!--pluginManagement可execution报Plugin execution not covered by lifecycle 
 			configuration -->
+			<!--  -->
 			<plugins>
 				<!-- 编译插件 -->
-				<plugin>
+			 	<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>2.0.2</version>
 					<configuration>
@@ -153,7 +154,7 @@
 						<encoding>UTF-8</encoding>
 					</configuration>
 				</plugin>
-				<!-- 处理资源文件 -->
+				<!--  
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
@@ -194,7 +195,7 @@
 						</execution>
 					</executions>
 				</plugin>
-				<!-- 拷贝依赖的jar包 -->
+				拷贝依赖的jar包
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
@@ -213,7 +214,7 @@
 					</executions>
 				</plugin>
 
-				<!-- 国际化编译插件 自动将指定的properties文件内的中文编译成unicode编码 -->
+				国际化编译插件 自动将指定的properties文件内的中文编译成unicode编码
 			
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -235,7 +236,7 @@
 							</configuration>
 						</execution>
 					</executions>
-				</plugin>
+				</plugin> -->
 				 
 				<!-- tomcat7插件 -->
 				<plugin>

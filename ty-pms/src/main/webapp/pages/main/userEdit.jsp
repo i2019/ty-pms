@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -60,7 +60,7 @@ function ajaxVerifyOnly(){
 <input type="hidden" id="editUserId" value="${userId }"/>
   
 <div id="container" class="center-in-center">
- <form class="form-horizontal" action="user_save.action" id="userEditForm">
+ <form class="form-horizontal" action="user_save.action" id="userEditForm" method="post">>
  		<s:hidden name="user.userId"></s:hidden>
  		<!-- 用户名 -->
         <div class="form-group">
@@ -96,8 +96,6 @@ function ajaxVerifyOnly(){
   	 </div>
 </form>
 </div>
-
-
 
 </body>
 </html>

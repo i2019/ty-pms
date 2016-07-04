@@ -14,7 +14,10 @@
 	
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <constant name="struts.devMode" value="true" />
-
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	
+	<constant name="struts.action.extension" value="do,action,html" />
+	
 	<include file ="struts-default.xml" />    
 
     <package name="default" namespace="/" extends="struts-default">
