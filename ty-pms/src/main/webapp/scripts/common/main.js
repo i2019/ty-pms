@@ -10,12 +10,12 @@ var setting = {
 	},
 	data: {
 		key: {
-			name: "resourceName"
+			name: "name"
 		},
 		simpleData: {
 			enable:true,
-			idKey: "resourceID",
-			pIdKey: "parentID",
+			idKey: "idKey",
+			pIdKey: "pIdKey",
 			rootPId: ""
 		}
 	},
@@ -198,42 +198,40 @@ function loadMenu(resourceType, treeObj){
  //业务模块
  if('dleft_tab1' == treeObj){		
  data = [
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":1121,"resourceName":"理财记账","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"idKey":1121,"name":"理财记账","resourceOrder":0,"resourceType":""},
 	
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":1121,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":112131,"resourceName":"基础设置","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":112131,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11213141,"resourceName":"资金单位","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":112131,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11213142,"resourceName":"产生事由","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1121,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112131,"name":"基础设置","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112131,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213141,"name":"资金单位","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112131,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213142,"name":"产生事由","resourceOrder":0,"resourceType":""},
 	
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":1121,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":112132,"resourceName":"收支记录","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":112132,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11213241,"resourceName":"收入记录","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":112132,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11213242,"resourceName":"支出记录","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1121,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112132,"name":"收支记录","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112132,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213241,"name":"收入记录","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112132,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213242,"name":"支出记录","resourceOrder":0,"resourceType":""},
 	
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":1121,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":112133,"resourceName":"财务报表","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":112133,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11213341,"resourceName":"财务汇总报表","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":112133,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11213342,"resourceName":"财务详细报表","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1121,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112133,"name":"财务报表","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112133,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213341,"name":"财务汇总报表","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112133,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213342,"name":"财务详细报表","resourceOrder":0,"resourceType":""},
+	
+	
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"idKey":1122,"name":"时间管理","resourceOrder":0,"resourceType":""},
+	
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1122,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112231,"name":"基础设置","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112231,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11223141,"name":"时间单位","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112231,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11223142,"name":"产生事由","resourceOrder":0,"resourceType":""},
+	
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1122,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112232,"name":"日程记录","resourceOrder":0,"resourceType":""},
+	{"accessPath":"d2d_list.action","checked":false,"delFlag":0,"pIdKey":112232,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":2213241,"name":"日事记","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112232,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":2213242,"name":"大事记","resourceOrder":0,"resourceType":""},
+	
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1122,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112233,"name":"时间报表","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112233,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11223341,"name":"时间汇总报表","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112233,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11223342,"name":"时间详细报表","resourceOrder":0,"resourceType":""},
 
 	
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"idKey":1123,"name":"健康管理","resourceOrder":0,"resourceType":""},
 	
-	
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":1122,"resourceName":"时间管理","resourceOrder":0,"resourceType":""},
-	
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":1122,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":112231,"resourceName":"基础设置","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":112231,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11223141,"resourceName":"时间单位","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":112231,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11223142,"resourceName":"产生事由","resourceOrder":0,"resourceType":""},
-	
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":1122,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":112232,"resourceName":"日程记录","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":112232,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":2213241,"resourceName":"日事记","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":112232,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":2213242,"resourceName":"大事记","resourceOrder":0,"resourceType":""},
-	
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":1122,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":112233,"resourceName":"时间报表","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":112233,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11223341,"resourceName":"时间汇总报表","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":112233,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11223342,"resourceName":"时间详细报表","resourceOrder":0,"resourceType":""},
-
-	
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":1123,"resourceName":"健康管理","resourceOrder":0,"resourceType":""},
-	
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":1123,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":112331,"resourceName":"健康记录","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"parentID":112331,"resourceCode":"","resourceDesc":"","resourceGrade":4,"resourceID":11223141,"resourceName":"小红","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1123,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112331,"name":"健康记录","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112331,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11223141,"name":"小红","resourceOrder":0,"resourceType":""},
 	];
 		 
 	 $("#dleft_tab1").show();
@@ -244,10 +242,10 @@ function loadMenu(resourceType, treeObj){
 	}else  if('dleft_tab2' == treeObj){
 						
 		 data = [
-			{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":2221,"resourceName":"用户管理","resourceOrder":0,"resourceType":""},
-			{"accessPath":"user_list.action","checked":false,"delFlag":0,"parentID":2221,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":222131,"resourceName":"系统用户","resourceOrder":0,"resourceType":""},
-			{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":2222,"resourceName":"系统配置","resourceOrder":0,"resourceType":""},
-			{"accessPath":"menu_list.action","checked":false,"delFlag":0,"parentID":2222,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":22213241,"resourceName":"菜单管理","resourceOrder":0,"resourceType":""},
+			{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"idKey":2221,"name":"用户管理","resourceOrder":0,"resourceType":""},
+			{"accessPath":"user_list.action","checked":false,"delFlag":0,"pIdKey":2221,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":222131,"name":"系统用户","resourceOrder":0,"resourceType":""},
+			{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":2222,"name":"系统配置","resourceOrder":0,"resourceType":""},
+			{"accessPath":"menu_list.action","checked":false,"delFlag":0,"pIdKey":2222,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":22213241,"name":"菜单管理","resourceOrder":0,"resourceType":""},
 			];
 		 
 		 $("#dleft_tab2").show();
@@ -257,9 +255,9 @@ function loadMenu(resourceType, treeObj){
 	}else  if('dleft_tab3' == treeObj){
 		
 		 data = [
-			{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":3321,"resourceName":"个人积累","resourceOrder":0,"resourceType":""},
-			{"accessPath":"","checked":false,"delFlag":0,"parentID":3321,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":332131,"resourceName":"学习日志","resourceOrder":0,"resourceType":""},
-			{"accessPath":"","checked":false,"delFlag":0,"parentID":3321,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":332132,"resourceName":"分享资源","resourceOrder":0,"resourceType":""},
+			{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"idKey":3321,"name":"个人积累","resourceOrder":0,"resourceType":""},
+			{"accessPath":"","checked":false,"delFlag":0,"pIdKey":3321,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":332131,"name":"学习日志","resourceOrder":0,"resourceType":""},
+			{"accessPath":"","checked":false,"delFlag":0,"pIdKey":3321,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":332132,"name":"分享资源","resourceOrder":0,"resourceType":""},
 		];
 		 
 		 $("#dleft_tab3").show();

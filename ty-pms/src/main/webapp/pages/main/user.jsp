@@ -87,7 +87,7 @@ $(document).ready(function(){
            <label class="text-muted col-sm-1 control-label" for="ds_host">
 			<fmt:message key="common.user.userName"/>:
 			</label>
-           <div class="col-sm-2">
+           <div class="col-sm-3">
               <select id="userCriteria_userNameList" name="userCriteria.userNameList" class="mut_opt" multiple="multiple">
 					<c:forEach items="${userNameList}" var="userName">	
 						<option value="${userName}" 
@@ -95,25 +95,26 @@ $(document).ready(function(){
 					</c:forEach>
 			 </select>
            </div>
-           <!-- 开始时间 -->
-           <label class="text-muted col-sm-1 control-label" for="ds_name">创建开始时间:</label>
-           <div class="col-sm-2">
+           <!-- 创建开始时间-->
+           <label class="col-sm-2 text-muted control-label" for="ds_name">创建开始时间:</label>
+           <div class="col-sm-3">
              <input id="userCriteria_createdTimeBegin" name="userCriteria.createdTimeBegin" class="form-control w220" 
 							value="<fmt:formatDate value='${userCriteria.createdTimeBegin }' pattern='yyyy-MM-dd HH:mm'/>">
            </div>
-            <!-- 结束时间 -->
-            <label class="text-muted col-sm-1 control-label" for="ds_name">创建结束时间:</label>
-            <div class="col-sm-2">
+       </div>
+        <div class="form-group">
+            <!-- 备注 -->
+           <label class="col-sm-1 text-muted control-label" for="ds_host"> 备注:</label>
+           <div class="col-sm-3">
+             <s:textfield name="userCriteria.remark" cssClass="form-control w220" type="text"></s:textfield>
+           </div>
+        	<!-- 创建结束时间 -->
+            <label class="col-sm-2 text-muted control-label" for="ds_name">创建结束时间:</label>
+            <div class="col-sm-3">
               <input id="userCriteria_createdTimeEnd" name="userCriteria.createdTimeEnd" class="form-control w220" 
 							value="<fmt:formatDate value='${userCriteria.createdTimeEnd }' pattern='yyyy-MM-dd HH:mm'/>">
             </div>
-       </div>
-        <div class="form-group">
-           <!-- 备注 -->
-           <label class="text-muted col-sm-1 control-label" for="ds_host"> 备注:</label>
-           <div class="col-sm-2">
-             <s:textfield name="userCriteria.remark" cssClass="form-control w220" type="text"></s:textfield>
-           </div>
+          
        </div>
        <hr class="solided notopMargin">
        <div class="form-group">
@@ -138,7 +139,7 @@ $(document).ready(function(){
 				<fmt:message key="common.btn.edit"/></a>
 			<c:if test="${loginUser.userId != userList.userId }">
 				<a href="user_del.action?userId=${userList.userId}" class="delUser link">
-					删除</a>
+					<fmt:message key="common.btn.delete"/></a>
 			</c:if>	
 		</display:column>
 		
@@ -146,8 +147,7 @@ $(document).ready(function(){
 			<div id="" class="popover-hide" 
 			data-container="body" data-toggle="popover" data-placement="bottom" data-content="${userList.remark}"> 
 			    <a>
-			    <label class="remarkLabel h20">${userList.remark}</label>
-			    <span>...</span>   
+			    	<label class="remarkLabel h20">${userList.remark}</label> 
 			    </a>
 	   		</div>
 		</display:column>

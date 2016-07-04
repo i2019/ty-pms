@@ -289,7 +289,13 @@
 			<if test="owner != null">
 				and owner=#{owner}
 			</if>
-			
+			<if test="ownerList != null">
+   			 	and owner in
+		      	<foreach collection="ownerList" item="owner" index="index" open="(" close=")" separator=",">
+		            #{owner}
+		        </foreach>
+  			</if>
+  			
 			<if test="createdBy != null">
 				and createdBy=#{createdBy}
 			</if>

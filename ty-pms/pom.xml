@@ -154,7 +154,7 @@
 						<encoding>UTF-8</encoding>
 					</configuration>
 				</plugin>
-				<!--  
+				
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
@@ -195,7 +195,7 @@
 						</execution>
 					</executions>
 				</plugin>
-				拷贝依赖的jar包
+				
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
@@ -214,8 +214,6 @@
 					</executions>
 				</plugin>
 
-				国际化编译插件 自动将指定的properties文件内的中文编译成unicode编码
-			
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>native2ascii-maven-plugin</artifactId>
@@ -236,7 +234,7 @@
 							</configuration>
 						</execution>
 					</executions>
-				</plugin> -->
+				</plugin>
 				 
 				<!-- tomcat7插件 -->
 				<plugin>

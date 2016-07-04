@@ -26,7 +26,7 @@ public class SearchCriteria implements Serializable {
 	private String desc = ASC;
 	
 	private boolean isNeedPage = true;// 是否需要分页标志,默认是需要分页
-	@SuppressWarnings("unused")
+	
 	private Integer maxResults;
 	private Integer skipResults;
 	

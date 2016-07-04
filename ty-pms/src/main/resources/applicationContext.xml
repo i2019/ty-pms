@@ -60,7 +60,11 @@
 	<bean id="unitService" class="ty.pms.service.common.unit.impl.UnitServiceImpl">
 		<property name="mapper" ref="unitMapper"></property>
 	</bean>
-
+	<!--  -->
+	<bean id="day2DayService" class="ty.pms.service.time.day2day.impl.Day2DayServiceImpl">
+		<property name="mapper" ref="day2DayMapper"></property>
+	</bean>
+	
 	<!-- action -->
 	<!-- 注意: 在 IOC 容器中配置 Struts2 的 Action 时, 需要配置 scope 属性, 其值必须为 prototype -->
 	<bean id="loginAction" class="ty.pms.action.login.LoginAction" scope="prototype">

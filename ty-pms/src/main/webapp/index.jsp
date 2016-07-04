@@ -19,12 +19,12 @@
 	</div>
 </div>
 
-<form action="login.action" method="post">
+<form action="login.do" method="post">
 <div id="content">
 	<center>
 		<div class="con">
 			<div class="con_title">
-				<span class="con_title_sp">欢迎登录PMS系统</span>
+				<span class="con_title_sp"><fmt:message key="system.welcome"/><fmt:message key="system.pms"/></span>
 			</div>
 			
 			<div class="con_panel">
@@ -35,10 +35,10 @@
 					<input name="username" type="text"/>
 				</div>
 				<div class="con_input">
-					<span>密&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+					<span> <fmt:message key="common.user.password"/> &nbsp;&nbsp;</span>
 					<input id="pass" name="password" type="password"/>
 				</div>
-				<input type="submit" value="登    录" class="submit-btn"/>
+				<input type="submit" value="<fmt:message key="system.login"/>" class="submit-btn"/>
 			</div>
 			
 		</div>

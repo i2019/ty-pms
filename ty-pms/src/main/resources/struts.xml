@@ -62,6 +62,14 @@
 			<result name="edit">/pages/main/userEdit.jsp</result>	
 		</action>
 		
+		<action name="d2d_*" class="ty.pms.action.time.Day2DayAction"
+			method="{1}">
+			<interceptor-ref name ="tyStack" /> 
+			<result name="list">/pages/time/d2dList.jsp</result>
+			<result name="edit">/pages/time/d2dEdit.jsp</result>
+				
+		 </action>
+		
 		<action name="menu_*" class="ty.pms.action.menu.MenuAction"
 			method="{1}">
 			<result name="list">/pages/main/menu.jsp</result>
