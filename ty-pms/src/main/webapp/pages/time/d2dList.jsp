@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <style type="text/css">
+input.calendar{ background-image:url(../img/calendar.png); background-repeat: no-repeat; background-position: 96% 4px;}
+
 </style>
 
 <script type="text/javascript">
@@ -15,10 +17,8 @@ $(document).ready(function(){
 
 	$(function () { $(".popover-hide").popover();});
 
-	//userCriteria_ownerList
 	/*复选框*/
-	//$('select[class=\'mut_opt\']').multiselect({});
-	$('#userCriteria_ownerList').multiselect({
+	$('#day2DayCriteria_ownerList').multiselect({
 		numberDisplayed: 1,
 		dropRight: true,
         enableCaseInsensitiveFiltering: true,
@@ -55,7 +55,7 @@ $(document).ready(function(){
 	        autoclose: true,
 	        todayBtn: true
 	 });
-	
+		
 	/** 编辑   **/
 	$(".edit").fancybox({	
 	    	'width' : 733,
@@ -104,7 +104,7 @@ $(document).ready(function(){
            <label class="col-sm-2 text-muted control-label" for="ds_name">
            		 <fmt:message key="business.criteria.occurrencedTimeEnd"/>
            </label>
-           <div class="col-sm-3">
+           <div class="col-sm-3"> 
            <input id="day2DayCriteria_occurrencedTimeEnd" name="day2DayCriteria.occurrencedTimeEnd" class="form-control w220" 
 							value="<fmt:formatDate value='${day2DayCriteria.occurrencedTimeEnd }' pattern='yyyy-MM-dd HH:mm'/>">
            </div>
@@ -150,9 +150,9 @@ $(document).ready(function(){
            <label class="text-muted col-sm-2 control-label" for="ds_host">
 			<fmt:message key="common.user.userName"/>:
 			</label>
-           <div class="col-sm-3">
-              <select id="userCriteria_ownerList" name="userCriteria.ownerList" class="mut_opt" multiple="multiple">
-					<c:forEach items="${userNameList}" var="userName">	
+           <div class="col-sm-2">
+              <select id="day2DayCriteria_ownerList" name="day2DayCriteria.ownerList" class="mut_opt" multiple="multiple">
+					<c:forEach items="${ownerList}" var="userName">	
 						<option value="${userName}" 
 						${fn:contains(day2DayCriteria.ownerList, userName)?"selected":""}>${userName}</option>
 					</c:forEach>
@@ -176,18 +176,10 @@ $(document).ready(function(){
 		class="result_table" requestURI="" pagesize="20" size="day2DayResult.totalCount" partialList="true">
 		<display:setProperty name="sort.amount" value="list" />
 		
-		<display:column titleKey="business.criteria.operate">
-			<a href="d2d_edit.action?d2Id=${day2DayList.d2Id}" class="edit link mgR12">
-				<fmt:message key="common.btn.edit"/>
-			</a>
-			<a href="d2d_del.action?d2Id=${day2DayList.d2Id}" class="del link">
-				<fmt:message key="common.btn.delete"/>
-			</a>
-		</display:column>
-		
 		<display:column property="owner" titleKey="common.user.userName"/>
+		
 		<display:column property="occurrencedTime" titleKey="business.criteria.occurrencedTime" format="{0,date,yyyy-MM-dd HH:mm:ss}"/>
-		<display:column property="createdTime" titleKey="business.criteria.createdTime" format="{0,date,yyyy-MM-dd HH:mm:ss}"/>
+		<display:column property="endTime" titleKey="business.criteria.endTime" format="{0,date,yyyy-MM-dd HH:mm:ss}"/>
 		
 		<display:column titleKey="business.criteria.descript">
 			<div id="" class="popover-hide" 
@@ -200,6 +192,15 @@ $(document).ready(function(){
 			data-container="body" data-toggle="popover" data-placement="bottom" data-content="${day2DayList.remark}"> 
 			    <a><label class="remarkLabel h20">${day2DayList.remark}</label></a>
 	   		</div>
+		</display:column>
+		
+		<display:column titleKey="business.criteria.operate">
+			<a href="d2d_edit.action?d2Id=${day2DayList.d2Id}" class="edit link mgR12">
+				<fmt:message key="common.btn.edit"/>
+			</a>
+			<a href="d2d_del.action?d2Id=${day2DayList.d2Id}" class="del link">
+				<fmt:message key="common.btn.delete"/>
+			</a>
 		</display:column>
 		
 	</display:table>

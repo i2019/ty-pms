@@ -29,7 +29,7 @@ public class Day2DayAction extends BaseAction {
 	private Day2DayResult day2DayResult = new Day2DayResult();
 
 	private List<User> userList=new ArrayList<User>();
-	private List<String> userNameList=new ArrayList<String>();
+	private List<String> ownerList=new ArrayList<String>();
 	
 	/**
 	 * 查询并展示
@@ -47,11 +47,14 @@ public class Day2DayAction extends BaseAction {
 		if (!StringUtils.hasText(day2DayCriteria.getRemark())) {
 			day2DayCriteria.setRemark(null);
 		}
+		if(!StringUtils.hasText(day2DayCriteria.getD2Descrip())){
+			day2DayCriteria.setD2Descrip(null);
+		}
 
 		day2DayResult = day2DayService.getByCriteria(day2DayCriteria);
 		
 		//查询条件
-		userNameList=userService.getUserNameList();
+		ownerList=userService.getUserNameList();
 				
 		
 		return "list";
@@ -125,13 +128,12 @@ public class Day2DayAction extends BaseAction {
 	public void setUserList(List<User> userList) {
 		this.userList = userList;
 	}
-
-	public List<String> getUserNameList() {
-		return userNameList;
+	public List<String> getOwnerList() {
+		return ownerList;
 	}
 
-	public void setUserNameList(List<String> userNameList) {
-		this.userNameList = userNameList;
+	public void setOwnerList(List<String> ownerList) {
+		this.ownerList = ownerList;
 	}
 
 	public static long getSerialversionuid() {

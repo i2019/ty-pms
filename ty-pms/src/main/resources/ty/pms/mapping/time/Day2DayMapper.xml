@@ -193,7 +193,8 @@
     	<where>
     		delFlag=0
     		<if test="d2Descrip != null">
-				and d2Descrip = #{d2Descrip}
+				<!-- and d2Descrip = #{d2Descrip}  -->
+				and d2Descrip like CONCAT('%','${d2Descrip}','%' )
 			</if>
 			<if test="d2DescripList != null">
    			 	and d2Descrip in
@@ -204,6 +205,16 @@
   			
 			<if test="occurrencedTime != null">
 				and occurrencedTime=#{occurrencedTime}
+			</if>
+			<if test="occurrencedTimeBegin != null">
+				<![CDATA[
+				and occurrencedTime>=#{occurrencedTimeBegin}
+				]]>     
+			</if>
+			<if test="occurrencedTimeEnd != null">
+				<![CDATA[
+				and occurrencedTime<=#{occurrencedTimeEnd}
+				]]>     
 			</if>
 			
 			<if test="endTime != null">
@@ -231,7 +242,13 @@
 			<if test="owner != null">
 				and owner=#{owner}
 			</if>
-			
+			<if test="ownerList != null">
+   			 	and owner in
+		      	<foreach collection="ownerList" item="owner" index="index" open="(" close=")" separator=",">
+		            #{owner}
+		        </foreach>
+  			</if>
+  			
 			<if test="createdBy != null">
 				and createdBy=#{createdBy}
 			</if>
@@ -241,7 +258,7 @@
 			</if>
 			
 			<if test="remark != null">
-				 and remark like CONCAT('%','${remark}','%' ) 
+				 and remark like CONCAT('%','${remark}','%' )
 			</if>
     	</where>
     </select>
@@ -251,7 +268,8 @@
     	<where>
     		delFlag=0
     		<if test="d2Descrip != null">
-				and d2Descrip = #{d2Descrip}
+				<!-- and d2Descrip = #{d2Descrip}  -->
+				and d2Descrip like CONCAT('%','${d2Descrip}','%' )
 			</if>
 			<if test="d2DescripList != null">
    			 	and d2Descrip in
@@ -262,6 +280,16 @@
   			
 			<if test="occurrencedTime != null">
 				and occurrencedTime=#{occurrencedTime}
+			</if>
+			<if test="occurrencedTimeBegin != null">
+				<![CDATA[
+				and occurrencedTime>=#{occurrencedTimeBegin}
+				]]>     
+			</if>
+			<if test="occurrencedTimeEnd != null">
+				<![CDATA[
+				and occurrencedTime<=#{occurrencedTimeEnd}
+				]]>     
 			</if>
 			
 			<if test="endTime != null">

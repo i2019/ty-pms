@@ -182,11 +182,19 @@ public class UserAction extends BaseAction{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	
 	public List<String> getUserNameList() {
 		return userNameList;
 	}
 	public void setUserNameList(List<String> userNameList) {
 		this.userNameList = userNameList;
+	}
+	public User getLoginUser() {
+		return loginUser;
+	}
+	public void setLoginUser(User loginUser) {
+		this.loginUser = loginUser;
 	}
 	public Log getLog() {
 		return log;

@@ -44,8 +44,10 @@
 <script src="tools/bootstrap-multiselect/bootstrap-multiselect.js"></script>
 
 <!-- bootstrap时间控件 -->
+<!-- 
 <script src="tools/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
-
+ -->
+ 
 <!-- jquery.fancybox -->
 <script type="text/javascript" src="scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
 
@@ -67,4 +69,8 @@
 <!-- js国际化 -->
 <script type="text/javascript" src="tools/i18n/i18n.js"></script> 
 
-
+<script type="text/javascript" src="tools/datetime/plugin_div_modal.js"></script>
+<script type="text/javascript" src="tools/datetime/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="tools/datetime/datepicker.js"></script>
+<script type="text/javascript" src="tools/datetime/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="tools/datetime/jquery-ui-timepicker-zh-CN.js"></script>
