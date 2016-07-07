@@ -7,20 +7,8 @@
 	<!-- 树形 菜单 样式 -->
 	<link href="style/common/zTreeStyle.css" rel="stylesheet" type="text/css">
 	<title>PMS-Main</title>
-	<style type="text/css"></style>
-	<script type="text/javascript">
-		/*二级菜单*/
-		$(document).ready(function(){
-			$(document).ajaxStart(onStart).ajaxSuccess(onStop);
-			/** 默认异步加载"业务模块"目录  **/
-			 loadMenu('YEWUMOKUAI', "dleft_tab1");
-			// 默认展开所有节点
-			if( zTree ){
-				// 默认展开所有节点
-				//zTree.expandAll(true);
-			}
-		});
-	</script>
+	<link href="tools/datetime/clock/clock.css" type="text/css" />
+	<script src="tools/datetime/clock/clock.js" type="text/javascript"></script>
 </head>
 <body onload="getDateNow()">
     <div id="top">
@@ -41,6 +29,7 @@
 						<span id="day_day"></span>
 					</li>
 				</ul> 
+				
 			</div>
 			<div id="top_close">
 				<a href="javascript:void(0);" onclick="logout();" target="_parent">
@@ -63,6 +52,7 @@
 				<li id="left_tab3" onClick="javascript:switchTab('TabPage2','left_tab3');" title="其他">
 					<img alt="其他" title="其他" src="images/common/3.jpg" width="33" height="31">
 				</li>
+				
 			</ul>
 			<!-- 显示或隐藏二级菜单  -->
 			<div id="nav_show" style="position:absolute; bottom:0px; padding:10px;">
@@ -88,6 +78,23 @@
       	<iframe name="right" id="rightMain" frameborder="no" scrolling="auto" width="100%" height="100%" allowtransparency="true">
       	</iframe>
     </div>
+ 
+
+				      
+<script type="text/javascript">
+/*二级菜单*/
+$(document).ready(function(){
+	$(document).ajaxStart(onStart).ajaxSuccess(onStop);
+	/** 默认异步加载"业务模块"目录  **/
+	 loadMenu('YEWUMOKUAI', "dleft_tab1");
+	// 默认展开所有节点
+	if( zTree ){
+		// 默认展开所有节点
+		//zTree.expandAll(true);
+	}
+});
+</script>
+
 </body>
 </html>
    

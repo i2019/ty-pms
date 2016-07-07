@@ -105,8 +105,12 @@ $(document).ready(function(){
            		 <fmt:message key="business.criteria.occurrencedTimeEnd"/>
            </label>
            <div class="col-sm-3"> 
+           <!-- 
            <input id="day2DayCriteria_occurrencedTimeEnd" name="day2DayCriteria.occurrencedTimeEnd" class="form-control w220" 
 							value="<fmt:formatDate value='${day2DayCriteria.occurrencedTimeEnd }' pattern='yyyy-MM-dd HH:mm'/>">
+           -->
+           <s:textfield key="day2DayCriteria.occurrencedTimeEnd" id="day2DayCriteria_occurrencedTimeEnd" cssClass="fxt w220 calendar required" />
+           
            </div>
        </div>
         <div class="form-group">
