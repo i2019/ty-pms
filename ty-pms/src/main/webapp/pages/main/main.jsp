@@ -23,6 +23,13 @@
 					<li>
 						<img alt="当前用户" src="images/common/user.jpg">：
 						<span id="loginUserName">${user.userName }</span>
+						<!--
+						<span>
+							<s:text name="common.user.Hello">  
+						        <s:param>${user.userName }</s:param>  
+						    </s:text>  
+						</span>
+						  -->
 					</li>
 					<li>
 						<img alt="今天是" src="images/common/date.jpg">：

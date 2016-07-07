@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <style type="text/css">
-input.calendar{ background-image:url(../img/calendar.png); background-repeat: no-repeat; background-position: 96% 4px;}
+input.calendar{background-repeat: no-repeat; background-position: 96% 4px;}
 
 </style>
 
@@ -33,12 +33,67 @@ $(document).ready(function(){
     });
 	
 	 /*时间控件*/
+	 
+	 var dpconfig = {
+			dateFormat : "yy-mm-dd hh:ii",
+			dayNamesMin : [ 
+			               '<fmt:message key="calendar.week.sunday"/>', 
+			               '<fmt:message key="calendar.week.monday"/>', 
+			               '<fmt:message key="calendar.week.tuesday"/>', 
+			               '<fmt:message key="calendar.week.wednesday"/>', 
+			               '<fmt:message key="calendar.week.thursday"/>', 
+			               '<fmt:message key="calendar.week.friday"/>', 
+			               '<fmt:message key="calendar.week.saturday"/>' 
+			              ],
+			yearSuffix : '<fmt:message key="time.year"/>',
+			monthNames : [ 
+			               '<fmt:message key="calendar.month.january"/>', 
+			               '<fmt:message key="calendar.month.february"/>', 
+			               '<fmt:message key="calendar.month.march"/>', 
+			               '<fmt:message key="calendar.month.april"/>', 
+			               '<fmt:message key="calendar.month.may"/>', 
+			               '<fmt:message key="calendar.month.june"/>', 
+			               '<fmt:message key="calendar.month.july"/>', 
+			               '<fmt:message key="calendar.month.august"/>',
+			               '<fmt:message key="calendar.month.september"/>', 
+			               '<fmt:message key="calendar.month.october"/>', 
+			               '<fmt:message key="calendar.month.november"/>', 
+			               '<fmt:message key="calendar.month.december"/>' 
+			              ],
+			monthNamesShort:[
+							'<fmt:message key="calendar.month.january"/>', 
+							'<fmt:message key="calendar.month.february"/>', 
+							'<fmt:message key="calendar.month.march"/>', 
+							'<fmt:message key="calendar.month.april"/>', 
+							'<fmt:message key="calendar.month.may"/>', 
+							'<fmt:message key="calendar.month.june"/>', 
+							'<fmt:message key="calendar.month.july"/>', 
+							'<fmt:message key="calendar.month.august"/>',
+							'<fmt:message key="calendar.month.september"/>', 
+							'<fmt:message key="calendar.month.october"/>', 
+							'<fmt:message key="calendar.month.november"/>', 
+							'<fmt:message key="calendar.month.december"/>' 
+			              ],
+							hourText:'<fmt:message key="time.Hour"/>',
+							minuteText:'<fmt:message key="time.Minute"/>',
+							timeText:'<fmt:message key="time.Time"/>',
+							currentText:'<fmt:message key="time.Present"/>',
+							closeText:'<fmt:message key="common.button.close"/>'
+	}
+	
+	var day2DayCriteria_createdTimeBegin = $("#day2DayCriteria_createdTimeBegin");
+ 	day2DayCriteria_createdTimeBegin.datetimepicker($.extend(dpconfig,{
+		hour:0,
+		minute:0
+	}));
+	 	
+	/*
 	 $("#day2DayCriteria_createdTimeBegin").datetimepicker({
 	        format: "yyyy-mm-dd hh:ii",
 	        autoclose: true,
 	        todayBtn: true  
 	 });
-	
+	*/
 	 $("#day2DayCriteria_createdTimeEnd").datetimepicker({
 	        format: "yyyy-mm-dd hh:ii",
 	        autoclose: true,
@@ -81,6 +136,13 @@ $(document).ready(function(){
         }
     });
 });
+
+$("#day2DayCriteria_createdTimeBegin").change(function(){
+		debugger;
+		alert($("#day2DayCriteria_createdTimeBegin").val());
+});
+	
+	
 </script>
 
 <style type="text/css">
@@ -105,12 +167,9 @@ $(document).ready(function(){
            		 <fmt:message key="business.criteria.occurrencedTimeEnd"/>
            </label>
            <div class="col-sm-3"> 
-           <!-- 
            <input id="day2DayCriteria_occurrencedTimeEnd" name="day2DayCriteria.occurrencedTimeEnd" class="form-control w220" 
 							value="<fmt:formatDate value='${day2DayCriteria.occurrencedTimeEnd }' pattern='yyyy-MM-dd HH:mm'/>">
-           -->
-           <s:textfield key="day2DayCriteria.occurrencedTimeEnd" id="day2DayCriteria_occurrencedTimeEnd" cssClass="fxt w220 calendar required" />
-           
+        
            </div>
        </div>
         <div class="form-group">
@@ -167,7 +226,7 @@ $(document).ready(function(){
        <hr class="solided notopMargin">
        <div class="form-group">
 	      <div class="col-sm-offset-4 col-sm-10">
-	         <button type="submit" class="btn btn-default w120 mleft10"><fmt:message key="common.btn.search"/></button>
+	         <button id="submitBtn" type="submit" class="btn btn-default w120 mleft10"><fmt:message key="common.btn.search"/></button>
 	         <button id="addBtn" type="submit" class="btn btn-default w120"><fmt:message key="common.btn.add"/></button>
 	      </div>
   	 </div>

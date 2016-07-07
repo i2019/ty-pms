@@ -51,7 +51,7 @@
 		-->
 		<action name="login_*" class="loginAction" method="{1}">
 		    <result name="success">/pages/main/main.jsp</result>
-		    <result name="fail">/index.jsp</result>     
+		    <result name="fail">/index.jsp</result>
 		</action>
 		
 		<action name="user_*" class="ty.pms.action.User.UserAction"
@@ -77,5 +77,4 @@
 		
     </package>
 
-	
 </struts>
