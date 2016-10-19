@@ -1,6 +1,7 @@
 package ty.pms.model.account.expenditure;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import ty.pms.model.base.BaseObject;
 
@@ -10,7 +11,9 @@ public class Expenditure extends BaseObject{
 	private BigDecimal expenditureAmount;
 	private String causeId;
 	private String unitId;
-
+	  //private Date occurrencedTime;//支出发生时间 
+	  //private Date endTime;//支出结束时间
+	  //private String owner;//支出所有者
 	public String getExpenditureId() {
 		return expenditureId;
 	}

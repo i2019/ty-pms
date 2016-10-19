@@ -206,7 +206,7 @@ function loadMenu(resourceType, treeObj){
 	
 	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1121,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112132,"name":"收支记录","resourceOrder":0,"resourceType":""},
 	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112132,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213241,"name":"收入记录","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112132,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213242,"name":"支出记录","resourceOrder":0,"resourceType":""},
+	{"accessPath":"expenditure_list.action","checked":false,"delFlag":0,"pIdKey":112132,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213242,"name":"支出记录","resourceOrder":0,"resourceType":""},
 	
 	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1121,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112133,"name":"财务报表","resourceOrder":0,"resourceType":""},
 	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112133,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213341,"name":"财务汇总报表","resourceOrder":0,"resourceType":""},

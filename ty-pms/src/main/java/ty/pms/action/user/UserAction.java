@@ -1,4 +1,4 @@
-package ty.pms.action.User;
+package ty.pms.action.user;
 
 import java.util.ArrayList;
 import java.util.List;

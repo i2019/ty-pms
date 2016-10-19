@@ -57,6 +57,9 @@
 	<bean id="userService" class="ty.pms.service.sys.user.impl.UserServiceImpl">
 		<property name="mapper" ref="userMapper"></property>
 	</bean>
+	<bean id="expenditureService" class="ty.pms.service.account.expenditure.impl.ExpenditureServiceImpl">
+		<property name="mapper" ref="expenditureMapper"></property>
+	</bean>
 	<bean id="unitService" class="ty.pms.service.common.unit.impl.UnitServiceImpl">
 		<property name="mapper" ref="unitMapper"></property>
 	</bean>

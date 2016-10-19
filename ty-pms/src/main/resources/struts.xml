@@ -54,12 +54,18 @@
 		    <result name="fail">/index.jsp</result>
 		</action>
 		
-		<action name="user_*" class="ty.pms.action.User.UserAction"
+		<action name="user_*" class="ty.pms.action.user.UserAction"
 			method="{1}">
 			<interceptor-ref name ="tyStack" /> 
-		
 			<result name="list">/pages/main/user.jsp</result>
 			<result name="edit">/pages/main/userEdit.jsp</result>	
+		</action>
+
+		<action name="expenditure_*" class="ty.pms.action.account.ExpenditureAction"
+			method="{1}">
+			<interceptor-ref name ="tyStack" /> 
+			<result name="list">/pages/account/expenditure.jsp</result>
+			<result name="edit">/pages/account/expenditureEdit.jsp</result>	
 		</action>
 		
 		<action name="d2d_*" class="ty.pms.action.time.Day2DayAction"

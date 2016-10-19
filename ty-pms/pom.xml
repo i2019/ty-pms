@@ -195,7 +195,7 @@
 						</execution>
 					</executions>
 				</plugin>
-				
+				<!-- 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
@@ -235,7 +235,8 @@
 						</execution>
 					</executions>
 				</plugin>
-				 
+				-->
+				  
 				<!-- tomcat7插件 -->
 				<plugin>
 					<groupId>org.apache.tomcat.maven</groupId>
@@ -248,6 +249,7 @@
 						<uriEncoding>UTF-8</uriEncoding><!--tomcat的url编码 达到和修改server.xml文件一样的功能 -->
 					</configuration>
 				</plugin>
+	
 			</plugins>
 	</build>
 
