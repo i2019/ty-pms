@@ -33,7 +33,7 @@ public class ExpenditureAction extends BaseAction{
 	
 	@Autowired
 	private UserService userService;
-	private List<String> userNameList=new ArrayList<String>();
+	private List<String> ownerList=new ArrayList<String>();
 	private User loginUser;
   
     @Autowired 
@@ -53,8 +53,8 @@ public class ExpenditureAction extends BaseAction{
 		loginUser=getLoginUser();
 		
 		//displaytag 分页
-		int pageSize = this.getCurrentPageSize("userList");
-		int pageNo = this.getCurrentPageNo("userList");
+		int pageSize = this.getCurrentPageSize("expenditureList");
+		int pageNo = this.getCurrentPageNo("expenditureList");
 		expenditureCriteria.setPageNum(pageNo);
 		expenditureCriteria.setPageSize(pageSize);
 
@@ -65,7 +65,7 @@ public class ExpenditureAction extends BaseAction{
 		expenditureResult=expenditureService.getByCriteria(expenditureCriteria);
 		
 		//查询条件
-		userNameList=userService.getUserNameList();
+		init();
 		
 		return "list";
 		
@@ -75,8 +75,9 @@ public class ExpenditureAction extends BaseAction{
 	 * @return
 	 */
 	public String edit(){
+		init();
 		if(StringUtils.hasText(expenditureId)){
-			expenditure=expenditureService.selectByPrimaryKey(expenditureId);	
+			expenditure=expenditureService.selectByPrimaryKey(expenditureId);
 		}
 		return "edit";
 	}
@@ -89,7 +90,6 @@ public class ExpenditureAction extends BaseAction{
 		if(StringUtils.hasText(expenditureId) && null!=loginUser){
 			expenditureService.deleteByPrimaryKey(expenditureId);
 		}
-		
 		return list();
 	}
 	/**
@@ -103,16 +103,22 @@ public class ExpenditureAction extends BaseAction{
 				expenditureService.updateByPrimaryKeySelective(expenditure);
 			}else{
 			//如果不存在id，则为新增，后台insert
-				expenditureService.insertSelective(expenditure);
+			   expenditureService.insertSelective(expenditure);
 			}
 		}
 		return "list";
 	}
-
+	/**
+	 * 初始化方法
+	 */
+	public void init(){
+		//查询条件
+		ownerList=userService.getUserNameList();
+	}
+	//getters and setters
 	public UserService getUserService() {
 		return userService;
 	}
-
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
@@ -120,18 +126,11 @@ public class ExpenditureAction extends BaseAction{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	public List<String> getUserNameList() {
-		return userNameList;
+	public List<String> getOwnerList() {
+		return ownerList;
 	}
-	public void setUserNameList(List<String> userNameList) {
-		this.userNameList = userNameList;
-	}
-	public User getLoginUser() {
-		return loginUser;
-	}
-	public void setLoginUser(User loginUser) {
-		this.loginUser = loginUser;
+	public void setOwnerList(List<String> ownerList) {
+		this.ownerList = ownerList;
 	}
 	public Log getLog() {
 		return log;

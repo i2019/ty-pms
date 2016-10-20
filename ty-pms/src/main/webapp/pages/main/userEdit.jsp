@@ -60,7 +60,7 @@ function ajaxVerifyOnly(){
 <input type="hidden" id="editUserId" value="${userId }"/>
   
 <div id="container" class="center-in-center">
- <form class="form-horizontal" action="user_save.action" id="userEditForm" method="post">>
+ <form class="form-horizontal" action="user_save.action" id="userEditForm" method="post">
  		<s:hidden name="user.userId"></s:hidden>
  		<!-- 用户名 -->
         <div class="form-group">

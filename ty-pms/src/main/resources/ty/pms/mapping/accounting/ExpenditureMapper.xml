@@ -43,7 +43,7 @@
 	</sql>
 	
 	<insert id="insertSelective" parameterType="Expenditure">
-		insert into Expenditure
+		insert into expenditure
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="expenditureId != null">
 				expenditureId,
@@ -119,7 +119,7 @@
 	</insert>
 	
 	<update id="updateByPrimaryKeySelective" parameterType="Expenditure">
-		update Expenditure
+		update expenditure
 		<set>
 			<if test="expenditureAmount != null">
 				expenditureAmount = #{expenditureAmount,jdbcType=DECIMAL},
@@ -157,14 +157,14 @@
 	</update>
 	
 	<delete id="deleteByPrimaryKey" parameterType="int">
-		delete from Expenditure
+		delete from expenditure
 		where expenditureId = #{expenditureId,jdbcType=VARCHAR}
 	</delete>
 	
 	<select id="selectByPrimaryKey" resultMap="resultMap" parameterType="str">
 		select
 		<include refid="allColumns" />
-		from Expenditure
+		from expenditure
 		where expenditureId = #{expenditureId,jdbcType=VARCHAR} and delFlag=0
 	</select>
 	
@@ -172,24 +172,24 @@
 	<select id="selectByName" resultMap="resultMap" parameterType="str">
 		select
 		<include refid="allColumns" />
-		from Expenditure where delFlag=0
+		from expenditure where delFlag=0
 		and expenditureAmount = #{expenditureAmount,jdbcType=DECIMAL}
 	</select>
 	
 	<select resultType="int" id="getAllCount">
-		<include refid="selectCount" /> Expenditure 
+		<include refid="selectCount" /> expenditure 
 		where delFlag=0
 	</select>
 	<select id="getAll" resultMap="resultMap">
 		select
 		<include refid="allColumns" />
-		from Expenditure 
+		from expenditure 
 		where delFlag=0
 		<include refid="createdTimeDESC" />
 	</select>
 	
     <select id="getByCriteriaCount" resultType="int" parameterType="ExpenditureCriteria">
-    	<include refid="selectCount" /> Expenditure
+    	<include refid="selectCount" /> expenditure
     	<where>
     		delFlag=0
     		<if test="expenditureAmount != null">
@@ -242,7 +242,7 @@
     </select>
     
     <select id="getByCriteria" resultMap="resultMap" resultType="ExpenditureResult" parameterType="ExpenditureCriteria">
-    	select <include refid="allColumns" /> from Expenditure 
+    	select <include refid="allColumns" /> from expenditure 
     	<where>
     		delFlag=0
     		<if test="expenditureAmount != null">

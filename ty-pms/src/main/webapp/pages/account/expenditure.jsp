@@ -17,7 +17,7 @@ $(document).ready(function(){
 	
 	/*复选框*/
 	//$('select[class=\'mut_opt\']').multiselect({});
-	$('#userCriteria_userNameList').multiselect({
+	$('#expenditureCriteria_ownerList').multiselect({
 		numberDisplayed: 1,
 		dropRight: true,
         enableCaseInsensitiveFiltering: true,
@@ -32,21 +32,14 @@ $(document).ready(function(){
     });
 	
 	 /*时间控件*/
-	 $("#userCriteria_createdTimeBegin").datetimepicker({
+	 $(".timeformat1").datetimepicker({
 	        format: "yyyy-mm-dd hh:ii",
 	        autoclose: true,
 	        todayBtn: true  
 	 });
 	
-	 $("#userCriteria_createdTimeEnd").datetimepicker({
-	        format: "yyyy-mm-dd hh:ii",
-	        autoclose: true,
-	        todayBtn: true
-	 });
-	
-	
 	/** 编辑   **/
-	$(".editUser").fancybox({	
+	$(".edit").fancybox({	
 			//'href'  : 'user_edit.action?userId='+$(this).attr("id"),
 	    	'width' : 733,
 	        'height' : 530,
@@ -54,20 +47,20 @@ $(document).ready(function(){
 	        'hideOnOverlayClick' : false,
 	        'showCloseButton' : true,
 	        'onClosed' : function() { 
-	        	window.location.href = 'user_list.action';
+	        	window.location.href = 'expenditure_list.action';
 	        }
 	 });
 	
 	/** 新增   **/
     $("#addBtn").fancybox({
-    	'href'  : 'user_edit.action',
+    	'href'  : 'expenditure_edit.action',
     	'width' : 733,
         'height' : 530,
         'type' : 'iframe',
         'hideOnOverlayClick' : false,
         'showCloseButton' : true,
         'onClosed' : function() { 
-        	window.location.href = 'user_list.action';
+        	window.location.href = 'expenditure_list.action';
         }
     });
 });
@@ -84,65 +77,57 @@ $(document).ready(function(){
 <form class="form-horizontal" role="form" method="post">
         <div class="form-group">
            <!-- 用户名 -->
-           <label class="text-muted col-sm-1 control-label" for="ds_host">
-			支出用户:
-			</label>
+           <label class="text-muted col-sm-2 control-label" for="ds_host">支出用户:</label>
            <div class="col-sm-3">
-              <select id="expenditureCriteria_userNameList" name="expenditureCriteria.userNameList" class="mut_opt" multiple="multiple">
-					<c:forEach items="${userNameList}" var="userName">	
+              <select id="expenditureCriteria_ownerList" name="expenditureCriteria.ownerList" class="mut_opt" multiple="multiple">
+					<c:forEach items="${ownerList}" var="userName">	
 						<option value="${userName}" 
-						${fn:contains(expenditureCriteria.userNameList, userName)?"selected":""}>${userName}</option>
+						${fn:contains(expenditureCriteria.ownerList, userName)?"selected":""}>${userName}</option>
 					</c:forEach>
 			 </select>
            </div>
             <!-- 备注 -->
-           <label class="col-sm-1 text-muted control-label" for="ds_host">支出原因说明:</label>
+           <label class="col-sm-2 text-muted control-label" for="ds_host">支出原因说明:</label>
            <div class="col-sm-3">
              <s:textfield name="expenditureCriteria.remark" cssClass="form-control w220" type="text"></s:textfield>
            </div>
        </div>
        <div class="form-group"> 	  
             <!-- 支出金额 -->
-           <label class="col-sm-1 text-muted control-label" for="ds_host">支出金额开始:</label>
+           <label class="col-sm-2 text-muted control-label" for="ds_host">支出金额开始:</label>
            <div class="col-sm-3">
-             <s:textfield name="expenditureCriteria.expenditureAmount" cssClass="form-control w220" type="text"></s:textfield>
+             <s:textfield name="expenditureCriteria.expenditureAmountBegin" cssClass="form-control w220" type="text"></s:textfield>
            </div>
-            <!-- 支出金额 -->
-           <label class="col-sm-1 text-muted control-label" for="ds_host">支出金额结束:</label>
+           <label class="col-sm-2 text-muted control-label" for="ds_host">支出金额结束:</label>
            <div class="col-sm-3">
-             <s:textfield name="expenditureCriteria.expenditureAmount" cssClass="form-control w220" type="text"></s:textfield>
+             <s:textfield name="expenditureCriteria.expenditureAmountEnd" cssClass="form-control w220" type="text"></s:textfield>
            </div>
        </div>
+       <!-- 支出时间-->
        <div class="form-group">
-           <!-- 支出开始时间-->
            <label class="col-sm-2 text-muted control-label" for="ds_name">支出发生时间开始:</label>
            <div class="col-sm-3">
-             <input id="expenditureCriteria_occurrencedTime" name="expenditureCriteria.createdTimeBegin" class="form-control w220" 
-							value="<fmt:formatDate value='${expenditureCriteria.createdTimeBegin }' pattern='yyyy-MM-dd HH:mm'/>">
+             <input id="expenditureCriteria_occurrencedTimeBegin" name="expenditureCriteria.occurrencedTimeBegin" class="timeformat1 form-control w220" 
+							value="<fmt:formatDate value='${expenditureCriteria.occurrencedTimeBegin}' pattern='yyyy-MM-dd HH:mm'/>">
            </div>
-        	<!-- 支出结束时间 -->
             <label class="col-sm-2 text-muted control-label" for="ds_name">支出发生时间结束:</label>
             <div class="col-sm-3">
-              <input id="expenditureCriteria_createdTimeEnd" name="expenditureCriteria.createdTimeEnd" class="form-control w220" 
-							value="<fmt:formatDate value='${expenditureCriteria.createdTimeEnd }' pattern='yyyy-MM-dd HH:mm'/>">
+              <input id="expenditureCriteria_occurrencedTimeEnd" name="expenditureCriteria.occurrencedTimeEnd" class="timeformat1 form-control w220" 
+							value="<fmt:formatDate value='${expenditureCriteria.occurrencedTimeEnd}' pattern='yyyy-MM-dd HH:mm'/>">
             </div>
        </div>
        <div class="form-group">
-           <!-- 支出开始时间-->
            <label class="col-sm-2 text-muted control-label" for="ds_name">支出结束时间开始:</label>
            <div class="col-sm-3">
-             <input id="expenditureCriteria_occurrencedTime" name="expenditureCriteria.createdTimeBegin" class="form-control w220" 
-							value="<fmt:formatDate value='${expenditureCriteria.createdTimeBegin }' pattern='yyyy-MM-dd HH:mm'/>">
+             <input id="expenditureCriteria_endTimeBegin" name="expenditureCriteria.endTimeBegin" class="timeformat1 form-control w220" 
+							value="<fmt:formatDate value='${expenditureCriteria.endTimeBegin}' pattern='yyyy-MM-dd HH:mm'/>">
            </div>
-        	<!-- 支出结束时间 -->
             <label class="col-sm-2 text-muted control-label" for="ds_name">支出结束时间结束:</label>
             <div class="col-sm-3">
-              <input id="expenditureCriteria_createdTimeEnd" name="expenditureCriteria.createdTimeEnd" class="form-control w220" 
-							value="<fmt:formatDate value='${expenditureCriteria.createdTimeEnd }' pattern='yyyy-MM-dd HH:mm'/>">
+              <input id="expenditureCriteria_endTimeEnd" name="expenditureCriteria.endTimeEnd" class="timeformat1 form-control w220" 
+							value="<fmt:formatDate value='${expenditureCriteria.endTimeEnd }' pattern='yyyy-MM-dd HH:mm'/>">
             </div>
        </div>
-       
-      
        <hr class="solided notopMargin">
        <div class="form-group">
 	      <div class="col-sm-offset-4 col-sm-10">
@@ -155,28 +140,24 @@ $(document).ready(function(){
 
 <!--列表样式-->
 <div class="pannel_display">
-	<display:table name="userResult.resultList" id="userList" sort="list" 
-		class="result_table" requestURI="" pagesize="20" size="userResult.totalCount" partialList="true">
+	<display:table name="expenditureResult.resultList" id="expenditureList" sort="list" class="result_table" requestURI="" pagesize="20" size="expenditureResult.totalCount" partialList="true">
 		<display:setProperty name="sort.amount" value="list" />
-		<display:column property="userName" title="用户名"/>
 		
-		<display:column title="操作">
-			<input type="hidden" id="userId_${userList.userId}" value="${userList.userId}"/>
-			<a href="user_edit.action?userId=${userList.userId}" class="editUser link mgR12">
-				<fmt:message key="common.btn.edit"/></a>
-			<c:if test="${loginUser.userId != userList.userId }">
-				<a href="user_del.action?userId=${userList.userId}" class="delUser link">
-					<fmt:message key="common.btn.delete"/></a>
-			</c:if>	
-		</display:column>
-		
-		<display:column title="备注">
-			<div id="" class="popover-hide" 
-			data-container="body" data-toggle="popover" data-placement="bottom" data-content="${userList.remark}"> 
-			    <a>
-			    	<label class="remarkLabel h20">${userList.remark}</label> 
-			    </a>
+		<display:column property="owner" title="支出用户"/>
+		<display:column property="expenditureAmount" sortable="true" title="支出金额"/>
+		<!-- titleKey="ccm.ReservationUpdateDate"  -->
+		<display:column property="occurrencedTime" title="支出开始时间" sortable="true" format="{0,date,yyyy-MM-dd HH:mm:ss}" headerClass="sorted" class="scroll-content-item"/>
+		<display:column property="endTime" title="支出结束时间" sortable="true" format="{0,date,yyyy-MM-dd HH:mm:ss}" headerClass="sorted" class="scroll-content-item"/>
+		<display:column title="支出原因说明">
+			<div class="popover-hide" data-container="body" data-toggle="popover" data-placement="bottom" data-content="${userList.remark}"> 
+			    <a><label class="remarkLabel h20">${expenditureList.remark}</label></a>
 	   		</div>
+		</display:column>s
+		<display:column title="操作">
+			<a href="expenditure_edit.action?expenditureId=${expenditureList.expenditureId}" class="edit link mgR12">
+				<fmt:message key="common.btn.edit"/></a>
+			<a href="expenditure_del.action?expenditureId=${expenditureList.expenditureId}" class="del link">
+				<fmt:message key="common.btn.delete"/></a>
 		</display:column>
 		
 	</display:table>
