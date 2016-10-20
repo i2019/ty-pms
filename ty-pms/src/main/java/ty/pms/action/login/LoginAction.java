@@ -24,7 +24,7 @@ public class LoginAction extends BaseAction implements Action{
 	
 	private UserCriteria userCriteria;
 
-	public String execute() {
+	public String execute() throws Exception {
 		HttpServletRequest request=getRequest();
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
@@ -37,6 +37,8 @@ public class LoginAction extends BaseAction implements Action{
 					setLoginUser(user);	
 					return "success";
 				}
+			} else {
+				throw new Exception(username+"不存在！");
 			}
 		}
 		
