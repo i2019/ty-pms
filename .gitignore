@@ -1,3 +1,5 @@
 /ty-pms/.classpath
 .settings/*
+.settings
 target/*
+target
