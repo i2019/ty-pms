@@ -8,6 +8,7 @@ import org.springframework.util.StringUtils;
 
 import ty.pms.action.base.BaseAction;
 import ty.pms.model.sys.user.User;
+import ty.pms.model.time.day2day.Day2Day;
 import ty.pms.model.time.day2day.Day2DayCriteria;
 import ty.pms.model.time.day2day.Day2DayResult;
 import ty.pms.service.sys.user.UserService;
@@ -24,10 +25,11 @@ public class Day2DayAction extends BaseAction {
 	private Day2DayService day2DayService;
 	@Autowired
 	private UserService userService;
-	
+	private User loginUser;
 	private Day2DayCriteria day2DayCriteria=new Day2DayCriteria();
 	private Day2DayResult day2DayResult = new Day2DayResult();
-
+	private String d2Id;
+	private Day2Day day2Day;
 	private List<User> userList=new ArrayList<User>();
 	private List<String> ownerList=new ArrayList<String>();
 	
@@ -37,7 +39,6 @@ public class Day2DayAction extends BaseAction {
 	 * @return
 	 */
 	public String list() {
-
 		// displaytag 分页
 		int pageSize = this.getCurrentPageSize("day2DayList");
 		int pageNo = this.getCurrentPageNo("day2DayList");
@@ -52,11 +53,10 @@ public class Day2DayAction extends BaseAction {
 		}
 
 		day2DayResult = day2DayService.getByCriteria(day2DayCriteria);
-		
+	
 		//查询条件
 		ownerList=userService.getUserNameList();
-				
-		
+
 		return "list";
 	}
 
@@ -75,7 +75,10 @@ public class Day2DayAction extends BaseAction {
 	 * @return
 	 */
 	public String del() {
-
+		loginUser=getLoginUser();
+		if(StringUtils.hasText(d2Id) && null!=loginUser){
+			day2DayService.deleteByPrimaryKey(d2Id);
+		}
 		return list();
 	}
 
@@ -85,8 +88,24 @@ public class Day2DayAction extends BaseAction {
 	 * @return
 	 */
 	public String save() {
-
+		if(null!=day2Day ){	
+			//如果存在用户id，则为编辑，后台update
+			if(StringUtils.hasText(day2Day.getD2Id())){
+				day2DayService.updateByPrimaryKeySelective(day2Day);
+			}else{
+			//如果不存在id，则为新增，后台insert
+				day2DayService.insertSelective(day2Day);
+			}
+		}
 		return "list";
+	}
+
+	public String getD2Id() {
+		return d2Id;
+	}
+
+	public void setD2Id(String d2Id) {
+		this.d2Id = d2Id;
 	}
 
 	public Day2DayService getDay2DayService() {

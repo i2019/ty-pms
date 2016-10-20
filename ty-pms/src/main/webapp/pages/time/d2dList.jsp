@@ -32,85 +32,12 @@ $(document).ready(function(){
 		nonSelectedText: '请选择'
     });
 	
-	 /*时间控件*/
-	 
-	 var dpconfig = {
-			dateFormat : "yy-mm-dd hh:ii",
-			dayNamesMin : [ 
-			               '<fmt:message key="calendar.week.sunday"/>', 
-			               '<fmt:message key="calendar.week.monday"/>', 
-			               '<fmt:message key="calendar.week.tuesday"/>', 
-			               '<fmt:message key="calendar.week.wednesday"/>', 
-			               '<fmt:message key="calendar.week.thursday"/>', 
-			               '<fmt:message key="calendar.week.friday"/>', 
-			               '<fmt:message key="calendar.week.saturday"/>' 
-			              ],
-			yearSuffix : '<fmt:message key="time.year"/>',
-			monthNames : [ 
-			               '<fmt:message key="calendar.month.january"/>', 
-			               '<fmt:message key="calendar.month.february"/>', 
-			               '<fmt:message key="calendar.month.march"/>', 
-			               '<fmt:message key="calendar.month.april"/>', 
-			               '<fmt:message key="calendar.month.may"/>', 
-			               '<fmt:message key="calendar.month.june"/>', 
-			               '<fmt:message key="calendar.month.july"/>', 
-			               '<fmt:message key="calendar.month.august"/>',
-			               '<fmt:message key="calendar.month.september"/>', 
-			               '<fmt:message key="calendar.month.october"/>', 
-			               '<fmt:message key="calendar.month.november"/>', 
-			               '<fmt:message key="calendar.month.december"/>' 
-			              ],
-			monthNamesShort:[
-							'<fmt:message key="calendar.month.january"/>', 
-							'<fmt:message key="calendar.month.february"/>', 
-							'<fmt:message key="calendar.month.march"/>', 
-							'<fmt:message key="calendar.month.april"/>', 
-							'<fmt:message key="calendar.month.may"/>', 
-							'<fmt:message key="calendar.month.june"/>', 
-							'<fmt:message key="calendar.month.july"/>', 
-							'<fmt:message key="calendar.month.august"/>',
-							'<fmt:message key="calendar.month.september"/>', 
-							'<fmt:message key="calendar.month.october"/>', 
-							'<fmt:message key="calendar.month.november"/>', 
-							'<fmt:message key="calendar.month.december"/>' 
-			              ],
-							hourText:'<fmt:message key="time.Hour"/>',
-							minuteText:'<fmt:message key="time.Minute"/>',
-							timeText:'<fmt:message key="time.Time"/>',
-							currentText:'<fmt:message key="time.Present"/>',
-							closeText:'<fmt:message key="common.button.close"/>'
-	}
-	
-	var day2DayCriteria_createdTimeBegin = $("#day2DayCriteria_createdTimeBegin");
- 	day2DayCriteria_createdTimeBegin.datetimepicker($.extend(dpconfig,{
-		hour:0,
-		minute:0
-	}));
-	 	
-	/*
-	 $("#day2DayCriteria_createdTimeBegin").datetimepicker({
-	        format: "yyyy-mm-dd hh:ii",
-	        autoclose: true,
-	        todayBtn: true  
-	 });
-	*/
-	 $("#day2DayCriteria_createdTimeEnd").datetimepicker({
+	 $(".timeformat1").datetimepicker({
 	        format: "yyyy-mm-dd hh:ii",
 	        autoclose: true,
 	        todayBtn: true
 	 });
-	 $("#day2DayCriteria_occurrencedTimeBegin").datetimepicker({
-	        format: "yyyy-mm-dd hh:ii",
-	        autoclose: true,
-	        todayBtn: true  
-	 });
 	
-	 $("#day2DayCriteria_occurrencedTimeEnd").datetimepicker({
-	        format: "yyyy-mm-dd hh:ii",
-	        autoclose: true,
-	        todayBtn: true
-	 });
-		
 	/** 编辑   **/
 	$(".edit").fancybox({	
 	    	'width' : 733,
@@ -136,19 +63,8 @@ $(document).ready(function(){
         }
     });
 });
-
-$("#day2DayCriteria_createdTimeBegin").change(function(){
-		debugger;
-		alert($("#day2DayCriteria_createdTimeBegin").val());
-});
-	
 	
 </script>
-
-<style type="text/css">
-
-</style>
-
 </head>
 <body>
 <hr class="solided notopMargin">
@@ -159,7 +75,7 @@ $("#day2DayCriteria_createdTimeBegin").change(function(){
            		<fmt:message key="business.criteria.occurrencedTimeBegin"/>
            </label>
            <div class="col-sm-3">
-             <input id="day2DayCriteria_occurrencedTimeBegin" name="day2DayCriteria.occurrencedTimeBegin" class="form-control w220" 
+             <input id="day2DayCriteria_occurrencedTimeBegin" name="day2DayCriteria.occurrencedTimeBegin" class="timeformat1 form-control w220" 
 				value="<fmt:formatDate value='${day2DayCriteria.occurrencedTimeBegin }' pattern='yyyy-MM-dd HH:mm'/>">
            </div>
            <!-- 发生结束时间 -->
@@ -167,7 +83,7 @@ $("#day2DayCriteria_createdTimeBegin").change(function(){
            		 <fmt:message key="business.criteria.occurrencedTimeEnd"/>
            </label>
            <div class="col-sm-3"> 
-           <input id="day2DayCriteria_occurrencedTimeEnd" name="day2DayCriteria.occurrencedTimeEnd" class="form-control w220" 
+           <input id="day2DayCriteria_occurrencedTimeEnd" name="day2DayCriteria.occurrencedTimeEnd" class="timeformat1 form-control w220" 
 							value="<fmt:formatDate value='${day2DayCriteria.occurrencedTimeEnd }' pattern='yyyy-MM-dd HH:mm'/>">
         
            </div>
@@ -178,7 +94,7 @@ $("#day2DayCriteria_createdTimeBegin").change(function(){
            		<fmt:message key="business.criteria.createdTimeBegin"/>
            </label>
            <div class="col-sm-3">
-             <input id="day2DayCriteria_createdTimeBegin" name="day2DayCriteria.createdTimeBegin" class="form-control w220" 
+             <input id="day2DayCriteria_createdTimeBegin" name="day2DayCriteria.createdTimeBegin" class="timeformat1 form-control w220" 
 							value="<fmt:formatDate value='${day2DayCriteria.createdTimeBegin }' pattern='yyyy-MM-dd HH:mm'/>">
            </div>
            <!-- 创建结束时间 -->
@@ -186,7 +102,7 @@ $("#day2DayCriteria_createdTimeBegin").change(function(){
            		 <fmt:message key="business.criteria.createdTimeEnd"/>
            </label>
            <div class="col-sm-3">
-           <input id="day2DayCriteria_createdTimeEnd" name="day2DayCriteria.createdTimeEnd" class="form-control w220" 
+           <input id="day2DayCriteria_createdTimeEnd" name="day2DayCriteria.createdTimeEnd" class="timeformat1 form-control w220" 
 							value="<fmt:formatDate value='${day2DayCriteria.createdTimeEnd }' pattern='yyyy-MM-dd HH:mm'/>">
            </div>
        </div>
@@ -232,18 +148,14 @@ $("#day2DayCriteria_createdTimeBegin").change(function(){
   	 </div>
 </form>
 <hr class="solided notopMargin">
-
 <!--列表样式-->
 <div class="pannel_display">
 	<display:table name="day2DayResult.resultList" id="day2DayList" sort="list" 
 		class="result_table" requestURI="" pagesize="20" size="day2DayResult.totalCount" partialList="true">
 		<display:setProperty name="sort.amount" value="list" />
-		
 		<display:column property="owner" titleKey="common.user.userName"/>
-		
 		<display:column property="occurrencedTime" titleKey="business.criteria.occurrencedTime" format="{0,date,yyyy-MM-dd HH:mm:ss}"/>
 		<display:column property="endTime" titleKey="business.criteria.endTime" format="{0,date,yyyy-MM-dd HH:mm:ss}"/>
-		
 		<display:column titleKey="business.criteria.descript">
 			<div id="" class="popover-hide" 
 			data-container="body" data-toggle="popover" data-placement="bottom" data-content="${day2DayList.d2Descrip}"> 
@@ -256,7 +168,6 @@ $("#day2DayCriteria_createdTimeBegin").change(function(){
 			    <a><label class="remarkLabel h20">${day2DayList.remark}</label></a>
 	   		</div>
 		</display:column>
-		
 		<display:column titleKey="business.criteria.operate">
 			<a href="d2d_edit.action?d2Id=${day2DayList.d2Id}" class="edit link mgR12">
 				<fmt:message key="common.btn.edit"/>
@@ -264,12 +175,9 @@ $("#day2DayCriteria_createdTimeBegin").change(function(){
 			<a href="d2d_del.action?d2Id=${day2DayList.d2Id}" class="del link">
 				<fmt:message key="common.btn.delete"/>
 			</a>
-		</display:column>
-		
+		</display:column>	
 	</display:table>
 </div>
-
 <hr class="solided notopMargin">
-
 </body>
 </html>
