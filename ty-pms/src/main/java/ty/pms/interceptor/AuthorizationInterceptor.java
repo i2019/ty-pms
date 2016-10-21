@@ -16,7 +16,7 @@ public class AuthorizationInterceptor implements Interceptor {
 	@Override
 	public String intercept(ActionInvocation ai) throws Exception {
 		//只有登录用户才可以查看的拦截器
-		Map session = ai.getInvocationContext().getSession();
+		Map<String, Object> session = ai.getInvocationContext().getSession();
 	    String userName = (String) session.get("LoginUserName");
 	     if(null != userName){
 	        return ai.invoke();

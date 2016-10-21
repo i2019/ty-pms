@@ -1,8 +1,8 @@
 package ty.pms.action.base;
 
-import ty.pms.action.base.BaseAction;
-
 public class ModelAction extends BaseAction{
+
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 查询并展示
