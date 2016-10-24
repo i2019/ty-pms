@@ -124,9 +124,9 @@ $(document).ready(function(){
 			</label>
            <div class="col-sm-2">
               <select id="day2DayCriteria_ownerList" name="day2DayCriteria.ownerList" class="mut_opt" multiple="multiple">
-					<c:forEach items="${ownerList}" var="userName">	
-						<option value="${userName}" 
-						${fn:contains(day2DayCriteria.ownerList, userName)?"selected":""}>${userName}</option>
+					<c:forEach items="${userList}" var="user">	
+						<option value="${user.userId}" 
+						${fn:contains(day2DayCriteria.ownerList, user.userId)?"selected":""}>${user.userName}</option>
 					</c:forEach>
 			 </select>
            </div>

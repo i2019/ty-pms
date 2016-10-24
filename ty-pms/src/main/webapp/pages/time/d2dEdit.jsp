@@ -49,9 +49,8 @@ $(document).ready(function() {
            <label class="text-muted col-sm-2 control-label" for="ds_host">用户:</label>
            <div class="col-sm-10">
 		  	  <select id="day2Day_owner" name="day2Day.owner" class="mut_opt">
-					<c:forEach items="${ownerList}" var="userName">	
-						<option value="${userName}" 
-						${fn:contains(day2Day.owner, userName)?"selected":""}>${userName}</option>
+					<c:forEach items="${userList}" var="user">	
+						<option value="${user.userId}" ${fn:contains(day2Day.owner, user.userId)?"selected":""}>${user.userName}</option>
 					</c:forEach>
 			 </select>
 		   </div>

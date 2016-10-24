@@ -189,154 +189,165 @@
 	</select>
 	
     <select id="getByCriteriaCount" resultType="int" parameterType="day2dayCriteria">
-    	<include refid="selectCount" /> day2day
+    	<include refid="selectCount" /> day2day d
+    	left join user u
+    	on u.userId=d.owner
+    	and u.delFlag=0
     	<where>
-    		delFlag=0
+    		d.delFlag=0
     		<if test="d2Descrip != null">
 				<!-- and d2Descrip = #{d2Descrip}  -->
-				and d2Descrip like CONCAT('%','${d2Descrip}','%' )
+				and d.d2Descrip like CONCAT('%','${d2Descrip}','%' )
 			</if>
 			<if test="d2DescripList != null">
-   			 	and d2Descrip in
+   			 	and d.d2Descrip in
 		      	<foreach collection="d2DescripList" item="d2Descrip" index="index" open="(" close=")" separator=",">
 		            #{d2Descrip}
 		        </foreach>
   			</if>
   			
 			<if test="occurrencedTime != null">
-				and occurrencedTime=#{occurrencedTime}
+				and d.occurrencedTime=#{occurrencedTime}
 			</if>
 			<if test="occurrencedTimeBegin != null">
 				<![CDATA[
-				and occurrencedTime>=#{occurrencedTimeBegin}
+				and d.occurrencedTime>=#{occurrencedTimeBegin}
 				]]>     
 			</if>
 			<if test="occurrencedTimeEnd != null">
 				<![CDATA[
-				and occurrencedTime<=#{occurrencedTimeEnd}
+				and d.occurrencedTime<=#{occurrencedTimeEnd}
 				]]>     
 			</if>
 			
 			<if test="endTime != null">
-				and endTime=#{endTime}
+				and d.endTime=#{endTime}
 			</if>
 			
 			<if test="lastModifyTime != null">
-				and lastModifyTime=#{lastModifyTime}
+				and d.lastModifyTime=#{lastModifyTime}
 			</if>
 			
 			<if test="createdTime != null">
-				and createdTime=#{createdTime}
+				and d.createdTime=#{createdTime}
 			</if>
 			<if test="createdTimeBegin != null">
 				<![CDATA[
-				and createdTime>=#{createdTimeBegin}
+				and d.createdTime>=#{createdTimeBegin}
 				]]>     
 			</if>
 			<if test="createdTimeEnd != null">
 				<![CDATA[
-				and createdTime<=#{createdTimeEnd}
+				and d.createdTime<=#{createdTimeEnd}
 				]]>     
 			</if>
 			
 			<if test="owner != null">
-				and owner=#{owner}
+				and d.owner=#{owner}
 			</if>
 			<if test="ownerList != null">
-   			 	and owner in
+   			 	and d.owner in
 		      	<foreach collection="ownerList" item="owner" index="index" open="(" close=")" separator=",">
 		            #{owner}
 		        </foreach>
   			</if>
   			
 			<if test="createdBy != null">
-				and createdBy=#{createdBy}
+				and d.createdBy=#{createdBy}
 			</if>
 			
 			<if test="updatedBy != null">
-				and updatedBy=#{updatedBy}
+				and d.updatedBy=#{updatedBy}
 			</if>
 			
 			<if test="remark != null">
-				 and remark like CONCAT('%','${remark}','%' )
+				 and d.remark like CONCAT('%','${remark}','%' )
 			</if>
     	</where>
     </select>
     
     <select id="getByCriteria" resultMap="resultMap" resultType="day2dayResult" parameterType="day2dayCriteria">
-    	select <include refid="allColumns" /> from day2day 
+    	select 
+		d.d2Id,d.d2Descrip,
+		d.occurrencedTime,d.endTime,d.createdTime,d.lastModifyTime,
+		u.userName owner,d.owner ownerId,
+		d.createdBy,d.updatedBy,d.remark
+	    from day2day d
+    	left join user u
+    	on u.userId=d.owner
+    	and u.delFlag=0
     	<where>
-    		delFlag=0
+    		d.delFlag=0
     		<if test="d2Descrip != null">
 				<!-- and d2Descrip = #{d2Descrip}  -->
-				and d2Descrip like CONCAT('%','${d2Descrip}','%' )
+				and d.d2Descrip like CONCAT('%','${d2Descrip}','%' )
 			</if>
 			<if test="d2DescripList != null">
-   			 	and d2Descrip in
+   			 	and d.d2Descrip in
 		      	<foreach collection="d2DescripList" item="d2Descrip" index="index" open="(" close=")" separator=",">
 		            #{d2Descrip}
 		        </foreach>
   			</if>
   			
 			<if test="occurrencedTime != null">
-				and occurrencedTime=#{occurrencedTime}
+				and d.occurrencedTime=#{occurrencedTime}
 			</if>
 			<if test="occurrencedTimeBegin != null">
 				<![CDATA[
-				and occurrencedTime>=#{occurrencedTimeBegin}
+				and d.occurrencedTime>=#{occurrencedTimeBegin}
 				]]>     
 			</if>
 			<if test="occurrencedTimeEnd != null">
 				<![CDATA[
-				and occurrencedTime<=#{occurrencedTimeEnd}
+				and d.occurrencedTime<=#{occurrencedTimeEnd}
 				]]>     
 			</if>
 			
 			<if test="endTime != null">
-				and endTime=#{endTime}
+				and d.endTime=#{endTime}
 			</if>
 			
 			<if test="lastModifyTime != null">
-				and lastModifyTime=#{lastModifyTime}
+				and d.lastModifyTime=#{lastModifyTime}
 			</if>
 			
 			<if test="createdTime != null">
-				and createdTime=#{createdTime}
+				and d.createdTime=#{createdTime}
 			</if>
 			<if test="createdTimeBegin != null">
 				<![CDATA[
-				and createdTime>=#{createdTimeBegin}
+				and d.createdTime>=#{createdTimeBegin}
 				]]>     
 			</if>
 			<if test="createdTimeEnd != null">
 				<![CDATA[
-				and createdTime<=#{createdTimeEnd}
+				and d.createdTime<=#{createdTimeEnd}
 				]]>     
 			</if>
 			
 			<if test="owner != null">
-				and owner=#{owner}
+				and d.owner=#{owner}
 			</if>
 			<if test="ownerList != null">
-   			 	and owner in
+   			 	and d.owner in
 		      	<foreach collection="ownerList" item="owner" index="index" open="(" close=")" separator=",">
 		            #{owner}
 		        </foreach>
   			</if>
   			
 			<if test="createdBy != null">
-				and createdBy=#{createdBy}
+				and d.createdBy=#{createdBy}
 			</if>
 			
 			<if test="updatedBy != null">
-				and updatedBy=#{updatedBy}
+				and d.updatedBy=#{updatedBy}
 			</if>
 			
 			<if test="remark != null">
-				 and remark like CONCAT('%','${remark}','%' )
+				 and d.remark like CONCAT('%','${remark}','%' )
 			</if>
     	</where>
-    	<include refid="createdTimeDESC" />
+    	ORDER BY d.occurrencedTime DESC
     	<include refid="limitPage" />
     </select>
     

@@ -8,6 +8,7 @@ import org.springframework.util.StringUtils;
 
 import ty.pms.action.base.BaseAction;
 import ty.pms.model.sys.user.User;
+import ty.pms.model.sys.user.UserResult;
 import ty.pms.model.time.day2day.Day2Day;
 import ty.pms.model.time.day2day.Day2DayCriteria;
 import ty.pms.model.time.day2day.Day2DayResult;
@@ -30,9 +31,10 @@ public class Day2DayAction extends BaseAction {
 	private Day2DayResult day2DayResult = new Day2DayResult();
 	private String d2Id;
 	private Day2Day day2Day;
+	
 	private List<User> userList=new ArrayList<User>();
 	private List<String> ownerList=new ArrayList<String>();
-	
+	private UserResult userResult=new UserResult(); 
 	/**
 	 * 查询并展示
 	 * 
@@ -54,12 +56,21 @@ public class Day2DayAction extends BaseAction {
 
 		day2DayResult = day2DayService.getByCriteria(day2DayCriteria);
 	
-		//查询条件
-		ownerList=userService.getUserNameList();
-
+		init();
+		
 		return "list";
 	}
-
+	/**
+	 * 初始化查询条件
+	 */
+	public void init(){
+		//用户
+		//ownerList=userService.getUserNameList();
+		userResult=userService.getAll();
+		if(null!=userResult){
+			userList=userResult.getResultList();
+		}
+	}
 	/**
 	 * 编辑或新增
 	 * 
@@ -68,7 +79,7 @@ public class Day2DayAction extends BaseAction {
 	public String edit() {
 		loginUser=getLoginUser();
 		if(null!=loginUser){
-			ownerList=userService.getUserNameList();
+			init();
 			day2Day=day2DayService.selectByPrimaryKey(d2Id);
 			return "edit";
 		}
