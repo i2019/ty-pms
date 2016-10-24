@@ -152,7 +152,7 @@ $(document).ready(function(){
 			<div class="popover-hide" data-container="body" data-toggle="popover" data-placement="bottom" data-content="${userList.remark}"> 
 			    <a><label class="remarkLabel h20">${expenditureList.remark}</label></a>
 	   		</div>
-		</display:column>s
+		</display:column>
 		<display:column title="操作">
 			<a href="expenditure_edit.action?expenditureId=${expenditureList.expenditureId}" class="edit link mgR12">
 				<fmt:message key="common.btn.edit"/></a>

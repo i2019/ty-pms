@@ -26,7 +26,8 @@ public class ExpenditureServiceImpl extends BaseService implements ExpenditureSe
 		
 		record.setCreatedTime(new Date());
 		record.setLastModifyTime(new Date());
-		//record.setOccurrencedTime(new Date());
+		//消费时间
+		//record.setOccurrencedTime(new Date()); 
 		//record.setEndTime(new Date());	
 		
 		User loginUser=null;
@@ -35,7 +36,8 @@ public class ExpenditureServiceImpl extends BaseService implements ExpenditureSe
 			String userId=loginUser.getUserId();
 			record.setCreatedBy(userId);
 			record.setUpdatedBy(userId);
-			record.setOwner(userId);
+			//消费者
+			//record.setOwner(userId); 
 		}
 		
 		return mapper.insertSelective(record);

@@ -1,13 +1,16 @@
 package ty.pms.service.time.day2day.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import ty.pms.dao.time.day2day.Day2DayMapper;
+import ty.pms.model.sys.user.User;
 import ty.pms.model.time.day2day.Day2Day;
 import ty.pms.model.time.day2day.Day2DayCriteria;
 import ty.pms.model.time.day2day.Day2DayResult;
 import ty.pms.service.base.BaseService;
 import ty.pms.service.time.day2day.Day2DayService;
+import ty.pms.util.CommonUtil;
 
 public class Day2DayServiceImpl extends BaseService implements Day2DayService{
 	
@@ -15,26 +18,39 @@ public class Day2DayServiceImpl extends BaseService implements Day2DayService{
 	
 	@Override
 	public Integer insertSelective(Day2Day record) {
-		// TODO Auto-generated method stub
-		return null;
+
+		record.setD2Id(CommonUtil.generateUUID());
+		record.setDelFlag(false);
+		record.setCreatedTime(new Date());
+		record.setLastModifyTime(new Date());
+		//发生时间
+		//record.setOccurrencedTime(new Date()); 
+		//record.setEndTime(new Date());	
+		User loginUser=null;
+		loginUser=getLoginUser();
+		if(null!=loginUser){
+			String userId=loginUser.getUserId();
+			record.setCreatedBy(userId);
+			record.setUpdatedBy(userId);
+			//record.setOwner(userId); 
+		}
+		
+		return mapper.insertSelective(record);
 	}
 
 	@Override
 	public Integer updateByPrimaryKeySelective(Day2Day record) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
 	public Integer deleteByPrimaryKey(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.deleteByPrimaryKey(id);
 	}
 
 	@Override
 	public Day2Day selectByPrimaryKey(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.selectByPrimaryKey(id);
 	}
 
 	@Override

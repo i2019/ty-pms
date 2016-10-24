@@ -22,7 +22,7 @@ import ty.pms.model.account.income.Income;
  */
 public class ImpOldExpendData {
 	public static void main(String[] args) throws Exception {
-		ImpOldExpendData.importFile("test22.txt");
+		ImpOldExpendData.importFile("0420-0717.txt");
 	}
 
 	/**

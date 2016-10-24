@@ -3,6 +3,7 @@ package ty.pms.model.base;
 import java.util.Date;
 
 public class BaseObject {
+	  private String id;//默认id
 	  private Date occurrencedTime;//发生时间
 	  private Date endTime;//结束时间
 	  private String owner;//所有者
@@ -13,6 +14,12 @@ public class BaseObject {
       private String remark;//备注
       private boolean delFlag;//删除标志
     
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public Date getEndTime() {
 		return endTime;
 	}

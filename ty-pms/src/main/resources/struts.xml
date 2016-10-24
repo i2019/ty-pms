@@ -73,7 +73,6 @@
 			<interceptor-ref name ="tyStack" /> 
 			<result name="list">/pages/time/d2dList.jsp</result>
 			<result name="edit">/pages/time/d2dEdit.jsp</result>
-				
 		 </action>
 		
 		<action name="menu_*" class="ty.pms.action.menu.MenuAction"

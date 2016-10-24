@@ -66,7 +66,13 @@ public class Day2DayAction extends BaseAction {
 	 * @return
 	 */
 	public String edit() {
-		return list();
+		loginUser=getLoginUser();
+		if(null!=loginUser){
+			ownerList=userService.getUserNameList();
+			day2Day=day2DayService.selectByPrimaryKey(d2Id);
+			return "edit";
+		}
+		return "list";
 	}
 
 	/**
@@ -110,6 +116,14 @@ public class Day2DayAction extends BaseAction {
 
 	public Day2DayService getDay2DayService() {
 		return day2DayService;
+	}
+
+	public Day2Day getDay2Day() {
+		return day2Day;
+	}
+
+	public void setDay2Day(Day2Day day2Day) {
+		this.day2Day = day2Day;
 	}
 
 	public void setDay2DayService(Day2DayService day2DayService) {

@@ -92,7 +92,8 @@ public class ExpenditureAction extends BaseAction{
 	 * @return
 	 */
 	public String save(){
-		if(null!=expenditure ){	
+		loginUser=getLoginUser();
+		if(null!=expenditure&& null!=loginUser){	
 			//如果存在用户id，则为编辑，后台update
 			if(StringUtils.hasText(expenditure.getExpenditureId())){
 				expenditureService.updateByPrimaryKeySelective(expenditure);

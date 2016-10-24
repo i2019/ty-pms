@@ -12,10 +12,6 @@ $(document).ready(function() {
 		window.parent.$.fancybox.close();/**  关闭弹出iframe  **/
 	});
 	$("#submitbutton").click(function() {
-		var loginUserName=$("#loginUserName").val();
-		var loginUserId=$("#loginUserId").val();
-		var editUserId=$("#editUserId").val();
-		var editUserName=$("#user_userName").val();		
 		window.parent.$.fancybox.close();
 		$('#editForm').submit();
 	});
@@ -45,12 +41,9 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<input type="hidden" id="loginUserName" value="${LoginUserName }"/>
-<input type="hidden" id="loginUserId" value="${LoginUserId }"/>
-<input type="hidden" id="editUserId" value="${userId }"/>
 <div id="container" class="center-in-center">
  <form class="form-horizontal" action="expenditure_save.action" id="editForm" method="post">
- 		<s:hidden name="user.userId"></s:hidden>
+ 		<s:hidden name="expenditure.expenditureId"></s:hidden>
  		<!-- 支出用户 -->
         <div class="form-group">
            <label class="text-muted col-sm-2 control-label" for="ds_host">支出用户:</label>

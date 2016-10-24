@@ -14,9 +14,7 @@ input.calendar{background-repeat: no-repeat; background-position: 96% 4px;}
 <script type="text/javascript">
 
 $(document).ready(function(){
-
 	$(function () { $(".popover-hide").popover();});
-
 	/*复选框*/
 	$('#day2DayCriteria_ownerList').multiselect({
 		numberDisplayed: 1,
@@ -31,13 +29,11 @@ $(document).ready(function(){
 		dSelectAllText: '反选',
 		nonSelectedText: '请选择'
     });
-	
 	 $(".timeformat1").datetimepicker({
 	        format: "yyyy-mm-dd hh:ii",
 	        autoclose: true,
 	        todayBtn: true
-	 });
-	
+	 });	
 	/** 编辑   **/
 	$(".edit").fancybox({	
 	    	'width' : 733,
@@ -49,7 +45,6 @@ $(document).ready(function(){
 	        	window.location.href = 'd2d_list.action';
 	        }
 	 });
-	
 	/** 新增   **/
     $("#addBtn").fancybox({
     	'href'  : 'd2d_edit.action',
@@ -62,8 +57,7 @@ $(document).ready(function(){
         	window.location.href = 'd2d_list.action';
         }
     });
-});
-	
+});	
 </script>
 </head>
 <body>
@@ -123,7 +117,6 @@ $(document).ready(function(){
              <s:textfield name="day2DayCriteria.remark" cssClass="form-control w220" type="text"></s:textfield>
            </div>
        </div>
-       
        <div class="form-group">
        		<!-- 用户名 -->
            <label class="text-muted col-sm-2 control-label" for="ds_host">
@@ -138,7 +131,6 @@ $(document).ready(function(){
 			 </select>
            </div>
        </div>
-       
        <hr class="solided notopMargin">
        <div class="form-group">
 	      <div class="col-sm-offset-4 col-sm-10">
@@ -153,9 +145,9 @@ $(document).ready(function(){
 	<display:table name="day2DayResult.resultList" id="day2DayList" sort="list" 
 		class="result_table" requestURI="" pagesize="20" size="day2DayResult.totalCount" partialList="true">
 		<display:setProperty name="sort.amount" value="list" />
-		<display:column property="owner" titleKey="common.user.userName"/>
-		<display:column property="occurrencedTime" titleKey="business.criteria.occurrencedTime" format="{0,date,yyyy-MM-dd HH:mm:ss}"/>
-		<display:column property="endTime" titleKey="business.criteria.endTime" format="{0,date,yyyy-MM-dd HH:mm:ss}"/>
+		<display:column property="owner" titleKey="common.user.userName" sortable="true"/>
+		<display:column property="occurrencedTime" titleKey="business.criteria.occurrencedTime" format="{0,date,yyyy-MM-dd HH:mm:ss}" sortable="true"/>
+		<display:column property="endTime" titleKey="business.criteria.endTime" format="{0,date,yyyy-MM-dd HH:mm:ss}" sortable="true"/>
 		<display:column titleKey="business.criteria.descript">
 			<div id="" class="popover-hide" 
 			data-container="body" data-toggle="popover" data-placement="bottom" data-content="${day2DayList.d2Descrip}"> 
