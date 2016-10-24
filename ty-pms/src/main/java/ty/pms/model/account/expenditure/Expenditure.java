@@ -1,7 +1,6 @@
 package ty.pms.model.account.expenditure;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import ty.pms.model.base.BaseObject;
 
