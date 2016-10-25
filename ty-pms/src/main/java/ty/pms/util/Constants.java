@@ -15,4 +15,13 @@ public final class Constants {
 	// public static final int PAGE_SIZE = 20;
 	public static final Integer PAGE_SIZE = 20;
 	
+	/*
+	 原因类别：
+	 1为expenditure原因，
+	 2为income原因，
+	 3为day2day原因
+	 */
+	public static final Integer CauseType_1 = 1;
+	public static final Integer CauseType_2 = 2;
+	public static final Integer CauseType_3 = 3;
 }

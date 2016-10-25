@@ -24,6 +24,21 @@ public class CauseCriteria extends SearchCriteria{
 	private String parentId;
 	private List<String> parentIdList;
 
+	private Integer causeType;
+	private List<Integer> causeTypeList;
+
+	public Integer getCauseType() {
+		return causeType;
+	}
+	public void setCauseType(Integer causeType) {
+		this.causeType = causeType;
+	}
+	public List<Integer> getCauseTypeList() {
+		return causeTypeList;
+	}
+	public void setCauseTypeList(List<Integer> causeTypeList) {
+		this.causeTypeList = causeTypeList;
+	}
 	public String getCauseId() {
 		return causeId;
 	}

@@ -16,7 +16,7 @@ input.calendar{background-repeat: no-repeat; background-position: 96% 4px;}
 $(document).ready(function(){
 	$(function () { $(".popover-hide").popover();});
 	/*复选框*/
-	$('#day2DayCriteria_ownerList').multiselect({
+	$('.mut_opt').multiselect({
 		numberDisplayed: 1,
 		dropRight: true,
         enableCaseInsensitiveFiltering: true,
@@ -79,7 +79,6 @@ $(document).ready(function(){
            <div class="col-sm-3"> 
            <input id="day2DayCriteria_occurrencedTimeEnd" name="day2DayCriteria.occurrencedTimeEnd" class="timeformat1 form-control w220" 
 							value="<fmt:formatDate value='${day2DayCriteria.occurrencedTimeEnd }' pattern='yyyy-MM-dd HH:mm'/>">
-        
            </div>
        </div>
         <div class="form-group">
@@ -107,7 +106,12 @@ $(document).ready(function(){
            		<fmt:message key="business.criteria.descript"/>
            </label>
            <div class="col-sm-3">
-             <s:textfield name="day2DayCriteria.d2Descrip" cssClass="form-control w220" type="text"></s:textfield>
+             <select id="day2DayCriteria_d2DescripList" name="day2DayCriteria.d2DescripList" class="mut_opt" multiple="multiple">
+					<c:forEach items="${causeList}" var="cause">	
+						<option value="${cause.causeId}" 
+						${fn:contains(day2DayCriteria.d2DescripList, cause.causeId)?"selected":""}>${cause.causeName}</option>
+					</c:forEach>
+			 </select>
            </div>
             <!-- 备注 -->
            <label class="col-sm-2 text-muted control-label" for="ds_host">
@@ -119,9 +123,7 @@ $(document).ready(function(){
        </div>
        <div class="form-group">
        		<!-- 用户名 -->
-           <label class="text-muted col-sm-2 control-label" for="ds_host">
-			<fmt:message key="common.user.userName"/>:
-			</label>
+           <label class="text-muted col-sm-2 control-label" for="ds_host"><fmt:message key="common.user.userName"/>:</label>
            <div class="col-sm-2">
               <select id="day2DayCriteria_ownerList" name="day2DayCriteria.ownerList" class="mut_opt" multiple="multiple">
 					<c:forEach items="${userList}" var="user">	

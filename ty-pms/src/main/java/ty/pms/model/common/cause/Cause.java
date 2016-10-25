@@ -8,7 +8,15 @@ public class Cause extends BaseObject{
 	private String causeName;
 	
 	private String parentId;
-	//ALTER TABLE cause ADD COLUMN parentId VARCHAR(32) DEFAULT NULL COMMENT '父Id';
+	private Integer causeType;
+	
+	public Integer getCauseType() {
+		return causeType;
+	}
+
+	public void setCauseType(Integer causeType) {
+		this.causeType = causeType;
+	}
 
 	public String getCauseId() {
 		return causeId;

@@ -193,11 +193,13 @@
     	left join user u
     	on u.userId=d.owner
     	and u.delFlag=0
+    	left join cause c
+    	on c.causeId=d.d2Descrip
+    	and c.delFlag=0
     	<where>
     		d.delFlag=0
     		<if test="d2Descrip != null">
-				<!-- and d2Descrip = #{d2Descrip}  -->
-				and d.d2Descrip like CONCAT('%','${d2Descrip}','%' )
+				and d2Descrip = #{d2Descrip}
 			</if>
 			<if test="d2DescripList != null">
    			 	and d.d2Descrip in
@@ -268,19 +270,25 @@
     
     <select id="getByCriteria" resultMap="resultMap" resultType="day2dayResult" parameterType="day2dayCriteria">
     	select 
-		d.d2Id,d.d2Descrip,
+		d.d2Id,
+		c.causeName d2Descrip,d.d2Descrip causeId,
 		d.occurrencedTime,d.endTime,d.createdTime,d.lastModifyTime,
 		u.userName owner,d.owner ownerId,
 		d.createdBy,d.updatedBy,d.remark
 	    from day2day d
+	    
     	left join user u
     	on u.userId=d.owner
     	and u.delFlag=0
+    	
+    	left join cause c
+    	on c.causeId=d.d2Descrip
+    	and c.delFlag=0
+    	
     	<where>
     		d.delFlag=0
     		<if test="d2Descrip != null">
-				<!-- and d2Descrip = #{d2Descrip}  -->
-				and d.d2Descrip like CONCAT('%','${d2Descrip}','%' )
+				and d2Descrip = #{d2Descrip}
 			</if>
 			<if test="d2DescripList != null">
    			 	and d.d2Descrip in

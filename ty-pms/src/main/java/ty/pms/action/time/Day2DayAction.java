@@ -7,13 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
 import ty.pms.action.base.BaseAction;
+import ty.pms.model.common.cause.Cause;
+import ty.pms.model.common.cause.CauseCriteria;
+import ty.pms.model.common.cause.CauseResult;
 import ty.pms.model.sys.user.User;
 import ty.pms.model.sys.user.UserResult;
 import ty.pms.model.time.day2day.Day2Day;
 import ty.pms.model.time.day2day.Day2DayCriteria;
 import ty.pms.model.time.day2day.Day2DayResult;
+import ty.pms.service.common.cause.CauseService;
 import ty.pms.service.sys.user.UserService;
 import ty.pms.service.time.day2day.Day2DayService;
+import ty.pms.util.Constants;
 
 public class Day2DayAction extends BaseAction {
 	
@@ -24,17 +29,25 @@ public class Day2DayAction extends BaseAction {
 
 	@Autowired
 	private Day2DayService day2DayService;
-	@Autowired
-	private UserService userService;
-	private User loginUser;
 	private Day2DayCriteria day2DayCriteria=new Day2DayCriteria();
 	private Day2DayResult day2DayResult = new Day2DayResult();
 	private String d2Id;
 	private Day2Day day2Day;
 	
+	@Autowired
+	private UserService userService;
+	private User loginUser;
 	private List<User> userList=new ArrayList<User>();
 	private List<String> ownerList=new ArrayList<String>();
 	private UserResult userResult=new UserResult(); 
+	
+
+	@Autowired
+	private CauseService causeService;
+	private CauseResult causeResult=new CauseResult();
+	private List<Cause> causeList=new ArrayList<Cause>();
+	private CauseCriteria causeCriteria=new CauseCriteria();
+	
 	/**
 	 * 查询并展示
 	 * 
@@ -69,6 +82,13 @@ public class Day2DayAction extends BaseAction {
 		userResult=userService.getAll();
 		if(null!=userResult){
 			userList=userResult.getResultList();
+		}
+		
+		//原因
+		causeCriteria.setCauseType(Constants.CauseType_3);
+		causeResult=causeService.getByCriteria(causeCriteria);
+		if(null!=causeResult){
+			causeList=causeResult.getResultList();
 		}
 	}
 	/**
@@ -182,6 +202,12 @@ public class Day2DayAction extends BaseAction {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public List<Cause> getCauseList() {
+		return causeList;
+	}
+	public void setCauseList(List<Cause> causeList) {
+		this.causeList = causeList;
 	}
 
 }

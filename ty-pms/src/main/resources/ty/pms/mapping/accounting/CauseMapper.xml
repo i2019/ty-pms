@@ -18,6 +18,10 @@
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 		
 		<result column="delFlag" property="delFlag" jdbcType="TINYINT" />
+		
+		<result column="parentId" property="parentId" jdbcType="VARCHAR" />
+		<result column="causeType" property="causeType" jdbcType="INTEGER" />
+		
 	</resultMap>
 	
 	<!-- 分页  -->
@@ -31,7 +35,9 @@
 	<sql id="allColumns">
 		causeId,causeName,
 		occurrencedTime,endTime,createdTime,lastModifyTime,
-  		owner,createdBy,updatedBy,remark,delFlag
+  		owner,createdBy,updatedBy,remark,
+  		parentId,causeType,
+  		delFlag
 	</sql>
 	<!-- 统计查询结果数 -->
 	<sql id="selectCount">
@@ -76,6 +82,12 @@
 			<if test="remark != null">
 				remark,
 			</if>
+			<if test="parentId != null">
+				parentId,
+			</if>
+			<if test="causeType != null">
+				causeType,
+			</if>
 			<if test="delFlag != null">
 				delFlag
 			</if>
@@ -111,6 +123,12 @@
 			</if>
 			<if test="remark != null">
 				#{remark,jdbcType=VARCHAR}, 
+			</if>
+			<if test="parentId != null">
+				#{parentId,jdbcType=VARCHAR}, 
+			</if>
+			<if test="causeType != null">
+				#{causeType,jdbcType=INTEGER},
 			</if>
 			<if test="delFlag != null">
 				#{delFlag,jdbcType=TINYINT}
@@ -148,6 +166,12 @@
 			</if>
 			<if test="remark != null">
 				remark=#{remark,jdbcType=VARCHAR}, 
+			</if>
+			<if test="parentId != null">
+				#{parentId,jdbcType=VARCHAR}, 
+			</if>
+			<if test="causeType != null">
+				#{causeType,jdbcType=INTEGER},
 			</if>
 			<if test="delFlag != null">
 				delFlag=#{delFlag,jdbcType=TINYINT}
@@ -192,6 +216,26 @@
     	<include refid="selectCount" /> Cause
     	<where>
     		delFlag=0
+    		<if test="parentId != null">
+				and parentId = #{parentId}
+			</if>
+			<if test="parentIdList != null">
+   			 	and parentId in
+		      	<foreach collection="parentIdList" item="parentId" index="index" open="(" close=")" separator=",">
+		            #{parentId}
+		        </foreach>
+  			</if>
+  			
+			<if test="causeType != null">
+				and causeType = #{causeType}
+			</if>
+			<if test="causeTypeList != null">
+   			 	and causeType in
+		      	<foreach collection="causeTypeList" item="causeType" index="index" open="(" close=")" separator=",">
+		            #{causeType}
+		        </foreach>
+  			</if>
+  			
     		<if test="causeName != null">
 				and causeName = #{causeName}
 			</if>
@@ -250,6 +294,26 @@
     	select <include refid="allColumns" /> from Cause 
     	<where>
     		delFlag=0
+    		<if test="parentId != null">
+				and parentId = #{parentId}
+			</if>
+			<if test="parentIdList != null">
+   			 	and parentId in
+		      	<foreach collection="parentIdList" item="parentId" index="index" open="(" close=")" separator=",">
+		            #{parentId}
+		        </foreach>
+  			</if>
+  			
+			<if test="causeType != null">
+				and causeType = #{causeType}
+			</if>
+			<if test="causeTypeList != null">
+   			 	and causeType in
+		      	<foreach collection="causeTypeList" item="causeType" index="index" open="(" close=")" separator=",">
+		            #{causeType}
+		        </foreach>
+  			</if>
+  			
     		<if test="causeName != null">
 				and causeName = #{causeName}
 			</if>

@@ -1,85 +1,12 @@
 
 ######################################################################
-
 前端
 b.browser.msie
 $.browser.msie
 用于判断浏览器版本，jQuery1.9后不再支持，因此，系统中其他框架引用此对象，则替换为false。
-
 ######################################################################################
-
-	<!-- 
-						<select id="userCriteria_userNameList" name="userCriteria.userNameList" class="fxt text_value" multiple="multiple">
-							<c:forEach items="${userNameList}" var="userName">	
-								<option value="${userName}">${userName}</option>
-							</c:forEach>
-						</select>
-						 -->
-						 
-	<li class="col3_1">
-					<div class="list_criteria">
-					    <div class="criteria_label">
-							创建开始时间: 
-						</div>
-						<div class="criteria_value">
-							<s:textfield type="text" id="userCriteria_createdTimeBegin" name="userCriteria.createdTimeBegin" cssClass="fxt text_value"/>
-						</div>	
-					</div>
-				</li>
-				<li class="col3_1">
-					<div class="list_criteria">
-					    <div class="criteria_label">
-							创建结束时间:  
-						</div>
-						<div class="criteria_value">
-							<s:textfield type="text" id="userCriteria_createdTimeEnd" name="userCriteria.createdTimeEnd" cssClass="fxt text_value"/>
-						</div>	
-					</div>
-				</li>
-				<li class="col3_1">
-					<div class="list_criteria">
-					    <div class="criteria_label">
-							备注: (模糊查询  文本域)
-						</div> 
-						<div class="criteria_value">
-							<s:textfield type="text" id="userCriteria_userName" name="userCriteria.remark" cssClass="fxt text_value"/>
-						</div>	
-					</div>
-				</li>
-
-
-<div class="c_whitebg">
-	<s:form id="userForm" name="userForm" action="user_list.action" method="post">
-		<div class="nm_box">
-			<ul class="inq_wp frow">
-				<li class="col3_1">
-						用户名:
-						<s:textfield name="userCriteria.userName" cssClass="fxt w120"></s:textfield>
-				</li>
-				<li class="col3_1">
-					<div class="i_title">
-						<span class="text">创建开始时间:</span>
-					</div>
-					<div class="i_input">
-						<s:textfield name="userCriteria.createdTimeBegin" cssClass="fxt w120"></s:textfield>
-					</div>
-				</li>
-			</ul>
-			<hr class="solided notopMargin">
-			<div class="list_button">
-				<input type="submit" value="查询" class="button_search" id="searchBtn" /> 	
-				<input type="button" value="新增" class="button_create" id="addBtn" /> 		
-			</div>
-		</div>
-	</s:form>
-</div>
-	
-	
-	
 	
 ######################################################################################
-
-
 
 ######################################################################################
 ####################### SQL:Create DB and Table
@@ -174,7 +101,11 @@ CREATE TABLE `cause` (
   PRIMARY KEY  (`causeId`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-alter `cause` ADD COLUMN parentId VARCHAR(32) DEFAULT NULL COMMENT '父Id';
+alter TABLE `cause` ADD COLUMN parentId VARCHAR(32) DEFAULT NULL COMMENT '父Id';
+
+ALTER TABLE `cause` 
+ADD COLUMN causeType INT DEFAULT NULL COMMENT '原因类别：1为expenditure原因，2为income原因，3为day2day原因。';
+
 
 
 CREATE TABLE `day2day` (

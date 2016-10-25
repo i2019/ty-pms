@@ -17,7 +17,7 @@ $(document).ready(function() {
 	});
 	
 	/*复选框*/
-	$('#day2Day_owner').multiselect({
+	$('.mut_opt').multiselect({
 		numberDisplayed: 1,
 		dropRight: true,
         enableCaseInsensitiveFiltering: true,
@@ -46,7 +46,7 @@ $(document).ready(function() {
  		<s:hidden name="day2Day.d2Id"></s:hidden>
  		<!-- 用户 -->
         <div class="form-group">
-           <label class="text-muted col-sm-2 control-label" for="ds_host">用户:</label>
+           <label class="text-muted col-sm-3 control-label" for="ds_host">用户:</label>
            <div class="col-sm-10">
 		  	  <select id="day2Day_owner" name="day2Day.owner" class="mut_opt">
 					<c:forEach items="${userList}" var="user">	
@@ -72,7 +72,11 @@ $(document).ready(function() {
        <div class="form-group">
            <label class="text-muted col-sm-1 control-label" for="ds_host">原因:</label>
            <div class="col-sm-2">
-           	 <s:textarea type="text" id="day2Day_d2Descrip" name="day2Day.d2Descrip" class="text_value"/>	
+           	 <select id="day2Day_d2Descrip" name="day2Day.d2Descrip" class="mut_opt">
+					<c:forEach items="${causeList}" var="cause">	
+						<option value="${cause.causeId}" ${fn:contains(day2Day.d2Descrip, cause.causeId)?"selected":""}>${cause.causeName}</option>
+					</c:forEach>
+			 </select>	
            </div>
        </div>
        <div class="form-group">
