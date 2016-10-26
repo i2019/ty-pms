@@ -198,15 +198,15 @@ function loadMenu(resourceType, treeObj){
  //业务模块
  if('dleft_tab1' == treeObj){		
  data = [
-	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"idKey":1121,"name":"理财记账","resourceOrder":0,"resourceType":""},
-	
-	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1121,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112131,"name":"基础设置","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112131,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213141,"name":"资金单位","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112131,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213142,"name":"产生事由","resourceOrder":0,"resourceType":""},
+         
+	{"pIdKey":1,"idKey":1124,"name":"基础设置","accessPath":"expenditure_list.action","delFlag":0},
+	{"pIdKey":1124,"idKey":112421,"name":"产生事由","accessPath":"cause_list.action","delFlag":0},
+
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1,"idKey":1121,"name":"理财记账","resourceOrder":0,"resourceType":""},
 	
 	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1121,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112132,"name":"收支记录","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112132,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213241,"name":"收入记录","resourceOrder":0,"resourceType":""},
-	{"accessPath":"expenditure_list.action","checked":false,"delFlag":0,"pIdKey":112132,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213242,"name":"支出记录","resourceOrder":0,"resourceType":""},
+	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112132,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213241,"name":"收入记录","resourceOrder":3,"resourceType":""},
+	{"pIdKey":112132,"idKey":11213242,"name":"支出记录","accessPath":"expenditure_list.action","delFlag":0},
 	
 	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1121,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112133,"name":"财务报表","resourceOrder":0,"resourceType":""},
 	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112133,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11213341,"name":"财务汇总报表","resourceOrder":0,"resourceType":""},
@@ -214,10 +214,6 @@ function loadMenu(resourceType, treeObj){
 	
 	
 	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"idKey":1122,"name":"时间管理","resourceOrder":0,"resourceType":""},
-	
-	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1122,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112231,"name":"基础设置","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112231,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11223141,"name":"时间单位","resourceOrder":0,"resourceType":""},
-	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":112231,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":11223142,"name":"产生事由","resourceOrder":0,"resourceType":""},
 	
 	{"accessPath":"","checked":false,"delFlag":0,"pIdKey":1122,"resourceCode":"","resourceDesc":"","resourceGrade":3,"idKey":112232,"name":"日程记录","resourceOrder":0,"resourceType":""},
 	{"accessPath":"d2d_list.action","checked":false,"delFlag":0,"pIdKey":112232,"resourceCode":"","resourceDesc":"","resourceGrade":4,"idKey":2213241,"name":"日事记","resourceOrder":0,"resourceType":""},

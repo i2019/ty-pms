@@ -80,6 +80,13 @@
 			<result name="list">/pages/main/menu.jsp</result>
 		</action>
 		
+		<action name="cause_*" class="ty.pms.action.sys.CauseAction"
+			method="{1}">
+			<interceptor-ref name ="tyStack" /> 
+			<result name="list">/pages/sys/causeList.jsp</result>
+			<result name="edit">/pages/sys/causeEdit.jsp</result>
+		 </action>
+		 
     </package>
 
 </struts>

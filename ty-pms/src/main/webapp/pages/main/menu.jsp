@@ -58,20 +58,6 @@
 		//节点数据 json
 		var zNodes =[
 			{ id:111, pId:0, url: "user_list2222.action",name:"父节点 1", open:true,iconSkin:"pIcon01"}
-			/* 
-			,
-			{ id:11, pId:1, name:"叶子节点 1-1",iconSkin:"pIcon01"},
-			{ id:12, pId:1, name:"叶子节点 1-2",iconSkin:"pIcon01"},
-			{ id:13, pId:1, name:"叶子节点 1-3",iconSkin:"pIcon01"},
-			{ id:2, pId:0, name:"父节点 2", open:true,iconSkin:"pIcon01"},
-			{ id:21, pId:2, name:"叶子节点 2-1",iconSkin:"pIcon01"},
-			{ id:22, pId:2, name:"叶子节点 2-2",iconSkin:"pIcon01"},
-			{ id:23, pId:2, name:"叶子节点 2-3",iconSkin:"pIcon01"},
-			{ id:3, pId:0, name:"父节点 3", open:true,iconSkin:"pIcon01"},
-			{ id:31, pId:3, name:"叶子节点 3-1",iconSkin:"pIcon01"},
-			{ id:32, pId:3, name:"叶子节点 3-2",iconSkin:"pIcon01"},
-			{ id:33, pId:3, name:"叶子节点 3-3",iconSkin:"pIcon01"}
-			*/
 		];
 		
 		//确认框

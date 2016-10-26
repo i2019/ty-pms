@@ -44,7 +44,6 @@ $(document).ready(function() {
 <div id="container" class="center-in-center">
  <form class="form-horizontal" action="d2d_save.action" id="editForm" method="post">
  		<s:hidden name="day2Day.d2Id"></s:hidden>
- 		<!-- 用户 -->
         <div class="form-group">
            <label class="text-muted col-sm-3 control-label" for="ds_host">用户:</label>
            <div class="col-sm-10">
