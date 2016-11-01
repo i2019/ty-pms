@@ -139,10 +139,15 @@
 	<update id="updateByPrimaryKeySelective" parameterType="Cause">
 		update Cause
 		<set>
+			<if test="parentId != null">
+				parentId=#{parentId,jdbcType=VARCHAR}, 
+			</if>
+			<if test="causeType != null">
+				causeType=#{causeType,jdbcType=INTEGER},
+			</if>
 			<if test="causeName != null">
 				causeName = #{causeName,jdbcType=VARCHAR},
 			</if>
-		
 			<if test="occurrencedTime != null">
 				occurrencedTime=#{occurrencedTime,jdbcType=TIMESTAMP},
 			</if>
@@ -166,12 +171,6 @@
 			</if>
 			<if test="remark != null">
 				remark=#{remark,jdbcType=VARCHAR}, 
-			</if>
-			<if test="parentId != null">
-				#{parentId,jdbcType=VARCHAR}, 
-			</if>
-			<if test="causeType != null">
-				#{causeType,jdbcType=INTEGER},
 			</if>
 			<if test="delFlag != null">
 				delFlag=#{delFlag,jdbcType=TINYINT}

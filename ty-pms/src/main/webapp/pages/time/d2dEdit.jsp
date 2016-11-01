@@ -45,7 +45,7 @@ $(document).ready(function() {
  <form class="form-horizontal" action="d2d_save.action" id="editForm" method="post">
  		<s:hidden name="day2Day.d2Id"></s:hidden>
         <div class="form-group">
-           <label class="text-muted col-sm-3 control-label" for="ds_host">用户:</label>
+           <label class="text-muted col-sm-3 control-label" for="ds_host">用户名称:</label>
            <div class="col-sm-10">
 		  	  <select id="day2Day_owner" name="day2Day.owner" class="mut_opt">
 					<c:forEach items="${userList}" var="user">	
@@ -69,7 +69,7 @@ $(document).ready(function() {
        	   </div>
        </div>
        <div class="form-group">
-           <label class="text-muted col-sm-1 control-label" for="ds_host">原因:</label>
+           <label class="text-muted col-sm-1 control-label" for="ds_host">发生原因:</label>
            <div class="col-sm-2">
            	 <select id="day2Day_d2Descrip" name="day2Day.d2Descrip" class="mut_opt">
 					<c:forEach items="${causeList}" var="cause">	
@@ -79,7 +79,7 @@ $(document).ready(function() {
            </div>
        </div>
        <div class="form-group">
-           <label class="text-muted col-sm-1 control-label" for="ds_host">备注:</label>
+           <label class="text-muted col-sm-1 control-label" for="ds_host">事件备注:</label>
            <div class="col-sm-2">
            	 <s:textarea type="text" id="day2Day_remark" name="day2Day.remark" class="text_value"/>	
            </div>

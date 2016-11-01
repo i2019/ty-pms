@@ -138,7 +138,6 @@ $(document).ready(function(){
 </form>
 <hr class="solided notopMargin">
 
-<!--列表样式-->
 <div class="pannel_display">
 	<display:table name="expenditureResult.resultList" id="expenditureList" sort="list" class="result_table" requestURI="" pagesize="20" size="expenditureResult.totalCount" partialList="true">
 		<display:setProperty name="sort.amount" value="list" />
